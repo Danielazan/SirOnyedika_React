@@ -1,0 +1,1 @@
+// useSearchSuggestions.js

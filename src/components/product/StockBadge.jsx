@@ -1,0 +1,4 @@
+// StockBadge
+export default function StockBadge() {
+  return <div>StockBadge</div>;
+}
