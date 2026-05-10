@@ -1,3 +1,6 @@
+
+
+
 // src/pages/auth/RegisterPage.jsx
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -8,9 +11,12 @@ import { Button } from '../../components/ui/Button';
 import { TextInput } from '../../components/ui/TextInput';
 import { CountrySelect } from '../../constants/countries';
 import { containerVariants, itemVariants } from '../../constants/animationVariants';
+import { useAuth } from '../../contexts/AuthContext';
 
 export const RegisterPage = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -19,19 +25,21 @@ export const RegisterPage = () => {
     country: '',
     agreeToTerms: false,
   });
+
   const [errors, setErrors] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
   const [apiError, setApiError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
+    setFormData(prev => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === 'checkbox' ? checked : value
     }));
-    // Clear error when user types
+
     if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: '' }));
+      setErrors(prev => ({ ...prev, [name]: '' }));
     }
   };
 
@@ -39,14 +47,9 @@ export const RegisterPage = () => {
     const newErrors = {};
     if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
     if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required';
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
-    }
-    if (!formData.password) {
-      newErrors.password = 'Password is required';
-    } else if (formData.password.length < 8) {
+    if (!formData.email.trim()) newErrors.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email is invalid';
+    if (!formData.password || formData.password.length < 8) {
       newErrors.password = 'Password must be at least 8 characters';
     }
     if (!formData.country) newErrors.country = 'Country is required';
@@ -59,27 +62,32 @@ export const RegisterPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setApiError('');
-    
+    setSuccessMessage('');
+
     if (!validateForm()) return;
 
     setIsLoading(true);
     try {
       const response = await api.post('/auth/register', {
         name: `${formData.firstName.trim()} ${formData.lastName.trim()}`,
-        email: formData.email.toLowerCase(),
+        email: formData.email.toLowerCase().trim(),
         password: formData.password,
         country: formData.country,
       });
 
-      // Show success and redirect to login
-      alert('Account created successfully! Please check your email to verify your account.');
-      navigate('/login');
-    } catch (error) {
-      const message = error.response?.data?.error || 'Registration failed. Please try again.';
-      setApiError(message);
+      setSuccessMessage('Account created successfully! Please check your email to verify your account.');
       
+      // Auto redirect to login after 3 seconds
+      setTimeout(() => {
+        navigate('/login');
+      }, 3000);
+
+    } catch (error) {
+      const message = error.response?.data?.error || 'Registration failed';
+      setApiError(message);
+
       if (error.response?.data?.code === 'EMAIL_TAKEN') {
-        setErrors((prev) => ({ ...prev, email: 'This email is already registered' }));
+        setErrors(prev => ({ ...prev, email: 'This email is already registered' }));
       }
     } finally {
       setIsLoading(false);
@@ -87,20 +95,18 @@ export const RegisterPage = () => {
   };
 
   const handleGoogleSuccess = async (credentialResponse) => {
+    setIsLoading(true);
     try {
-      setIsLoading(true);
       const response = await api.post('/auth/google', {
         idToken: credentialResponse.credential,
       });
-      
+
       const { accessToken, refreshToken, user } = response.data.data;
-      localStorage.setItem('accessToken', accessToken);
-      localStorage.setItem('refreshToken', refreshToken);
-      localStorage.setItem('user', JSON.stringify(user));
-      
-      navigate('/');
+      login(accessToken, refreshToken, user);
+
+      navigate('/account/profile');
     } catch (error) {
-      setApiError('Google signup failed. Please try again.');
+      setApiError('Google sign up failed. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -114,32 +120,34 @@ export const RegisterPage = () => {
         animate="visible"
         className="w-full max-w-md mx-auto"
       >
-        {/* Logo Section */}
-        <motion.div variants={itemVariants} className="mb-8">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-lg">F</span>
-            </div>
-            <span className="text-xl font-bold text-gray-900">Fashly</span>
-          </div>
-        </motion.div>
-
-        {/* Header */}
+        {/* Logo */}
         <motion.div variants={itemVariants} className="mb-8 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Sign Up</h2>
-          <p className="text-sm text-gray-600">Fill your information below to register</p>
+          <div className="flex justify-center mb-4">
+            <div className="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center">
+              <span className="text-white text-3xl font-bold">F</span>
+            </div>
+          </div>
+          <h2 className="text-3xl font-bold text-gray-900">Create Account</h2>
+          <p className="text-gray-600 mt-2">Join us and start shopping</p>
         </motion.div>
 
-        {/* Form */}
-        <motion.form onSubmit={handleSubmit} className="space-y-4">
-          {/* Name Fields - Side by side on desktop, stacked on mobile */}
-          <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {successMessage && (
+          <motion.div 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }}
+            className="mb-6 p-4 bg-green-50 border border-green-200 text-green-700 rounded-xl text-center"
+          >
+            {successMessage}
+          </motion.div>
+        )}
+
+        <motion.form onSubmit={handleSubmit} className="space-y-5">
+          <div className="grid grid-cols-2 gap-4">
             <TextInput
               label="First Name"
               name="firstName"
               value={formData.firstName}
               onChange={handleChange}
-              placeholder="Enter first name"
               error={errors.firstName}
               required
             />
@@ -148,120 +156,84 @@ export const RegisterPage = () => {
               name="lastName"
               value={formData.lastName}
               onChange={handleChange}
-              placeholder="Enter last name"
               error={errors.lastName}
               required
             />
-          </motion.div>
+          </div>
 
-          <motion.div variants={itemVariants}>
-            <TextInput
-              label="Email"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Enter email address"
-              error={errors.email}
-              required
-            />
-          </motion.div>
+          <TextInput
+            label="Email Address"
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+            error={errors.email}
+            required
+          />
 
-          <motion.div variants={itemVariants}>
-            <TextInput
-              label="Password"
-              name="password"
-              type="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="Enter password"
-              error={errors.password}
-              required
-            />
-          </motion.div>
+          <TextInput
+            label="Password"
+            name="password"
+            type="password"
+            value={formData.password}
+            onChange={handleChange}
+            error={errors.password}
+            required
+          />
 
-          <motion.div variants={itemVariants}>
-            <CountrySelect
-              label="Country"
-              name="country"
-              value={formData.country}
-              onChange={handleChange}
-              error={errors.country}
-              required
-            />
-          </motion.div>
+          <CountrySelect
+            label="Country"
+            name="country"
+            value={formData.country}
+            onChange={handleChange}
+            error={errors.country}
+            required
+          />
 
-          {/* Terms Checkbox */}
-          <motion.div variants={itemVariants} className="flex items-start gap-2">
+          <div className="flex items-start gap-2">
             <input
               type="checkbox"
               name="agreeToTerms"
               id="agreeToTerms"
               checked={formData.agreeToTerms}
               onChange={handleChange}
-              className="mt-0.5 w-4 h-4 text-orange-600 border-gray-300 rounded focus:ring-orange-500"
+              className="mt-1"
             />
-            <label htmlFor="agreeToTerms" className="text-xs text-gray-700">
-              Agree with{' '}
-              <Link to="/terms" className="text-orange-600 hover:underline">
-                Terms & Condition
-              </Link>{' '}
-              and{' '}
-              <Link to="/privacy" className="text-orange-600 hover:underline">
-                Privacy Policy
-              </Link>
+            <label htmlFor="agreeToTerms" className="text-sm text-gray-600">
+              I agree to the{' '}
+              <Link to="/terms" className="text-orange-600 hover:underline">Terms</Link> and{' '}
+              <Link to="/privacy" className="text-orange-600 hover:underline">Privacy Policy</Link>
             </label>
-          </motion.div>
-          {errors.agreeToTerms && (
-            <p className="text-xs text-red-600">{errors.agreeToTerms}</p>
-          )}
+          </div>
+          {errors.agreeToTerms && <p className="text-red-600 text-xs">{errors.agreeToTerms}</p>}
 
-          {/* API Error */}
           {apiError && (
-            <motion.div variants={itemVariants} className="p-3 bg-red-50 border border-red-200 rounded-md">
-              <p className="text-sm text-red-600 text-center">{apiError}</p>
-            </motion.div>
+            <p className="text-red-600 text-center bg-red-50 p-3 rounded-lg">{apiError}</p>
           )}
 
-          {/* Submit Button */}
-          <motion.div variants={itemVariants} className="pt-2">
-            <Button type="submit" fullWidth isLoading={isLoading}>
-              Sign Up
-            </Button>
-          </motion.div>
+          <Button type="submit" fullWidth isLoading={isLoading}>
+            Create Account
+          </Button>
 
-          {/* Divider */}
-          <motion.div variants={itemVariants} className="relative py-4">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-200"></div>
+          <div className="relative py-4">
+            <div className="border-t border-gray-200 absolute inset-0" />
+            <div className="relative text-center">
+              <span className="bg-gray-50 px-4 text-gray-500 text-sm">or</span>
             </div>
-            <div className="relative flex justify-center">
-              <span className="px-2 bg-gray-50 text-xs text-gray-500">or Sign Up with</span>
-            </div>
-          </motion.div>
+          </div>
 
-          {/* Google Sign Up */}
-          <motion.div variants={itemVariants} className="flex justify-center">
-            <GoogleLogin
-              onSuccess={handleGoogleSuccess}
-              onError={() => setApiError('Google signup failed. Please try again.')}
-              size="large"
-              width="100%"
-              text="signup_with"
-              shape="rectangular"
-              locale="en"
-            />
-          </motion.div>
+          <GoogleLogin
+            onSuccess={handleGoogleSuccess}
+            onError={() => setApiError('Google signup failed')}
+            size="large"
+            width="100%"
+            text="signup_with"
+          />
 
-          {/* Footer Link */}
-          <motion.div variants={itemVariants} className="text-center pt-4">
-            <p className="text-sm text-gray-600">
-              Already have an account?{' '}
-              <Link to="/login" className="text-orange-600 font-medium hover:underline">
-                Sign In
-              </Link>
-            </p>
-          </motion.div>
+          <p className="text-center text-sm text-gray-600">
+            Already have an account?{' '}
+            <Link to="/login" className="text-orange-600 font-medium hover:underline">Sign in</Link>
+          </p>
         </motion.form>
       </motion.div>
     </div>

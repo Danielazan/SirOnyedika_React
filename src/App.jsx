@@ -1,61 +1,263 @@
+// // src/App.jsx — Route tree for the entire application.
+// // Account routes are wrapped in ProtectedRoute so only authenticated users can access them.
+// import React from "react";
+// import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import ShopPage from "./pages/Shop";
-// import ShoppingCart from "./pages/ShoppingCart";
-// import ProductPage from "./components/ShopPages/ProductPage";
-// import Home from "./pages/Home";
+// import { AuthProvider }        from "./contexts/AuthContext";
+// import { GoogleOAuthProvider } from "@react-oauth/google";
+// import ProtectedRoute          from "./router/ProtectedRoute";
 
+// // ── Public pages ──────────────────────────────────────────────────────────────
+// import Home               from "./pages/public/HomePage";
+// import ProductListingPage from "./pages/public/ProductListingPage";
 
-// export default function App() {
+// // ── Auth pages ────────────────────────────────────────────────────────────────
+// import { RegisterPage }      from "./pages/auth/RegisterPage";
+// import { LoginPage }         from "./pages/auth/LoginPage";
+// import { ForgotPasswordPage } from "./pages/auth/ForgotPasswordPage";
+// import { VerifyResetCodePage } from "./pages/auth/VerifyResetCodePage";
+// import { ResetPasswordPage }  from "./pages/auth/ResetPasswordPage";
+// import VerifyEmailPage        from "./pages/auth/VerifyEmailPage";
+
+// // ── Account pages (protected) ─────────────────────────────────────────────────
+// import AccountLayout      from "./pages/account/AccountLayout";
+// import ProfilePage        from "./pages/account/ProfilePage";
+// import OrdersPage         from "./pages/account/OrdersPage";
+// import WishlistPage       from "./pages/account/WishlistPage";
+// import AddressesPage      from "./pages/account/AddressesPage";
+// import PaymentMethodsPage from "./pages/account/PaymentMethodsPage";
+// import LogoutPage         from "./pages/account/LogoutPage";
+
+// // ── Account pages (protected) ─────────────────────────────────────────────────
+// // import AdminRoutes       from './router/adminRoutes';
+// import AdminRoutes       from './router/AdminRoute';
+
+// const GOOGLE_CLIENT_ID = "161364247766-anf84lnkvn579mh1u90n7ns4jb5noalp.apps.googleusercontent.com";
+
+// function App() {
 //   return (
-//     <BrowserRouter>
-//       <Routes>
-//         <Route path="/" element={<Home />} />
-//         <Route path="/shop" element={<ShopPage />} />
-//         <Route path="/shop/:productId" element={<ProductPage />} />
-//         <Route path="/Cart" element={<ShoppingCart />} />
-//       </Routes>
-//     </BrowserRouter>
+//     <AuthProvider>
+//       <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+//         <Router>
+//           <AdminRoutes />
+//           <Routes>
+//             {/* ── Public ── */}
+//             <Route path="/"     element={<Home />} />
+//             <Route path="/shop" element={<ProductListingPage />} />
+
+//             {/* ── Auth ── */}
+//             <Route path="/register"         element={<RegisterPage />} />
+//             <Route path="/login"            element={<LoginPage />} />
+//             <Route path="/forgot-password"  element={<ForgotPasswordPage />} />
+//             <Route path="/verify-reset-code" element={<VerifyResetCodePage />} />
+//             <Route path="/reset-password"   element={<ResetPasswordPage />} />
+//             <Route path="/verify-email" element={<VerifyEmailPage />} />
+
+//             {/* ── Account (all protected) ───────────────────────────────── */}
+//             {/* Each sub-route is wrapped in ProtectedRoute individually so
+//                 AccountLayout always receives children.                       */}
+
+//             <Route
+//               path="/account/profile"
+//               element={
+//                 <ProtectedRoute>
+//                   <AccountLayout>
+//                     <ProfilePage />
+//                   </AccountLayout>
+//                 </ProtectedRoute>
+//               }
+//             />
+//             <Route
+//               path="/account/orders"
+//               element={
+//                 <ProtectedRoute>
+//                   <AccountLayout>
+//                     <OrdersPage />
+//                   </AccountLayout>
+//                 </ProtectedRoute>
+//               }
+//             />
+//             <Route
+//               path="/account/wishlist"
+//               element={
+//                 <ProtectedRoute>
+//                   <AccountLayout>
+//                     <WishlistPage />
+//                   </AccountLayout>
+//                 </ProtectedRoute>
+//               }
+//             />
+//             <Route
+//               path="/account/addresses"
+//               element={
+//                 <ProtectedRoute>
+//                   <AccountLayout>
+//                     <AddressesPage />
+//                   </AccountLayout>
+//                 </ProtectedRoute>
+//               }
+//             />
+//             <Route
+//               path="/account/payment"
+//               element={
+//                 <ProtectedRoute>
+//                   <AccountLayout>
+//                     <PaymentMethodsPage />
+//                   </AccountLayout>
+//                 </ProtectedRoute>
+//               }
+//             />
+//             <Route
+//               path="/account/logout"
+//               element={
+//                 <ProtectedRoute>
+//                   <AccountLayout>
+//                     <LogoutPage />
+//                   </AccountLayout>
+//                 </ProtectedRoute>
+//               }
+//             />
+
+//             {/* Default redirect: /account → /account/profile */}
+//             <Route path="/account" element={<Navigate to="/account/profile" replace />} />
+//           </Routes>
+//         </Router>
+//       </GoogleOAuthProvider>
+//     </AuthProvider>
 //   );
 // }
 
-// src/App.jsx
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-// import ShopPage from "./pages/Shop";
-// import ShoppingCart from "./pages/ShoppingCart";
-// import ProductPage from "./components/ShopPages/ProductPage";
-import Home from "./pages/public/HomePage";
+// export default App;
 
-import { GoogleOAuthProvider } from '@react-oauth/google';
-import { RegisterPage } from './pages/auth/RegisterPage';
-import { LoginPage } from './pages/auth/LoginPage';
-import { ForgotPasswordPage } from './pages/auth/ForgotPasswordPage';
-import { VerifyResetCodePage } from './pages/auth/VerifyResetCodePage';
-import { ResetPasswordPage } from './pages/auth/ResetPasswordPage';
 
-// Wrap with Google OAuth Provider (replace with your client ID)
+// src/App.jsx — Route tree for the entire application.
+// Account routes are wrapped in ProtectedRoute so only authenticated users can access them.
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+
+import { AuthProvider }        from "./contexts/AuthContext";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import ProtectedRoute          from "./router/ProtectedRoute";
+
+// ── Public pages ──────────────────────────────────────────────────────────────
+import Home               from "./pages/public/HomePage";
+import ProductListingPage from "./pages/public/ProductListingPage";
+import ProductDetailPage  from "./pages/public/ProductDetailPage";
+
+// ── Auth pages ────────────────────────────────────────────────────────────────
+import { RegisterPage }      from "./pages/auth/RegisterPage";
+import { LoginPage }         from "./pages/auth/LoginPage";
+import { ForgotPasswordPage } from "./pages/auth/ForgotPasswordPage";
+import { VerifyResetCodePage } from "./pages/auth/VerifyResetCodePage";
+import { ResetPasswordPage }  from "./pages/auth/ResetPasswordPage";
+import VerifyEmailPage        from "./pages/auth/VerifyEmailPage";
+
+// ── Account pages (protected) ─────────────────────────────────────────────────
+import AccountLayout      from "./pages/account/AccountLayout";
+import ProfilePage        from "./pages/account/ProfilePage";
+import OrdersPage         from "./pages/account/OrdersPage";
+import WishlistPage       from "./pages/account/WishlistPage";
+import AddressesPage      from "./pages/account/AddressesPage";
+import PaymentMethodsPage from "./pages/account/PaymentMethodsPage";
+import LogoutPage         from "./pages/account/LogoutPage";
+
+// ── Account pages (protected) ─────────────────────────────────────────────────
+// import AdminRoutes       from './router/adminRoutes';
+import AdminRoutes       from './router/AdminRoute';
+
 const GOOGLE_CLIENT_ID = "161364247766-anf84lnkvn579mh1u90n7ns4jb5noalp.apps.googleusercontent.com";
 
 function App() {
   return (
-    <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
-      <Router>
-        <Routes>
-          {/* <Route path="/" element={<Home />} />
-        <Route path="/shop" element={<ShopPage />} />
-        <Route path="/shop/:productId" element={<ProductPage />} />
-        <Route path="/Cart" element={<ShoppingCart />} /> */}
-        <Route path="/" element={<Home />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-          <Route path="/verify-reset-code" element={<VerifyResetCodePage />} />
-          <Route path="/reset-password" element={<ResetPasswordPage />} />
-          {/* cc */}
-        </Routes>
-      </Router>
-    </GoogleOAuthProvider>
+    <AuthProvider>
+      <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+        <Router>
+          <AdminRoutes />
+          <Routes>
+            {/* ── Public ── */}
+            <Route path="/"     element={<Home />} />
+            <Route path="/shop" element={<ProductListingPage />} />
+            <Route path="/products/:slug" element={<ProductDetailPage />} />
+
+            {/* ── Auth ── */}
+            <Route path="/register"         element={<RegisterPage />} />
+            <Route path="/login"            element={<LoginPage />} />
+            <Route path="/forgot-password"  element={<ForgotPasswordPage />} />
+            <Route path="/verify-reset-code" element={<VerifyResetCodePage />} />
+            <Route path="/reset-password"   element={<ResetPasswordPage />} />
+            <Route path="/verify-email" element={<VerifyEmailPage />} />
+
+            {/* ── Account (all protected) ───────────────────────────────── */}
+            {/* Each sub-route is wrapped in ProtectedRoute individually so
+                AccountLayout always receives children.                       */}
+
+            <Route
+              path="/account/profile"
+              element={
+                <ProtectedRoute>
+                  <AccountLayout>
+                    <ProfilePage />
+                  </AccountLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/account/orders"
+              element={
+                <ProtectedRoute>
+                  <AccountLayout>
+                    <OrdersPage />
+                  </AccountLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/account/wishlist"
+              element={
+                <ProtectedRoute>
+                  <AccountLayout>
+                    <WishlistPage />
+                  </AccountLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/account/addresses"
+              element={
+                <ProtectedRoute>
+                  <AccountLayout>
+                    <AddressesPage />
+                  </AccountLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/account/payment"
+              element={
+                <ProtectedRoute>
+                  <AccountLayout>
+                    <PaymentMethodsPage />
+                  </AccountLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/account/logout"
+              element={
+                <ProtectedRoute>
+                  <AccountLayout>
+                    <LogoutPage />
+                  </AccountLayout>
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Default redirect: /account → /account/profile */}
+            <Route path="/account" element={<Navigate to="/account/profile" replace />} />
+          </Routes>
+        </Router>
+      </GoogleOAuthProvider>
+    </AuthProvider>
   );
 }
 
