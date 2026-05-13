@@ -97,6 +97,7 @@ const CategoriesPage   = lazy(() => import('../pages/admin/categories/Categories
 const FlashSalesPage   = lazy(() => import('../pages/admin/flash-sales/FlashSalesPage'));
 const MessagesPage     = lazy(() => import('../pages/admin/messages/MessagesPage'));
 const SettingsPage     = lazy(() => import('../pages/admin/settings/SettingsPage'));
+const UserManagementPage = lazy(() => import('../pages/admin/user-management/UserManagementPage'));
 
 // ── Loading spinner ──────────────────────────────────────────────────────────
 function PageLoader() {
@@ -161,6 +162,9 @@ export default function AdminRoutes() {
 
           {/* Messages */}
           <Route path="messages" element={<MessagesPage />} />
+
+          {/* User Management */}
+          <Route path="user-management" element={<UserManagementPage />} />
 
           {/* Settings */}
           <Route path="settings" element={<SettingsPage />} />
