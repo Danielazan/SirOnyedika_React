@@ -82,6 +82,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { getCategories } from '../../api/categories.api';
 import { ArrowRight, ImageOff } from 'lucide-react';
+import client from "../../api/client"
 
 const container = {
   hidden: { opacity: 0 },
@@ -98,10 +99,12 @@ function resolveImageUrl(rawUrl) {
   if (!rawUrl) return null;
   if (rawUrl.startsWith('http')) return rawUrl;
   // Backend serves images from its own origin; strip /api suffix from API base
-  const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:1500/api';
+  // const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:1500/api';
+  const apiBase = import.meta.env?.VITE_API_URL || client.defaults?.baseURL || 'http://localhost:1500/api';
   const origin = apiBase.replace(/\/api\/?$/, '');
   return `${origin}${rawUrl.startsWith('/') ? '' : '/'}${rawUrl}`;
 }
+
 
 const Category = () => {
   const [categories, setCategories] = useState([]);

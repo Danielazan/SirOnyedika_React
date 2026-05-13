@@ -338,9 +338,13 @@ import { useAdminProducts, useAdminCategories } from '../../../hooks/admin/useAd
 import { deleteProduct, updateProduct } from '../../../api/products.api';
 import { formatCurrency }    from '../../../utils/formatCurrency';
 import { containerVariants, itemVariants } from '../../../utils/animation';
+import client            from '../../../api/client';
 
 // Resolve relative image paths to full backend URLs
-const API_BASE = 'http://localhost:1500';
+// const API_BASE = 'http://localhost:1500';
+const API_BASE = (import.meta.env?.VITE_API_URL || client.defaults?.baseURL || 'http://localhost:1500/api')
+  .replace(/\/api.*$/, '')
+  .replace(/\/$/, '');
 
 const resolveImageUrl = (path) => {
   if (!path) return null;
