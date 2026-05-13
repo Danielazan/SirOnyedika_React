@@ -1,4 +1,5 @@
-// TermsPage
+// src/pages/public/TermsPage.jsx
+import PolicyPage from './PolicyPage';
 export default function TermsPage() {
-  return <div>TermsPage</div>;
+  return <PolicyPage pageKey="terms_conditions" />;
 }
