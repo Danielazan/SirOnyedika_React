@@ -13,6 +13,24 @@
 // } from 'lucide-react';
 
 // import { createCategory, updateCategory, getCategories } from '../../../api/categories.api';
+// import client from '../../../api/client';
+
+// // ═══════════════════════════════════════════════════════════════════════════════
+// //  FIX: Resolve relative image paths to full backend URLs
+// //  Category images are stored as /images/categories/... but served from
+// //  localhost:1500 while the frontend runs on localhost:5173.
+// // ═══════════════════════════════════════════════════════════════════════════════
+// const API_BASE = (import.meta.env?.VITE_API_URL || client.defaults?.baseURL || 'http://localhost:1500/api')
+//   .replace(/\/api.*$/, '')
+//   .replace(/\/$/, '');
+
+// const resolveImageUrl = (path) => {
+//   if (!path) return null;
+//   if (path.startsWith('http')) return path;
+//   if (path.startsWith('data:')) return path; // keep base64 data URLs as-is
+//   return `${API_BASE}${path}`;
+// };
+// // ═══════════════════════════════════════════════════════════════════════════════
 
 // // ── helpers ───────────────────────────────────────────────────────────────────
 // function FormField({ label, required, error, children, hint }) {
@@ -34,7 +52,7 @@
 //       {...props}
 //       className={[
 //         'w-full px-3.5 py-2.5 text-sm text-gray-900 bg-white border border-gray-200 rounded-xl',
-//         'placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500',
+//         'placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#AE3E27]/20 focus:border-[#AE3E27]',
 //         'transition-colors',
 //         className,
 //       ].join(' ')}
@@ -48,7 +66,7 @@
 //       {...props}
 //       className={[
 //         'w-full px-3.5 py-2.5 text-sm text-gray-900 bg-white border border-gray-200 rounded-xl',
-//         'placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500',
+//         'placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#AE3E27]/20 focus:border-[#AE3E27]',
 //         'transition-colors resize-none',
 //         className,
 //       ].join(' ')}
@@ -86,7 +104,7 @@
 //         type="button"
 //         onClick={() => setOpen((v) => !v)}
 //         className="w-full flex items-center justify-between px-3.5 py-2.5 text-sm bg-white border border-gray-200
-//                    rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500
+//                    rounded-xl focus:outline-none focus:ring-2 focus:ring-[#AE3E27]/20 focus:border-[#AE3E27]
 //                    transition-colors text-left"
 //       >
 //         <span className={value ? 'text-gray-900' : 'text-gray-400'}>
@@ -101,10 +119,10 @@
 //           <button
 //             type="button"
 //             onClick={() => { onChange(null); setOpen(false); }}
-//             className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm hover:bg-orange-50 transition-colors text-left"
+//             className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm hover:bg-[#fdf2f0] transition-colors text-left"
 //           >
 //             <span className={['w-4 h-4 rounded border-2 flex items-center justify-center shrink-0 transition-colors',
-//               !value ? 'bg-orange-600 border-orange-600' : 'border-gray-300'].join(' ')}>
+//               !value ? 'bg-[#AE3E27] border-[#AE3E27]' : 'border-gray-300'].join(' ')}>
 //               {!value && <Check size={10} className="text-white" strokeWidth={3} />}
 //             </span>
 //             <span className="text-gray-500 italic">None (top-level)</span>
@@ -114,14 +132,14 @@
 //               key={cat.id}
 //               type="button"
 //               onClick={() => { onChange(cat.id); setOpen(false); }}
-//               className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm hover:bg-orange-50 transition-colors text-left"
+//               className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm hover:bg-[#fdf2f0] transition-colors text-left"
 //               style={{ paddingLeft: `${16 + cat.depth * 16}px` }}
 //             >
 //               <span className={['w-4 h-4 rounded border-2 flex items-center justify-center shrink-0',
-//                 value === cat.id ? 'bg-orange-600 border-orange-600' : 'border-gray-300'].join(' ')}>
+//                 value === cat.id ? 'bg-[#AE3E27] border-[#AE3E27]' : 'border-gray-300'].join(' ')}>
 //                 {value === cat.id && <Check size={10} className="text-white" strokeWidth={3} />}
 //               </span>
-//               <span className={value === cat.id ? 'text-orange-700 font-medium' : 'text-gray-700'}>{cat.name}</span>
+//               <span className={value === cat.id ? 'text-[#8f3320] font-medium' : 'text-gray-700'}>{cat.name}</span>
 //             </button>
 //           ))}
 //         </div>
@@ -142,7 +160,10 @@
 
 //   // Image
 //   const [imageFile, setImageFile]     = useState(null);
-//   const [imagePreview, setImagePreview] = useState(initialData?.imageUrl || null);
+//   // FIX: resolve the initial image URL so the preview works on edit
+//   const [imagePreview, setImagePreview] = useState(
+//     resolveImageUrl(initialData?.imageUrl || initialData?.image) || null
+//   );
 //   const imageInputRef = useRef(null);
 
 //   // Other categories for parent select
@@ -262,7 +283,7 @@
 //                     type="button"
 //                     onClick={() => imageInputRef.current?.click()}
 //                     className="w-20 h-20 border-2 border-dashed border-gray-200 rounded-xl flex flex-col items-center justify-center
-//                                text-gray-400 hover:border-orange-400 hover:text-orange-500 hover:bg-orange-50 transition-all shrink-0"
+//                                text-gray-400 hover:border-[#AE3E27] hover:text-[#AE3E27] hover:bg-[#fdf2f0] transition-all shrink-0"
 //                   >
 //                     <ImagePlus size={20} />
 //                     <span className="text-[10px] mt-1">Upload</span>
@@ -276,7 +297,7 @@
 //                     <button
 //                       type="button"
 //                       onClick={() => imageInputRef.current?.click()}
-//                       className="text-xs text-orange-600 hover:text-orange-700 font-medium"
+//                       className="text-xs text-[#AE3E27] hover:text-[#8f3320] font-medium"
 //                     >
 //                       Choose file
 //                     </button>
@@ -336,7 +357,7 @@
 //                   <button
 //                     type="button"
 //                     onClick={() => setIsActive((v) => !v)}
-//                     className={['relative w-10 h-5 rounded-full transition-colors duration-200', isActive ? 'bg-orange-500' : 'bg-gray-200'].join(' ')}
+//                     className={['relative w-10 h-5 rounded-full transition-colors duration-200', isActive ? 'bg-[#AE3E27]' : 'bg-gray-200'].join(' ')}
 //                   >
 //                     <span className={['absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white shadow transition-transform duration-200', isActive ? 'translate-x-5' : 'translate-x-0'].join(' ')} />
 //                   </button>
@@ -366,7 +387,7 @@
 //               onClick={handleSubmit}
 //               disabled={submitting}
 //               className="flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white
-//                          bg-orange-600 rounded-xl hover:bg-orange-700 transition-colors
+//                          bg-[#AE3E27] rounded-xl hover:bg-[#8f3320] transition-colors
 //                          disabled:opacity-60 disabled:cursor-not-allowed shadow-sm"
 //             >
 //               {submitting ? (
@@ -382,28 +403,25 @@
 //   );
 // }
 
-
 // src/pages/admin/categories/CategoryFormModal.jsx
 // ─────────────────────────────────────────────────────────────────────────────
 // Modal form for creating and editing categories.
-// Used by CategoriesPage for both "Add Category" (no initialData) and
-// "Edit" (initialData = existing category object).
-// Uploads image as multipart/form-data via the existing API.
+// NEW: "Sibling Order" section appears when editing — allows reordering
+//      all categories that share the same parent via up/down buttons.
 // ─────────────────────────────────────────────────────────────────────────────
 
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence }            from 'framer-motion';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   X, ImagePlus, ChevronDown, Save, AlertCircle, Check,
+  ArrowUp, ArrowDown, GripVertical, Loader2,
 } from 'lucide-react';
 
-import { createCategory, updateCategory, getCategories } from '../../../api/categories.api';
+import { createCategory, updateCategory, getCategories, reorderCategories } from '../../../api/categories.api';
 import client from '../../../api/client';
 
 // ═══════════════════════════════════════════════════════════════════════════════
 //  FIX: Resolve relative image paths to full backend URLs
-//  Category images are stored as /images/categories/... but served from
-//  localhost:1500 while the frontend runs on localhost:5173.
 // ═══════════════════════════════════════════════════════════════════════════════
 const API_BASE = (import.meta.env?.VITE_API_URL || client.defaults?.baseURL || 'http://localhost:1500/api')
   .replace(/\/api.*$/, '')
@@ -412,12 +430,14 @@ const API_BASE = (import.meta.env?.VITE_API_URL || client.defaults?.baseURL || '
 const resolveImageUrl = (path) => {
   if (!path) return null;
   if (path.startsWith('http')) return path;
-  if (path.startsWith('data:')) return path; // keep base64 data URLs as-is
+  if (path.startsWith('data:')) return path;
   return `${API_BASE}${path}`;
 };
+
+// ═══════════════════════════════════════════════════════════════════════════════
+//  HELPERS
 // ═══════════════════════════════════════════════════════════════════════════════
 
-// ── helpers ───────────────────────────────────────────────────────────────────
 function FormField({ label, required, error, children, hint }) {
   return (
     <div className="space-y-1.5">
@@ -437,7 +457,7 @@ function StyledInput({ className = '', ...props }) {
       {...props}
       className={[
         'w-full px-3.5 py-2.5 text-sm text-gray-900 bg-white border border-gray-200 rounded-xl',
-        'placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500',
+        'placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#AE3E27]/20 focus:border-[#AE3E27]',
         'transition-colors',
         className,
       ].join(' ')}
@@ -451,7 +471,7 @@ function StyledTextarea({ className = '', ...props }) {
       {...props}
       className={[
         'w-full px-3.5 py-2.5 text-sm text-gray-900 bg-white border border-gray-200 rounded-xl',
-        'placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500',
+        'placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#AE3E27]/20 focus:border-[#AE3E27]',
         'transition-colors resize-none',
         className,
       ].join(' ')}
@@ -489,7 +509,7 @@ function ParentSelect({ categories, value, onChange, excludeId }) {
         type="button"
         onClick={() => setOpen((v) => !v)}
         className="w-full flex items-center justify-between px-3.5 py-2.5 text-sm bg-white border border-gray-200
-                   rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500
+                   rounded-xl focus:outline-none focus:ring-2 focus:ring-[#AE3E27]/20 focus:border-[#AE3E27]
                    transition-colors text-left"
       >
         <span className={value ? 'text-gray-900' : 'text-gray-400'}>
@@ -500,14 +520,13 @@ function ParentSelect({ categories, value, onChange, excludeId }) {
       {open && (
         <div className="absolute top-full mt-1 left-0 right-0 z-40 bg-white border border-gray-100
                         shadow-xl rounded-xl py-2 max-h-52 overflow-y-auto">
-          {/* None option */}
           <button
             type="button"
             onClick={() => { onChange(null); setOpen(false); }}
-            className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm hover:bg-orange-50 transition-colors text-left"
+            className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm hover:bg-[#fdf2f0] transition-colors text-left"
           >
             <span className={['w-4 h-4 rounded border-2 flex items-center justify-center shrink-0 transition-colors',
-              !value ? 'bg-orange-600 border-orange-600' : 'border-gray-300'].join(' ')}>
+              !value ? 'bg-[#AE3E27] border-[#AE3E27]' : 'border-gray-300'].join(' ')}>
               {!value && <Check size={10} className="text-white" strokeWidth={3} />}
             </span>
             <span className="text-gray-500 italic">None (top-level)</span>
@@ -517,14 +536,14 @@ function ParentSelect({ categories, value, onChange, excludeId }) {
               key={cat.id}
               type="button"
               onClick={() => { onChange(cat.id); setOpen(false); }}
-              className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm hover:bg-orange-50 transition-colors text-left"
+              className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm hover:bg-[#fdf2f0] transition-colors text-left"
               style={{ paddingLeft: `${16 + cat.depth * 16}px` }}
             >
               <span className={['w-4 h-4 rounded border-2 flex items-center justify-center shrink-0',
-                value === cat.id ? 'bg-orange-600 border-orange-600' : 'border-gray-300'].join(' ')}>
+                value === cat.id ? 'bg-[#AE3E27] border-[#AE3E27]' : 'border-gray-300'].join(' ')}>
                 {value === cat.id && <Check size={10} className="text-white" strokeWidth={3} />}
               </span>
-              <span className={value === cat.id ? 'text-orange-700 font-medium' : 'text-gray-700'}>{cat.name}</span>
+              <span className={value === cat.id ? 'text-[#8f3320] font-medium' : 'text-gray-700'}>{cat.name}</span>
             </button>
           ))}
         </div>
@@ -533,7 +552,170 @@ function ParentSelect({ categories, value, onChange, excludeId }) {
   );
 }
 
-// ── Main component ────────────────────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════════════════════════
+//  SIBLING ORDER LIST — NEW COMPONENT
+//  Shows all categories with the same parent, allows reordering via up/down.
+// ═══════════════════════════════════════════════════════════════════════════════
+function SiblingOrderList({ currentCategoryId, allCategories, onReordered }) {
+  const [siblings, setSiblings] = useState([]);
+  const [reordering, setReordering] = useState(false);
+  const [error, setError] = useState('');
+
+  // Derive siblings from the full category tree
+  useEffect(() => {
+    if (!allCategories?.length || !currentCategoryId) {
+      setSiblings([]);
+      return;
+    }
+
+    // Find the current category to know its parent
+    const findCategory = (nodes, id) => {
+      for (const node of nodes) {
+        if (node.id === id) return node;
+        if (node.children?.length) {
+          const found = findCategory(node.children, id);
+          if (found) return found;
+        }
+      }
+      return null;
+    };
+
+    const current = findCategory(allCategories, currentCategoryId);
+    if (!current) {
+      setSiblings([]);
+      return;
+    }
+
+    // Collect all siblings (same parent)
+    const targetParentId = current.parentId || null;
+    const siblingList = [];
+
+    const collectSiblings = (nodes, parentId = null) => {
+      nodes.forEach((node) => {
+        const nodeParentId = node.parentId || null;
+        if (nodeParentId === targetParentId) {
+          siblingList.push(node);
+        }
+        if (node.children?.length) {
+          collectSiblings(node.children, node.id);
+        }
+      });
+    };
+
+    collectSiblings(allCategories);
+
+    // Sort by sortOrder (fallback to name for stability)
+    siblingList.sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
+    setSiblings(siblingList);
+  }, [allCategories, currentCategoryId]);
+
+  const moveItem = useCallback((index, direction) => {
+    setSiblings((prev) => {
+      const newOrder = [...prev];
+      const swapWith = direction === 'up' ? index - 1 : index + 1;
+      if (swapWith < 0 || swapWith >= newOrder.length) return prev;
+      [newOrder[index], newOrder[swapWith]] = [newOrder[swapWith], newOrder[index]];
+      return newOrder;
+    });
+  }, []);
+
+  const saveOrder = useCallback(async () => {
+    setReordering(true);
+    setError('');
+    try {
+      const orderedIds = siblings.map((c, idx) => ({ id: c.id, sortOrder: idx }));
+      console.log('[SiblingOrderList] saving order:', orderedIds);
+      await reorderCategories(orderedIds);
+      console.log('[SiblingOrderList] order saved successfully');
+      onReordered?.();
+    } catch (err) {
+      console.error('[SiblingOrderList] save failed:', err);
+      setError(err?.response?.data?.error || 'Failed to save category order.');
+    } finally {
+      setReordering(false);
+    }
+  }, [siblings, onReordered]);
+
+  if (siblings.length <= 1) {
+    return (
+      <div className="text-xs text-gray-400 bg-gray-50 rounded-lg px-3 py-2">
+        No other categories at this level to reorder.
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-2">
+      <div className="max-h-48 overflow-y-auto space-y-1 pr-1">
+        {siblings.map((cat, idx) => {
+          const isCurrent = cat.id === currentCategoryId;
+          return (
+            <div
+              key={cat.id}
+              className={[
+                'flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors',
+                isCurrent
+                  ? 'bg-[#fdf2f0] border border-[#f8cec7] text-orange-800 font-medium'
+                  : 'bg-gray-50 border border-transparent text-gray-700',
+              ].join(' ')}
+            >
+              <GripVertical size={14} className="text-gray-300 shrink-0" />
+              <span className="flex-1 truncate">{cat.name}</span>
+              {isCurrent && <span className="text-[10px] text-[#AE3E27] uppercase tracking-wide shrink-0">Current</span>}
+              <div className="flex items-center gap-0.5 shrink-0">
+                <button
+                  type="button"
+                  onClick={() => moveItem(idx, 'up')}
+                  disabled={idx === 0 || reordering}
+                  className="w-6 h-6 flex items-center justify-center rounded text-gray-400 hover:text-gray-700
+                             hover:bg-gray-200 disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+                  title="Move up"
+                >
+                  <ArrowUp size={12} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => moveItem(idx, 'down')}
+                  disabled={idx === siblings.length - 1 || reordering}
+                  className="w-6 h-6 flex items-center justify-center rounded text-gray-400 hover:text-gray-700
+                             hover:bg-gray-200 disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+                  title="Move down"
+                >
+                  <ArrowDown size={12} />
+                </button>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {error && (
+        <p className="text-xs text-red-600 bg-red-50 rounded-lg px-3 py-2 flex items-center gap-1">
+          <AlertCircle size={11} />{error}
+        </p>
+      )}
+
+      <button
+        type="button"
+        onClick={saveOrder}
+        disabled={reordering}
+        className="w-full flex items-center justify-center gap-2 px-4 py-2 text-xs font-semibold
+                   text-[#8f3320] bg-[#fdf2f0] border border-[#f8cec7] rounded-lg
+                   hover:bg-[#fce5e0] transition-colors disabled:opacity-60"
+      >
+        {reordering ? (
+          <><Loader2 size={12} className="animate-spin" /> Saving order…</>
+        ) : (
+          <><Save size={12} /> Save Category Order</>
+        )}
+      </button>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+//  MAIN COMPONENT
+// ═══════════════════════════════════════════════════════════════════════════════
 export default function CategoryFormModal({ initialData = null, onClose, onSuccess }) {
   const isEdit = !!initialData;
 
@@ -545,22 +727,28 @@ export default function CategoryFormModal({ initialData = null, onClose, onSucce
 
   // Image
   const [imageFile, setImageFile]     = useState(null);
-  // FIX: resolve the initial image URL so the preview works on edit
   const [imagePreview, setImagePreview] = useState(
     resolveImageUrl(initialData?.imageUrl || initialData?.image) || null
   );
   const imageInputRef = useRef(null);
 
-  // Other categories for parent select
+  // Other categories for parent select + sibling order
   const [categories, setCategories]   = useState([]);
+  const [categoriesVersion, setCategoriesVersion] = useState(0); // bump to refresh sibling list
 
   const [submitting, setSubmitting]   = useState(false);
   const [errors, setErrors]           = useState({});
   const [apiError, setApiError]       = useState('');
 
-  useEffect(() => {
-    getCategories().then((res) => setCategories(res.data ?? [])).catch(() => {});
+  const loadCategories = useCallback(() => {
+    getCategories().then((res) => {
+      setCategories(res.data ?? []);
+    }).catch(() => {});
   }, []);
+
+  useEffect(() => {
+    loadCategories();
+  }, [loadCategories, categoriesVersion]);
 
   const handleImageSelect = (file) => {
     if (!file || !file.type.startsWith('image/')) return;
@@ -668,7 +856,7 @@ export default function CategoryFormModal({ initialData = null, onClose, onSucce
                     type="button"
                     onClick={() => imageInputRef.current?.click()}
                     className="w-20 h-20 border-2 border-dashed border-gray-200 rounded-xl flex flex-col items-center justify-center
-                               text-gray-400 hover:border-orange-400 hover:text-orange-500 hover:bg-orange-50 transition-all shrink-0"
+                               text-gray-400 hover:border-[#AE3E27] hover:text-[#AE3E27] hover:bg-[#fdf2f0] transition-all shrink-0"
                   >
                     <ImagePlus size={20} />
                     <span className="text-[10px] mt-1">Upload</span>
@@ -682,7 +870,7 @@ export default function CategoryFormModal({ initialData = null, onClose, onSucce
                     <button
                       type="button"
                       onClick={() => imageInputRef.current?.click()}
-                      className="text-xs text-orange-600 hover:text-orange-700 font-medium"
+                      className="text-xs text-[#AE3E27] hover:text-[#8f3320] font-medium"
                     >
                       Choose file
                     </button>
@@ -742,7 +930,7 @@ export default function CategoryFormModal({ initialData = null, onClose, onSucce
                   <button
                     type="button"
                     onClick={() => setIsActive((v) => !v)}
-                    className={['relative w-10 h-5 rounded-full transition-colors duration-200', isActive ? 'bg-orange-500' : 'bg-gray-200'].join(' ')}
+                    className={['relative w-10 h-5 rounded-full transition-colors duration-200', isActive ? 'bg-[#AE3E27]' : 'bg-gray-200'].join(' ')}
                   >
                     <span className={['absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white shadow transition-transform duration-200', isActive ? 'translate-x-5' : 'translate-x-0'].join(' ')} />
                   </button>
@@ -750,6 +938,27 @@ export default function CategoryFormModal({ initialData = null, onClose, onSucce
                 </div>
               </FormField>
             </div>
+
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            {/*  NEW: Sibling Order Section (edit mode only)                     */}
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            {isEdit && (
+              <div className="border-t border-gray-100 pt-4">
+                <FormField
+                  label="Sibling Order"
+                  hint={`Reorder all categories at the ${parentId ? 'same subcategory' : 'top'} level`}
+                >
+                  <SiblingOrderList
+                    currentCategoryId={initialData.id}
+                    allCategories={categories}
+                    onReordered={() => {
+                      setCategoriesVersion((v) => v + 1); // refresh sibling list
+                      onSuccess?.(); // notify parent page to refetch too
+                    }}
+                  />
+                </FormField>
+              </div>
+            )}
 
             {/* API error */}
             {apiError && (
@@ -772,7 +981,7 @@ export default function CategoryFormModal({ initialData = null, onClose, onSucce
               onClick={handleSubmit}
               disabled={submitting}
               className="flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white
-                         bg-orange-600 rounded-xl hover:bg-orange-700 transition-colors
+                         bg-[#AE3E27] rounded-xl hover:bg-[#8f3320] transition-colors
                          disabled:opacity-60 disabled:cursor-not-allowed shadow-sm"
             >
               {submitting ? (

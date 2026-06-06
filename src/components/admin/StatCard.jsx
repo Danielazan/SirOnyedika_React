@@ -15,8 +15,8 @@ export default function StatCard({
   change,
   trend,
   icon: Icon,
-  iconBg = 'bg-orange-50',
-  iconColor = 'text-orange-600',
+  iconBg = 'bg-[#fdf2f0]',
+  iconColor = 'text-[#AE3E27]',
   valueColor = 'text-gray-900',
   className = '',
 }) {

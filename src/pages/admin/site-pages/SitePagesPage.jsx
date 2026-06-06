@@ -48,7 +48,7 @@
 //   {
 //     key:         'terms_conditions',
 //     label:       'Terms of Service',
-//     description: 'The binding terms governing use of Selvedge Atelier.',
+//     description: 'The binding terms governing use of Atelierselvedge.',
 //   },
 // ];
 
@@ -62,7 +62,7 @@
 //       className={[
 //         'p-1.5 rounded transition-colors text-sm',
 //         active
-//           ? 'bg-orange-100 text-orange-700'
+//           ? 'bg-[#fce5e0] text-[#8f3320]'
 //           : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900',
 //       ].join(' ')}
 //     >
@@ -154,7 +154,7 @@
 //           [&_ul]:list-disc  [&_ul]:pl-6 [&_ul]:mb-3
 //           [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-3
 //           [&_strong]:font-semibold
-//           [&_a]:text-orange-600 [&_a]:underline
+//           [&_a]:text-[#AE3E27] [&_a]:underline
 //         "
 //       />
 //     </div>
@@ -184,7 +184,7 @@
 //               [&_ul]:list-disc  [&_ul]:pl-6 [&_ul]:mb-3
 //               [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-3
 //               [&_strong]:font-semibold
-//               [&_a]:text-orange-600 [&_a]:underline
+//               [&_a]:text-[#AE3E27] [&_a]:underline
 //             "
 //             dangerouslySetInnerHTML={{ __html: content }}
 //           />
@@ -201,7 +201,7 @@
 //   if (status === 'idle') return null;
 
 //   const map = {
-//     saving:  { icon: RefreshCw,    text: 'Saving…',        cls: 'text-orange-600 animate-spin' },
+//     saving:  { icon: RefreshCw,    text: 'Saving…',        cls: 'text-[#AE3E27] animate-spin' },
 //     success: { icon: CheckCircle,  text: 'Saved!',         cls: 'text-green-600' },
 //     error:   { icon: AlertCircle,  text: 'Save failed',    cls: 'text-red-600' },
 //   };
@@ -294,7 +294,7 @@
 //       >
 //         <div className="px-4 py-4 border-b border-gray-100">
 //           <div className="flex items-center gap-2">
-//             <FileText size={16} className="text-orange-500" />
+//             <FileText size={16} className="text-[#AE3E27]" />
 //             <h2 className="text-sm font-semibold text-gray-800">Policy Pages</h2>
 //           </div>
 //           <p className="text-xs text-gray-400 mt-0.5">Select a page to edit</p>
@@ -308,14 +308,14 @@
 //               className={[
 //                 'w-full flex items-start gap-3 px-4 py-3 text-left transition-colors duration-150 group',
 //                 activeKey === policy.key
-//                   ? 'bg-orange-50 border-r-2 border-orange-500'
+//                   ? 'bg-[#fdf2f0] border-r-2 border-[#AE3E27]'
 //                   : 'hover:bg-gray-50',
 //               ].join(' ')}
 //             >
 //               <div className="flex-1 min-w-0">
 //                 <p className={[
 //                   'text-sm font-medium truncate',
-//                   activeKey === policy.key ? 'text-orange-700' : 'text-gray-700',
+//                   activeKey === policy.key ? 'text-[#8f3320]' : 'text-gray-700',
 //                 ].join(' ')}>
 //                   {policy.label}
 //                 </p>
@@ -327,7 +327,7 @@
 //                 size={14}
 //                 className={[
 //                   'shrink-0 mt-0.5 transition-colors',
-//                   activeKey === policy.key ? 'text-orange-500' : 'text-gray-300',
+//                   activeKey === policy.key ? 'text-[#AE3E27]' : 'text-gray-300',
 //                 ].join(' ')}
 //               />
 //             </button>
@@ -389,7 +389,7 @@
 //               <button
 //                 onClick={handleSave}
 //                 disabled={saveStatus === 'saving' || loading}
-//                 className="flex items-center gap-2 bg-orange-600 hover:bg-orange-700 disabled:opacity-50 disabled:cursor-not-allowed text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+//                 className="flex items-center gap-2 bg-[#AE3E27] hover:bg-[#8f3320] disabled:opacity-50 disabled:cursor-not-allowed text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
 //               >
 //                 <Save size={14} />
 //                 Save
@@ -411,7 +411,7 @@
 //               value={pageTitle}
 //               onChange={(e) => setPageTitle(e.target.value)}
 //               placeholder="Enter page title..."
-//               className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500/30 focus:border-orange-400 transition-colors"
+//               className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#AE3E27]/30 focus:border-[#AE3E27] transition-colors"
 //             />
 //           )}
 //         </div>
@@ -425,7 +425,7 @@
 //           {loading ? (
 //             <div className="border border-gray-200 rounded-lg min-h-[420px] flex items-center justify-center">
 //               <div className="flex flex-col items-center gap-3 text-gray-400">
-//                 <RefreshCw size={22} className="animate-spin text-orange-400" />
+//                 <RefreshCw size={22} className="animate-spin text-[#AE3E27]" />
 //                 <span className="text-sm">Loading content…</span>
 //               </div>
 //             </div>
@@ -501,7 +501,7 @@ const POLICIES = [
   {
     key:         'terms_conditions',
     label:       'Terms of Service',
-    description: 'The binding terms governing use of Selvedge Atelier.',
+    description: 'The binding terms governing use of Atelierselvedge.',
   },
 ];
 
@@ -515,7 +515,7 @@ function ToolbarBtn({ onClick, title, children, active = false }) {
       className={[
         'p-1.5 rounded transition-colors text-sm',
         active
-          ? 'bg-orange-100 text-orange-700'
+          ? 'bg-[#fce5e0] text-[#8f3320]'
           : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900',
       ].join(' ')}
     >
@@ -607,7 +607,7 @@ function RichEditor({ value, onChange }) {
           [&_ul]:list-disc  [&_ul]:pl-6 [&_ul]:mb-3
           [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-3
           [&_strong]:font-semibold
-          [&_a]:text-orange-600 [&_a]:underline
+          [&_a]:text-[#AE3E27] [&_a]:underline
         "
       />
     </div>
@@ -645,7 +645,7 @@ function SaveStatus({ status }) {
   if (status === 'idle') return null;
 
   const map = {
-    saving:  { icon: RefreshCw,    text: 'Saving…',        cls: 'text-orange-600 animate-spin' },
+    saving:  { icon: RefreshCw,    text: 'Saving…',        cls: 'text-[#AE3E27] animate-spin' },
     success: { icon: CheckCircle,  text: 'Saved!',         cls: 'text-green-600' },
     error:   { icon: AlertCircle,  text: 'Save failed',    cls: 'text-red-600' },
   };
@@ -738,7 +738,7 @@ export default function SitePagesPage() {
       >
         <div className="px-4 py-4 border-b border-gray-100">
           <div className="flex items-center gap-2">
-            <FileText size={16} className="text-orange-500" />
+            <FileText size={16} className="text-[#AE3E27]" />
             <h2 className="text-sm font-semibold text-gray-800">Policy Pages</h2>
           </div>
           <p className="text-xs text-gray-400 mt-0.5">Select a page to edit</p>
@@ -752,14 +752,14 @@ export default function SitePagesPage() {
               className={[
                 'w-full flex items-start gap-3 px-4 py-3 text-left transition-colors duration-150 group',
                 activeKey === policy.key
-                  ? 'bg-orange-50 border-r-2 border-orange-500'
+                  ? 'bg-[#fdf2f0] border-r-2 border-[#AE3E27]'
                   : 'hover:bg-gray-50',
               ].join(' ')}
             >
               <div className="flex-1 min-w-0">
                 <p className={[
                   'text-sm font-medium truncate',
-                  activeKey === policy.key ? 'text-orange-700' : 'text-gray-700',
+                  activeKey === policy.key ? 'text-[#8f3320]' : 'text-gray-700',
                 ].join(' ')}>
                   {policy.label}
                 </p>
@@ -771,7 +771,7 @@ export default function SitePagesPage() {
                 size={14}
                 className={[
                   'shrink-0 mt-0.5 transition-colors',
-                  activeKey === policy.key ? 'text-orange-500' : 'text-gray-300',
+                  activeKey === policy.key ? 'text-[#AE3E27]' : 'text-gray-300',
                 ].join(' ')}
               />
             </button>
@@ -833,7 +833,7 @@ export default function SitePagesPage() {
               <button
                 onClick={handleSave}
                 disabled={saveStatus === 'saving' || loading}
-                className="flex items-center gap-2 bg-orange-600 hover:bg-orange-700 disabled:opacity-50 disabled:cursor-not-allowed text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+                className="flex items-center gap-2 bg-[#AE3E27] hover:bg-[#8f3320] disabled:opacity-50 disabled:cursor-not-allowed text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
               >
                 <Save size={14} />
                 Save
@@ -855,7 +855,7 @@ export default function SitePagesPage() {
               value={pageTitle}
               onChange={(e) => setPageTitle(e.target.value)}
               placeholder="Enter page title..."
-              className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500/30 focus:border-orange-400 transition-colors"
+              className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#AE3E27]/30 focus:border-[#AE3E27] transition-colors"
             />
           )}
         </div>
@@ -869,7 +869,7 @@ export default function SitePagesPage() {
           {loading ? (
             <div className="border border-gray-200 rounded-lg min-h-[420px] flex items-center justify-center">
               <div className="flex flex-col items-center gap-3 text-gray-400">
-                <RefreshCw size={22} className="animate-spin text-orange-400" />
+                <RefreshCw size={22} className="animate-spin text-[#AE3E27]" />
                 <span className="text-sm">Loading content…</span>
               </div>
             </div>
@@ -883,7 +883,7 @@ export default function SitePagesPage() {
         {/* Auto-format info note */}
         {viewMode === 'edit' && !loading && (
           <div className="flex items-start gap-2 px-1">
-            <Info size={14} className="text-orange-500 shrink-0 mt-0.5" />
+            <Info size={14} className="text-[#AE3E27] shrink-0 mt-0.5" />
             <p className="text-xs text-gray-400 leading-relaxed">
               <strong className="text-gray-600">Auto-format enabled:</strong> If you type or paste plain text
               (no HTML tags), the backend will automatically detect headings, lists, paragraphs, emails,

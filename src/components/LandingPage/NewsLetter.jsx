@@ -75,7 +75,7 @@
 //         >
 //           <div
 //             className="flex w-full items-stretch rounded-2xl overflow-hidden"
-//             style={{ border: "1.8px solid #C8501A" }}
+//             style={{ border: "1.8px solid #AE3E27" }}
 //           >
 //             {/* Email address text input */}
 //             <input
@@ -108,7 +108,7 @@
 //                 text-white text-sm sm:text-base font-semibold
 //                 rounded-2xl cursor-pointer font-[poppins]
 //               "
-//               style={{ backgroundColor: "#C8501A" }}
+//               style={{ backgroundColor: "#AE3E27" }}
 //             >
 //               {submitted ? "Subscribed ✓" : "Subscribe"}
 //             </motion.button>
@@ -149,7 +149,7 @@ export default function Newsletter() {
           Subscribe to our Newsletter to Get Updates to Our Latest Collection
         </motion.h2>
         <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={2} className="w-full">
-          <div className="flex w-full items-stretch rounded-xl overflow-hidden" style={{ border: "1.5px solid #C8501A" }}>
+          <div className="flex w-full items-stretch rounded-xl overflow-hidden" style={{ border: "1.5px solid #AE3E27" }}>
             <input
               type="email"
               value={email}
@@ -161,7 +161,7 @@ export default function Newsletter() {
             <button
               onClick={handleSubscribe}
               className="shrink-0 px-5 py-2.5 text-white text-xs font-semibold rounded-xl cursor-pointer font-[poppins]"
-              style={{ backgroundColor: "#C8501A" }}
+              style={{ backgroundColor: "#AE3E27" }}
             >
               {submitted ? "Subscribed ✓" : "Subscribe"}
             </button>

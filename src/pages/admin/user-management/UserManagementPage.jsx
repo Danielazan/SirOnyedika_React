@@ -67,7 +67,7 @@
 //     return <img src={src} alt={name} className="w-8 h-8 rounded-full object-cover shrink-0" />;
 //   }
 //   return (
-//     <div className="w-8 h-8 rounded-full bg-orange-100 text-orange-700 text-xs font-bold flex items-center justify-center shrink-0">
+//     <div className="w-8 h-8 rounded-full bg-[#fce5e0] text-[#8f3320] text-xs font-bold flex items-center justify-center shrink-0">
 //       {initials(name)}
 //     </div>
 //   );
@@ -84,8 +84,8 @@
 //         exit={{ opacity: 0, scale: 0.95 }}
 //         className="bg-white rounded-2xl shadow-xl max-w-sm w-full p-6"
 //       >
-//         <div className={`w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 ${danger ? 'bg-red-50' : 'bg-orange-50'}`}>
-//           <AlertTriangle size={22} className={danger ? 'text-red-500' : 'text-orange-500'} />
+//         <div className={`w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 ${danger ? 'bg-red-50' : 'bg-[#fdf2f0]'}`}>
+//           <AlertTriangle size={22} className={danger ? 'text-red-500' : 'text-[#AE3E27]'} />
 //         </div>
 //         <h3 className="text-lg font-semibold text-gray-900 text-center">{title}</h3>
 //         <p className="text-sm text-gray-500 text-center mt-2 mb-6">{message}</p>
@@ -101,7 +101,7 @@
 //             onClick={onConfirm}
 //             disabled={loading}
 //             className={`flex-1 px-4 py-2.5 rounded-xl text-white text-sm font-medium transition-colors flex items-center justify-center gap-2 ${
-//               danger ? 'bg-red-600 hover:bg-red-700' : 'bg-orange-600 hover:bg-orange-700'
+//               danger ? 'bg-red-600 hover:bg-red-700' : 'bg-[#AE3E27] hover:bg-[#8f3320]'
 //             }`}
 //           >
 //             {loading && <RefreshCw size={14} className="animate-spin" />}
@@ -178,7 +178,7 @@
 //               value={form.name}
 //               onChange={set('name')}
 //               placeholder="e.g. Jane Smith"
-//               className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+//               className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#AE3E27]"
 //             />
 //           </div>
 
@@ -190,8 +190,8 @@
 //               value={form.email}
 //               onChange={set('email')}
 //               disabled={isEdit}
-//               placeholder="e.g. jane@fashly.com"
-//               className={`w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400 ${isEdit ? 'bg-gray-50 text-gray-400' : ''}`}
+//               placeholder="e.g. jane@atelierselvedge.com"
+//               className={`w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#AE3E27] ${isEdit ? 'bg-gray-50 text-gray-400' : ''}`}
 //             />
 //             {isEdit && <p className="text-xs text-gray-400 mt-1">Email cannot be changed after creation.</p>}
 //           </div>
@@ -203,7 +203,7 @@
 //               value={form.phone}
 //               onChange={set('phone')}
 //               placeholder="+234 800 000 0000"
-//               className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+//               className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#AE3E27]"
 //             />
 //           </div>
 
@@ -213,7 +213,7 @@
 //             <select
 //               value={form.adminRole}
 //               onChange={set('adminRole')}
-//               className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400 bg-white"
+//               className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#AE3E27] bg-white"
 //             >
 //               {ADMIN_ROLES.map((r) => (
 //                 <option key={r} value={r}>{roleLabel(r)}</option>
@@ -222,7 +222,7 @@
 //           </div>
 
 //           {!isEdit && (
-//             <p className="text-xs text-gray-400 bg-orange-50 border border-orange-100 rounded-xl px-3 py-2">
+//             <p className="text-xs text-gray-400 bg-[#fdf2f0] border border-orange-100 rounded-xl px-3 py-2">
 //               A temporary password will be emailed to the new admin. They must change it on first login.
 //             </p>
 //           )}
@@ -239,7 +239,7 @@
 //           <button
 //             onClick={handleSubmit}
 //             disabled={loading}
-//             className="flex-1 px-4 py-2.5 rounded-xl bg-orange-600 text-white text-sm font-medium hover:bg-orange-700 transition-colors flex items-center justify-center gap-2"
+//             className="flex-1 px-4 py-2.5 rounded-xl bg-[#AE3E27] text-white text-sm font-medium hover:bg-[#8f3320] transition-colors flex items-center justify-center gap-2"
 //           >
 //             {loading && <RefreshCw size={14} className="animate-spin" />}
 //             {isEdit ? 'Save Changes' : 'Create Admin'}
@@ -363,7 +363,7 @@
 //     {
 //       key: 'adminRole', header: 'Role',
 //       render: (v) => (
-//         <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-orange-50 text-orange-700">
+//         <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-[#fdf2f0] text-[#8f3320]">
 //           {roleLabel(v)}
 //         </span>
 //       ),
@@ -390,7 +390,7 @@
 //           <button
 //             title="Edit"
 //             onClick={() => { setEditTarget(row); setFormOpen(true); }}
-//             className="p-1.5 rounded-lg text-gray-400 hover:text-orange-600 hover:bg-orange-50 transition-colors"
+//             className="p-1.5 rounded-lg text-gray-400 hover:text-[#AE3E27] hover:bg-[#fdf2f0] transition-colors"
 //           >
 //             <Edit2 size={15} />
 //           </button>
@@ -436,7 +436,7 @@
 //             value={search}
 //             onChange={(e) => { setSearch(e.target.value); setPage(1); }}
 //             placeholder="Search admins…"
-//             className="w-full pl-9 pr-3 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+//             className="w-full pl-9 pr-3 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#AE3E27]"
 //           />
 //         </div>
 
@@ -455,7 +455,7 @@
 //                 <button
 //                   key={opt}
 //                   onClick={() => { setStatus(opt === 'All' ? '' : opt.toLowerCase()); setPage(1); setStatOpen(false); }}
-//                   className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors"
+//                   className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-[#fdf2f0] hover:text-[#AE3E27] transition-colors"
 //                 >
 //                   {opt}
 //                 </button>
@@ -467,7 +467,7 @@
 //         {/* Create button */}
 //         <button
 //           onClick={() => { setEditTarget(null); setFormOpen(true); }}
-//           className="ml-auto flex items-center gap-2 px-4 py-2.5 rounded-xl bg-orange-600 text-white text-sm font-medium hover:bg-orange-700 transition-colors"
+//           className="ml-auto flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#AE3E27] text-white text-sm font-medium hover:bg-[#8f3320] transition-colors"
 //         >
 //           <UserPlus size={16} />
 //           New Admin
@@ -663,7 +663,7 @@
 //             value={search}
 //             onChange={(e) => { setSearch(e.target.value); setPage(1); }}
 //             placeholder="Search users…"
-//             className="w-full pl-9 pr-3 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+//             className="w-full pl-9 pr-3 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#AE3E27]"
 //           />
 //         </div>
 //         <div className="relative">
@@ -676,7 +676,7 @@
 //             <div className="absolute top-full mt-1 left-0 z-20 bg-white border border-gray-100 shadow-lg rounded-xl py-1 min-w-[130px]">
 //               {STATUS_OPTS.map((opt) => (
 //                 <button key={opt} onClick={() => { setStatus(opt === 'All' ? '' : opt.toLowerCase()); setPage(1); setStatOpen(false); }}
-//                   className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+//                   className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-[#fdf2f0] hover:text-[#AE3E27] transition-colors">
 //                   {opt}
 //                 </button>
 //               ))}
@@ -734,7 +734,7 @@
 //             className={[
 //               'flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-150',
 //               activeTab === key
-//                 ? 'bg-white text-orange-600 shadow-sm'
+//                 ? 'bg-white text-[#AE3E27] shadow-sm'
 //                 : 'text-gray-500 hover:text-gray-700',
 //             ].join(' ')}
 //           >
@@ -817,7 +817,7 @@ function Avatar({ name, src }) {
     return <img src={src} alt={name} className="w-9 h-9 rounded-full object-cover shrink-0 border border-gray-100" />;
   }
   return (
-    <div className="w-9 h-9 rounded-full bg-orange-100 text-orange-700 text-xs font-bold flex items-center justify-center shrink-0 border border-orange-200">
+    <div className="w-9 h-9 rounded-full bg-[#fce5e0] text-[#8f3320] text-xs font-bold flex items-center justify-center shrink-0 border border-[#f8cec7]">
       {initials(name)}
     </div>
   );
@@ -826,7 +826,7 @@ function Avatar({ name, src }) {
 /** Stat card */
 function StatCard({ icon: Icon, label, value, color = 'orange' }) {
   const colorMap = {
-    orange: 'bg-orange-50 text-orange-600',
+    orange: 'bg-[#fdf2f0] text-[#AE3E27]',
     green:  'bg-green-50 text-green-600',
     red:    'bg-red-50 text-red-600',
     blue:   'bg-blue-50 text-blue-600',
@@ -856,8 +856,8 @@ function ConfirmModal({ open, title, message, danger, onConfirm, onCancel, loadi
         exit={{ opacity: 0, scale: 0.95 }}
         className="bg-white rounded-2xl shadow-xl max-w-sm w-full p-6"
       >
-        <div className={`w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 ${danger ? 'bg-red-50' : 'bg-orange-50'}`}>
-          <AlertTriangle size={22} className={danger ? 'text-red-500' : 'text-orange-500'} />
+        <div className={`w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 ${danger ? 'bg-red-50' : 'bg-[#fdf2f0]'}`}>
+          <AlertTriangle size={22} className={danger ? 'text-red-500' : 'text-[#AE3E27]'} />
         </div>
         <h3 className="text-lg font-semibold text-gray-900 text-center">{title}</h3>
         <p className="text-sm text-gray-500 text-center mt-2 mb-6">{message}</p>
@@ -873,7 +873,7 @@ function ConfirmModal({ open, title, message, danger, onConfirm, onCancel, loadi
             onClick={onConfirm}
             disabled={loading}
             className={`flex-1 px-4 py-2.5 rounded-xl text-white text-sm font-medium transition-colors flex items-center justify-center gap-2 ${
-              danger ? 'bg-red-600 hover:bg-red-700' : 'bg-orange-600 hover:bg-orange-700'
+              danger ? 'bg-red-600 hover:bg-red-700' : 'bg-[#AE3E27] hover:bg-[#8f3320]'
             }`}
           >
             {loading && <RefreshCw size={14} className="animate-spin" />}
@@ -948,7 +948,7 @@ function AdminFormModal({ open, onClose, onSave, existing }) {
               value={form.name}
               onChange={set('name')}
               placeholder="e.g. Jane Smith"
-              className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+              className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#AE3E27]"
             />
           </div>
 
@@ -959,8 +959,8 @@ function AdminFormModal({ open, onClose, onSave, existing }) {
               value={form.email}
               onChange={set('email')}
               disabled={isEdit}
-              placeholder="e.g. jane@fashly.com"
-              className={`w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400 ${isEdit ? 'bg-gray-50 text-gray-400' : ''}`}
+              placeholder="e.g. jane@atelierselvedge.com"
+              className={`w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#AE3E27] ${isEdit ? 'bg-gray-50 text-gray-400' : ''}`}
             />
             {isEdit && <p className="text-xs text-gray-400 mt-1">Email cannot be changed after creation.</p>}
           </div>
@@ -971,7 +971,7 @@ function AdminFormModal({ open, onClose, onSave, existing }) {
               value={form.phone}
               onChange={set('phone')}
               placeholder="+234 800 000 0000"
-              className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+              className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#AE3E27]"
             />
           </div>
 
@@ -980,7 +980,7 @@ function AdminFormModal({ open, onClose, onSave, existing }) {
             <select
               value={form.adminRole}
               onChange={set('adminRole')}
-              className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400 bg-white"
+              className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#AE3E27] bg-white"
             >
               {ADMIN_ROLES.map((r) => (
                 <option key={r} value={r}>{roleLabel(r)}</option>
@@ -989,7 +989,7 @@ function AdminFormModal({ open, onClose, onSave, existing }) {
           </div>
 
           {!isEdit && (
-            <p className="text-xs text-gray-400 bg-orange-50 border border-orange-100 rounded-xl px-3 py-2">
+            <p className="text-xs text-gray-400 bg-[#fdf2f0] border border-orange-100 rounded-xl px-3 py-2">
               A temporary password will be emailed to the new admin. They must change it on first login.
             </p>
           )}
@@ -1006,7 +1006,7 @@ function AdminFormModal({ open, onClose, onSave, existing }) {
           <button
             onClick={handleSubmit}
             disabled={loading}
-            className="flex-1 px-4 py-2.5 rounded-xl bg-orange-600 text-white text-sm font-medium hover:bg-orange-700 transition-colors flex items-center justify-center gap-2"
+            className="flex-1 px-4 py-2.5 rounded-xl bg-[#AE3E27] text-white text-sm font-medium hover:bg-[#8f3320] transition-colors flex items-center justify-center gap-2"
           >
             {loading && <RefreshCw size={14} className="animate-spin" />}
             {isEdit ? 'Save Changes' : 'Create Admin'}
@@ -1154,7 +1154,7 @@ function AdminsTab() {
     {
       key: 'adminRole', header: 'Role',
       render: (v) => (
-        <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-orange-50 text-orange-700 border border-orange-100">
+        <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-[#fdf2f0] text-[#8f3320] border border-orange-100">
           {roleLabel(v)}
         </span>
       ),
@@ -1180,7 +1180,7 @@ function AdminsTab() {
           <button
             title="Edit"
             onClick={() => { setEditTarget(row); setFormOpen(true); }}
-            className="p-1.5 rounded-lg text-gray-400 hover:text-orange-600 hover:bg-orange-50 transition-colors"
+            className="p-1.5 rounded-lg text-gray-400 hover:text-[#AE3E27] hover:bg-[#fdf2f0] transition-colors"
           >
             <Edit2 size={15} />
           </button>
@@ -1232,7 +1232,7 @@ function AdminsTab() {
             value={search}
             onChange={(e) => { setSearch(e.target.value); setPage(1); }}
             placeholder="Search admins…"
-            className="w-full pl-9 pr-3 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-400 bg-white"
+            className="w-full pl-9 pr-3 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#AE3E27] bg-white"
           />
         </div>
 
@@ -1248,7 +1248,7 @@ function AdminsTab() {
                 className={[
                   'px-4 py-2 rounded-lg text-sm font-medium transition-all',
                   active
-                    ? 'bg-orange-600 text-white shadow-sm'
+                    ? 'bg-[#AE3E27] text-white shadow-sm'
                     : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200/50',
                 ].join(' ')}
               >
@@ -1260,7 +1260,7 @@ function AdminsTab() {
 
         <button
           onClick={() => { setEditTarget(null); setFormOpen(true); }}
-          className="sm:ml-auto flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-orange-600 text-white text-sm font-medium hover:bg-orange-700 transition-colors shadow-sm"
+          className="sm:ml-auto flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#AE3E27] text-white text-sm font-medium hover:bg-[#8f3320] transition-colors shadow-sm"
         >
           <UserPlus size={16} />
           New Admin
@@ -1271,7 +1271,7 @@ function AdminsTab() {
       <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm min-w-[640px]">
-            <thead className="bg-orange-600 text-white">
+            <thead className="bg-[#AE3E27] text-white">
               <tr>
                 {COLUMNS.map((col) => (
                   <th key={col.key} className="px-4 py-3 font-semibold whitespace-nowrap text-xs uppercase tracking-wide">
@@ -1299,7 +1299,7 @@ function AdminsTab() {
                 </tr>
               ) : (
                 admins.map((row) => (
-                  <tr key={row.id} className="bg-white hover:bg-orange-50/30 transition-colors">
+                  <tr key={row.id} className="bg-white hover:bg-[#fdf2f0]/30 transition-colors">
                     {COLUMNS.map((col) => (
                       <td key={col.key} className="px-4 py-3 whitespace-nowrap">
                         {col.render ? col.render(row[col.key], row) : row[col.key]}
@@ -1536,7 +1536,7 @@ function UsersTab() {
             value={search}
             onChange={(e) => { setSearch(e.target.value); setPage(1); }}
             placeholder="Search users…"
-            className="w-full pl-9 pr-3 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-400 bg-white"
+            className="w-full pl-9 pr-3 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#AE3E27] bg-white"
           />
         </div>
 
@@ -1551,7 +1551,7 @@ function UsersTab() {
                 className={[
                   'px-4 py-2 rounded-lg text-sm font-medium transition-all',
                   active
-                    ? 'bg-orange-600 text-white shadow-sm'
+                    ? 'bg-[#AE3E27] text-white shadow-sm'
                     : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200/50',
                 ].join(' ')}
               >
@@ -1566,7 +1566,7 @@ function UsersTab() {
       <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm min-w-[640px]">
-            <thead className="bg-orange-600 text-white">
+            <thead className="bg-[#AE3E27] text-white">
               <tr>
                 {COLUMNS.map((col) => (
                   <th key={col.key} className="px-4 py-3 font-semibold whitespace-nowrap text-xs uppercase tracking-wide">
@@ -1594,7 +1594,7 @@ function UsersTab() {
                 </tr>
               ) : (
                 users.map((row) => (
-                  <tr key={row.id} className="bg-white hover:bg-orange-50/30 transition-colors">
+                  <tr key={row.id} className="bg-white hover:bg-[#fdf2f0]/30 transition-colors">
                     {COLUMNS.map((col) => (
                       <td key={col.key} className="px-4 py-3 whitespace-nowrap">
                         {col.render ? col.render(row[col.key], row) : row[col.key]}
@@ -1656,7 +1656,7 @@ export default function UserManagementPage() {
             className={[
               'flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-150',
               activeTab === key
-                ? 'bg-white text-orange-600 shadow-sm'
+                ? 'bg-white text-[#AE3E27] shadow-sm'
                 : 'text-gray-500 hover:text-gray-700',
             ].join(' ')}
           >

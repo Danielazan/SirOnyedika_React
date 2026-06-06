@@ -38,7 +38,7 @@
 //               initial={{ opacity: 0, x: -20 }}
 //               animate={{ opacity: 1, x: 0 }}
 //               transition={{ duration: 0.4, delay: 0.1 }}
-//               className="text-2xl md:text-3xl font-bold text-orange-500"
+//               className="text-2xl md:text-3xl font-bold text-[#AE3E27]"
 //             >
 //               Sales
 //             </motion.span>
@@ -53,7 +53,7 @@
 //           initial={{ scaleX: 0 }}
 //           animate={{ scaleX: 1 }}
 //           transition={{ duration: 0.6, delay: 0.7, ease: "easeInOut" }}
-//           className="h-0.5 bg-orange-500 origin-left mb-6"
+//           className="h-0.5 bg-[#AE3E27] origin-left mb-6"
 //         />
         
 //         {/* Product Grid - 4 columns on desktop, 2 on tablet, 1 on mobile */}
@@ -91,11 +91,11 @@ const FlashSalesSection = () => {
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
           <motion.div className="flex items-baseline gap-1.5" initial="hidden" animate="visible">
             <motion.h2 initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }} className="text-base font-bold text-gray-900 tracking-tight">Flash</motion.h2>
-            <motion.span initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: 0.05 }} className="text-base font-bold text-orange-500">Sales</motion.span>
+            <motion.span initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: 0.05 }} className="text-base font-bold text-[#AE3E27]">Sales</motion.span>
           </motion.div>
           <CountdownTimer />
         </div>
-        <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.4, delay: 0.3 }} className="h-0.5 bg-orange-500 origin-left mb-3" />
+        <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.4, delay: 0.3 }} className="h-0.5 bg-[#AE3E27] origin-left mb-3" />
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
           {flashSaleProducts.map((product, index) => (
             <FlashSaleCard key={product.id} product={product} index={index} />

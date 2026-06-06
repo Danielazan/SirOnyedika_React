@@ -28,7 +28,7 @@
 // function PageLoader() {
 //   return (
 //     <div className="flex items-center justify-center h-48">
-//       <div className="w-8 h-8 border-2 border-orange-500 border-t-transparent rounded-full animate-spin" />
+//       <div className="w-8 h-8 border-2 border-[#AE3E27] border-t-transparent rounded-full animate-spin" />
 //     </div>
 //   );
 // }
@@ -146,7 +146,7 @@ const ForbiddenPage      = lazy(() => import('../pages/admin/ForbiddenPage'));
 function PageLoader() {
   return (
     <div className="flex items-center justify-center h-48">
-      <div className="w-8 h-8 border-2 border-orange-500 border-t-transparent rounded-full animate-spin" />
+      <div className="w-8 h-8 border-2 border-[#AE3E27] border-t-transparent rounded-full animate-spin" />
     </div>
   );
 }

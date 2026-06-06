@@ -17,7 +17,7 @@ function CustomTooltip({ active, payload, label }) {
   return (
     <div className="bg-white border border-gray-100 shadow-lg rounded-lg px-3 py-2">
       <p className="text-xs text-gray-500 mb-0.5">{label}</p>
-      <p className="text-sm font-semibold text-orange-600">
+      <p className="text-sm font-semibold text-[#AE3E27]">
         {formatCurrency(payload[0].value)}
       </p>
     </div>
@@ -30,8 +30,8 @@ export default function SalesChart({ data = [] }) {
       <AreaChart data={data} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
         <defs>
           <linearGradient id="revenueGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%"  stopColor="#EA580C" stopOpacity={0.18} />
-            <stop offset="95%" stopColor="#EA580C" stopOpacity={0}    />
+            <stop offset="5%"  stopColor="#AE3E27" stopOpacity={0.18} />
+            <stop offset="95%" stopColor="#AE3E27" stopOpacity={0}    />
           </linearGradient>
         </defs>
 
@@ -56,11 +56,11 @@ export default function SalesChart({ data = [] }) {
         <Area
           type="monotone"
           dataKey="revenue"
-          stroke="#EA580C"
+          stroke="#AE3E27"
           strokeWidth={2.5}
           fill="url(#revenueGrad)"
           dot={false}
-          activeDot={{ r: 5, fill: '#EA580C', strokeWidth: 2, stroke: '#fff' }}
+          activeDot={{ r: 5, fill: '#AE3E27', strokeWidth: 2, stroke: '#fff' }}
         />
       </AreaChart>
     </ResponsiveContainer>

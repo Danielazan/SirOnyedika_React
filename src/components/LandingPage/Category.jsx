@@ -156,12 +156,12 @@
 //           className="mb-4 flex items-center justify-between"
 //         >
 //           <h2 className="text-base font-semibold text-gray-900 tracking-tight">
-//             Category <span className="text-orange-500">List</span>
+//             Category <span className="text-[#AE3E27]">List</span>
 //           </h2>
 //           {hasMore && (
 //             <Link
 //               to="/shop"
-//               className="text-xs font-medium text-orange-600 hover:text-orange-700 flex items-center gap-1 transition-colors"
+//               className="text-xs font-medium text-[#AE3E27] hover:text-[#8f3320] flex items-center gap-1 transition-colors"
 //             >
 //               View All <ArrowRight size={14} />
 //             </Link>
@@ -207,7 +207,7 @@
 //           >
 //             <Link
 //               to="/shop"
-//               className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-orange-200 text-orange-600 text-sm font-medium hover:bg-orange-50 transition-colors"
+//               className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#f8cec7] text-[#AE3E27] text-sm font-medium hover:bg-[#fdf2f0] transition-colors"
 //             >
 //               View More Categories <ArrowRight size={16} />
 //             </Link>
@@ -363,12 +363,12 @@ const Category = () => {
           className="mb-4 flex items-center justify-between"
         >
           <h2 className="text-base font-semibold text-gray-900 tracking-tight">
-            Category <span className="text-orange-500">List</span>
+            Category <span className="text-[#AE3E27]">List</span>
           </h2>
           {hasMore && (
             <Link
               to="/shop"
-              className="text-xs font-medium text-orange-600 hover:text-orange-700 flex items-center gap-1 transition-colors"
+              className="text-xs font-medium text-[#AE3E27] hover:text-[#8f3320] flex items-center gap-1 transition-colors"
             >
               View All <ArrowRight size={14} />
             </Link>
@@ -414,7 +414,7 @@ const Category = () => {
           >
             <Link
               to="/shop"
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-orange-200 text-orange-600 text-sm font-medium hover:bg-orange-50 transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#f8cec7] text-[#AE3E27] text-sm font-medium hover:bg-[#fdf2f0] transition-colors"
             >
               View More Categories <ArrowRight size={16} />
             </Link>

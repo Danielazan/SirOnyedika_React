@@ -87,17 +87,17 @@ export default function ProfilePage() {
             className="flex flex-col items-center gap-3 sm:w-32 flex-shrink-0"
           >
             <div className="relative">
-              <div className="w-24 h-24 rounded-full bg-orange-100 overflow-hidden border-4 border-[#DA5605]/20 flex items-center justify-center">
+              <div className="w-24 h-24 rounded-full bg-[#fce5e0] overflow-hidden border-4 border-[#AE3E27]/20 flex items-center justify-center">
                 {avatarPreview ? (
                   <img src={avatarPreview} alt="avatar" className="w-full h-full object-cover" />
                 ) : (
-                  <span className="text-3xl font-bold text-[#DA5605]">{initials}</span>
+                  <span className="text-3xl font-bold text-[#AE3E27]">{initials}</span>
                 )}
               </div>
               <button
                 type="button"
                 onClick={() => fileRef.current?.click()}
-                className="absolute bottom-0 right-0 w-7 h-7 rounded-full bg-[#DA5605] flex items-center justify-center shadow-md hover:bg-[#c04a04] transition-colors"
+                className="absolute bottom-0 right-0 w-7 h-7 rounded-full bg-[#AE3E27] flex items-center justify-center shadow-md hover:bg-[#8f3320] transition-colors"
               >
                 <Camera className="w-3.5 h-3.5 text-white" />
               </button>
@@ -123,7 +123,7 @@ export default function ProfilePage() {
                   className={`w-full px-3 py-2.5 rounded-lg border text-sm font-medium transition-all outline-none font-['Poppins'] ${
                     f.disabled
                       ? 'bg-gray-50 text-gray-400 border-gray-100 cursor-not-allowed'
-                      : 'border-gray-200 focus:border-[#DA5605] focus:ring-2 focus:ring-[#DA5605]/10 bg-white text-gray-800'
+                      : 'border-gray-200 focus:border-[#AE3E27] focus:ring-2 focus:ring-[#AE3E27]/10 bg-white text-gray-800'
                   }`}
                 />
               </motion.div>
@@ -143,7 +143,7 @@ export default function ProfilePage() {
             type="submit"
             disabled={saving}
             className={`flex items-center gap-2 px-8 py-2.5 rounded-xl text-sm font-bold text-white transition-all ${
-              saved ? 'bg-green-500' : 'bg-[#DA5605] hover:bg-[#c04a04]'
+              saved ? 'bg-green-500' : 'bg-[#AE3E27] hover:bg-[#8f3320]'
             } disabled:opacity-60`}
           >
             {saved ? <Check className="w-4 h-4" /> : <Save className="w-4 h-4" />}

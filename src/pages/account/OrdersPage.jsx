@@ -11,7 +11,7 @@ const STATUS_CONFIG = {
   PENDING:          { label: 'Pending',         bg: 'bg-yellow-100',  text: 'text-yellow-700'  },
   CONFIRMED:        { label: 'Confirmed',        bg: 'bg-blue-100',    text: 'text-blue-700'    },
   PACKED:           { label: 'Packed',           bg: 'bg-indigo-100',  text: 'text-indigo-700'  },
-  OUT_FOR_DELIVERY: { label: 'Out for Delivery', bg: 'bg-orange-100',  text: 'text-orange-700'  },
+  OUT_FOR_DELIVERY: { label: 'Out for Delivery', bg: 'bg-[#fce5e0]',  text: 'text-[#8f3320]'  },
   DELIVERED:        { label: 'Delivered',        bg: 'bg-green-100',   text: 'text-green-700'   },
   CANCELLED:        { label: 'Cancelled',        bg: 'bg-red-100',     text: 'text-red-600'     },
   REFUNDED:         { label: 'Refunded',         bg: 'bg-gray-100',    text: 'text-gray-600'    },
@@ -48,7 +48,7 @@ function OrderItemRow({ item }) {
         <p className="text-xs text-gray-400">{item.variantName}</p>
         <div className="flex items-center gap-3 mt-0.5">
           <span className="text-xs text-gray-500">Qty: <strong>{item.qty}</strong></span>
-          <span className="text-xs font-bold text-[#DA5605]">${Number(item.unitPrice).toFixed(2)}</span>
+          <span className="text-xs font-bold text-[#AE3E27]">${Number(item.unitPrice).toFixed(2)}</span>
         </div>
       </div>
       <p className="text-sm font-bold text-gray-900 flex-shrink-0">${Number(item.lineTotal).toFixed(2)}</p>
@@ -97,7 +97,7 @@ function OrderCard({ order, index }) {
             {cfg.label}
           </span>
           {/* Total */}
-          <p className="text-base font-bold text-[#DA5605]">${Number(order.totalAmount).toFixed(2)}</p>
+          <p className="text-base font-bold text-[#AE3E27]">${Number(order.totalAmount).toFixed(2)}</p>
         </div>
       </div>
 
@@ -113,7 +113,7 @@ function OrderCard({ order, index }) {
 
         <button
           onClick={() => setExpanded((e) => !e)}
-          className="flex items-center gap-1 text-xs font-semibold text-[#DA5605] hover:text-[#c04a04] transition-colors"
+          className="flex items-center gap-1 text-xs font-semibold text-[#AE3E27] hover:text-[#8f3320] transition-colors"
         >
           {expanded ? 'Hide' : 'View More'}
           {expanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
@@ -173,7 +173,7 @@ export default function OrdersPage() {
         className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5"
       >
         {[
-          { label: 'Total Orders', value: stats.total,     color: 'bg-[#DA5605]' },
+          { label: 'Total Orders', value: stats.total,     color: 'bg-[#AE3E27]' },
           { label: 'Delivered',    value: stats.delivered, color: 'bg-green-500'  },
           { label: 'Pending',      value: stats.pending,   color: 'bg-yellow-500' },
           { label: 'Cancelled',    value: stats.cancelled, color: 'bg-red-500'    },
@@ -204,8 +204,8 @@ export default function OrdersPage() {
             onClick={() => setActiveTab(key)}
             className={`flex-shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all ${
               activeTab === key
-                ? 'bg-[#DA5605] text-white'
-                : 'bg-gray-100 text-gray-600 hover:bg-orange-50 hover:text-[#DA5605]'
+                ? 'bg-[#AE3E27] text-white'
+                : 'bg-gray-100 text-gray-600 hover:bg-[#fdf2f0] hover:text-[#AE3E27]'
             }`}
           >
             {label}

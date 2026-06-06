@@ -39,7 +39,7 @@ const ORDER_COLUMNS = [
   {
     key: 'id',
     header: 'Order ID',
-    render: (v) => <span className="text-orange-600 font-medium">{v}</span>,
+    render: (v) => <span className="text-[#AE3E27] font-medium">{v}</span>,
   },
   {
     key: 'customer',
@@ -120,7 +120,7 @@ export default function DashboardPage() {
               <h2 className="text-sm font-semibold text-gray-800">Revenue Overview</h2>
               <p className="text-xs text-gray-400 mt-0.5">Monthly revenue for 2026</p>
             </div>
-            <span className="text-xs text-orange-600 font-medium bg-orange-50 px-2 py-1 rounded-md">
+            <span className="text-xs text-[#AE3E27] font-medium bg-[#fdf2f0] px-2 py-1 rounded-md">
               2026
             </span>
           </div>
@@ -155,7 +155,7 @@ export default function DashboardPage() {
           <h2 className="text-sm font-semibold text-gray-800">Recent Orders</h2>
           <a
             href="/admin/orders"
-            className="text-xs text-orange-600 hover:text-orange-700 font-medium"
+            className="text-xs text-[#AE3E27] hover:text-[#8f3320] font-medium"
           >
             View all →
           </a>

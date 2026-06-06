@@ -47,7 +47,7 @@
 
 //         {/* Sale badge */}
 //         {product.isOnSale && (
-//           <span className="absolute top-2.5 left-2.5 bg-[#DA5605] text-white text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full">
+//           <span className="absolute top-2.5 left-2.5 bg-[#AE3E27] text-white text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full">
 //             Sale
 //           </span>
 //         )}
@@ -59,7 +59,7 @@
 //           className="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow opacity-0 group-hover:opacity-100 transition-opacity duration-200"
 //         >
 //           <Heart
-//             className={`w-4 h-4 transition-colors ${wishlisted ? 'fill-[#DA5605] text-[#DA5605]' : 'text-gray-500'}`}
+//             className={`w-4 h-4 transition-colors ${wishlisted ? 'fill-[#AE3E27] text-[#AE3E27]' : 'text-gray-500'}`}
 //           />
 //         </button>
 //       </div>
@@ -90,7 +90,7 @@
 //           className={`mt-1 w-full flex items-center justify-center gap-1.5 text-[12px] font-semibold uppercase tracking-wider text-white rounded-lg py-2 transition-all duration-300 font-['Poppins'] ${
 //             addedFeedback
 //               ? 'bg-green-500'
-//               : 'bg-[#DA5605] hover:bg-[#c04a04]'
+//               : 'bg-[#AE3E27] hover:bg-[#8f3320]'
 //           }`}
 //         >
 //           <ShoppingCart className="w-3.5 h-3.5" />
@@ -172,7 +172,7 @@ export default function ProductCard({ product, onAddToCart }) {
           />
 
           {isOnSale && (
-            <span className="absolute top-2.5 left-2.5 bg-[#DA5605] text-white text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full">
+            <span className="absolute top-2.5 left-2.5 bg-[#AE3E27] text-white text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full">
               Sale
             </span>
           )}
@@ -184,7 +184,7 @@ export default function ProductCard({ product, onAddToCart }) {
             className="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow opacity-0 group-hover:opacity-100 transition-opacity duration-200"
           >
             <Heart
-              className={`w-4 h-4 transition-colors ${wishlisted ? 'fill-[#DA5605] text-[#DA5605]' : 'text-gray-500'}`}
+              className={`w-4 h-4 transition-colors ${wishlisted ? 'fill-[#AE3E27] text-[#AE3E27]' : 'text-gray-500'}`}
             />
           </button>
         </div>
@@ -216,7 +216,7 @@ export default function ProductCard({ product, onAddToCart }) {
           className={`w-full flex items-center justify-center gap-1.5 text-[12px] font-semibold uppercase tracking-wider text-white rounded-lg py-2 transition-all duration-300 font-['Poppins'] ${
             addedFeedback
               ? 'bg-green-500'
-              : 'bg-[#DA5605] hover:bg-[#c04a04]'
+              : 'bg-[#AE3E27] hover:bg-[#8f3320]'
           }`}
         >
           <ShoppingCart className="w-3.5 h-3.5" />

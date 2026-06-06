@@ -58,7 +58,7 @@ export const ForgotPasswordPage = () => {
             <Button fullWidth>Enter Reset Code</Button>
           </Link>
           <p className="mt-4 text-sm text-gray-600">
-            <Link to="/login" className="text-orange-600 hover:underline font-medium">
+            <Link to="/login" className="text-[#AE3E27] hover:underline font-medium">
               Back to Sign In
             </Link>
           </p>
@@ -78,10 +78,10 @@ export const ForgotPasswordPage = () => {
         {/* Logo */}
         <motion.div variants={itemVariants} className="mb-8">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center">
+            <div className="w-8 h-8 bg-[#AE3E27] rounded-full flex items-center justify-center">
               <span className="text-white font-bold text-lg">F</span>
             </div>
-            <span className="text-xl font-bold text-gray-900">Fashly</span>
+            <span className="text-xl font-bold text-gray-900">Atelierselvedge</span>
           </div>
         </motion.div>
 
@@ -116,7 +116,7 @@ export const ForgotPasswordPage = () => {
           <motion.div variants={itemVariants} className="text-center pt-4">
             <p className="text-sm text-gray-600">
               Remember Password?{' '}
-              <Link to="/login" className="text-orange-600 font-medium hover:underline">
+              <Link to="/login" className="text-[#AE3E27] font-medium hover:underline">
                 Sign In
               </Link>
             </p>

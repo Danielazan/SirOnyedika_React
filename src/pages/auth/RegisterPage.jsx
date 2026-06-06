@@ -123,7 +123,7 @@ export const RegisterPage = () => {
         {/* Logo */}
         <motion.div variants={itemVariants} className="mb-8 text-center">
           <div className="flex justify-center mb-4">
-            <div className="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center">
+            <div className="w-12 h-12 bg-[#AE3E27] rounded-full flex items-center justify-center">
               <span className="text-white text-3xl font-bold">F</span>
             </div>
           </div>
@@ -201,8 +201,8 @@ export const RegisterPage = () => {
             />
             <label htmlFor="agreeToTerms" className="text-sm text-gray-600">
               I agree to the{' '}
-              <Link to="/terms" className="text-orange-600 hover:underline">Terms</Link> and{' '}
-              <Link to="/privacy" className="text-orange-600 hover:underline">Privacy Policy</Link>
+              <Link to="/terms" className="text-[#AE3E27] hover:underline">Terms</Link> and{' '}
+              <Link to="/privacy" className="text-[#AE3E27] hover:underline">Privacy Policy</Link>
             </label>
           </div>
           {errors.agreeToTerms && <p className="text-red-600 text-xs">{errors.agreeToTerms}</p>}
@@ -232,7 +232,7 @@ export const RegisterPage = () => {
 
           <p className="text-center text-sm text-gray-600">
             Already have an account?{' '}
-            <Link to="/login" className="text-orange-600 font-medium hover:underline">Sign in</Link>
+            <Link to="/login" className="text-[#AE3E27] font-medium hover:underline">Sign in</Link>
           </p>
         </motion.form>
       </motion.div>

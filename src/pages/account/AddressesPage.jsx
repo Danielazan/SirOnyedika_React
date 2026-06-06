@@ -30,7 +30,7 @@ function AddressForm({ initial = EMPTY_FORM, onSave, onCancel, saving }) {
       transition={{ duration: 0.35, ease: 'easeInOut' }}
       className="overflow-hidden"
     >
-      <div className="mt-3 p-4 bg-orange-50/60 rounded-xl border border-[#DA5605]/20">
+      <div className="mt-3 p-4 bg-[#fdf2f0]/60 rounded-xl border border-[#AE3E27]/20">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {[
             { name: 'label',      label: 'Label',       placeholder: 'Home, Office…', col: 1 },
@@ -43,7 +43,7 @@ function AddressForm({ initial = EMPTY_FORM, onSave, onCancel, saving }) {
               <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">{label}</label>
               <input
                 name={name} value={form[name]} onChange={set} placeholder={placeholder}
-                className="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm font-['Poppins'] focus:border-[#DA5605] focus:ring-2 focus:ring-[#DA5605]/10 outline-none bg-white"
+                className="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm font-['Poppins'] focus:border-[#AE3E27] focus:ring-2 focus:ring-[#AE3E27]/10 outline-none bg-white"
               />
             </div>
           ))}
@@ -53,7 +53,7 @@ function AddressForm({ initial = EMPTY_FORM, onSave, onCancel, saving }) {
             <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Country</label>
             <select
               name="country" value={form.country} onChange={set}
-              className="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm font-['Poppins'] focus:border-[#DA5605] outline-none bg-white"
+              className="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm font-['Poppins'] focus:border-[#AE3E27] outline-none bg-white"
             >
               {COUNTRIES.map((c) => <option key={c} value={c}>{c}</option>)}
             </select>
@@ -62,7 +62,7 @@ function AddressForm({ initial = EMPTY_FORM, onSave, onCancel, saving }) {
 
         {/* Default checkbox */}
         <label className="flex items-center gap-2 mt-3 cursor-pointer">
-          <input type="checkbox" name="isDefault" checked={form.isDefault} onChange={set} className="w-4 h-4 accent-[#DA5605]" />
+          <input type="checkbox" name="isDefault" checked={form.isDefault} onChange={set} className="w-4 h-4 accent-[#AE3E27]" />
           <span className="text-sm text-gray-600 font-medium">Set as default address</span>
         </label>
 
@@ -72,7 +72,7 @@ function AddressForm({ initial = EMPTY_FORM, onSave, onCancel, saving }) {
             whileTap={{ scale: 0.97 }}
             onClick={() => onSave(form)}
             disabled={saving}
-            className="flex items-center gap-1.5 px-5 py-2 bg-[#DA5605] hover:bg-[#c04a04] text-white text-sm font-bold rounded-lg transition-all disabled:opacity-60"
+            className="flex items-center gap-1.5 px-5 py-2 bg-[#AE3E27] hover:bg-[#8f3320] text-white text-sm font-bold rounded-lg transition-all disabled:opacity-60"
           >
             <Check className="w-3.5 h-3.5" />
             {saving ? 'Saving…' : 'Save Address'}
@@ -119,13 +119,13 @@ export default function AddressesPage() {
         className="flex items-center justify-between mb-5 pb-3 border-b border-gray-100"
       >
         <h2 className="text-base font-bold text-gray-900 flex items-center gap-2">
-          <MapPin className="w-4 h-4 text-[#DA5605]" />
+          <MapPin className="w-4 h-4 text-[#AE3E27]" />
           Manage Address
         </h2>
         <motion.button
           whileTap={{ scale: 0.96 }}
           onClick={() => { setShowAddForm((v) => !v); setEditingId(null); }}
-          className="flex items-center gap-1.5 px-4 py-2 bg-[#DA5605] hover:bg-[#c04a04] text-white text-xs font-bold rounded-lg transition-all"
+          className="flex items-center gap-1.5 px-4 py-2 bg-[#AE3E27] hover:bg-[#8f3320] text-white text-xs font-bold rounded-lg transition-all"
         >
           <Plus className="w-3.5 h-3.5" />
           Add New Address
@@ -165,19 +165,19 @@ export default function AddressesPage() {
               initial="hidden"
               animate="visible"
               className={`relative rounded-xl border p-4 transition-all ${
-                addr.isDefault ? 'border-[#DA5605]/40 bg-orange-50/50' : 'border-gray-100 bg-white'
+                addr.isDefault ? 'border-[#AE3E27]/40 bg-[#fdf2f0]/50' : 'border-gray-100 bg-white'
               }`}
             >
               {/* Default badge */}
               {addr.isDefault && (
-                <span className="absolute top-3 right-3 flex items-center gap-1 text-[10px] font-bold text-[#DA5605] bg-orange-100 px-2 py-0.5 rounded-full">
-                  <Star className="w-2.5 h-2.5 fill-[#DA5605]" /> Default
+                <span className="absolute top-3 right-3 flex items-center gap-1 text-[10px] font-bold text-[#AE3E27] bg-[#fce5e0] px-2 py-0.5 rounded-full">
+                  <Star className="w-2.5 h-2.5 fill-[#AE3E27]" /> Default
                 </span>
               )}
 
               <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <MapPin className="w-4 h-4 text-[#DA5605]" />
+                <div className="w-8 h-8 rounded-full bg-[#fce5e0] flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <MapPin className="w-4 h-4 text-[#AE3E27]" />
                 </div>
                 <div className="flex-1 min-w-0 pr-16">
                   <p className="text-sm font-bold text-gray-900">{addr.label}</p>
@@ -190,7 +190,7 @@ export default function AddressesPage() {
               {/* Actions */}
               <div className="flex items-center gap-3 mt-3 ml-11">
                 {!addr.isDefault && (
-                  <button onClick={() => onDefault(addr.id)} className="text-xs text-[#DA5605] font-medium hover:underline">
+                  <button onClick={() => onDefault(addr.id)} className="text-xs text-[#AE3E27] font-medium hover:underline">
                     Set as Default
                   </button>
                 )}

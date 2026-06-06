@@ -46,7 +46,7 @@ export const CountrySelect = ({
           w-full px-3 py-2.5 text-sm text-gray-900 
           bg-white border rounded-md appearance-none
           transition-colors duration-200
-          focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-600
+          focus:outline-none focus:ring-2 focus:ring-[#AE3E27]/20 focus:border-[#AE3E27]
           disabled:bg-gray-50 disabled:text-gray-500
           ${error ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' : 'border-gray-300'}
         `}

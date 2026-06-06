@@ -67,11 +67,11 @@ export default function AdminTopbar({ onMenuClick }) {
         {/* Bell icon */}
         <button className="relative w-9 h-9 rounded-lg flex items-center justify-center text-gray-500 hover:bg-gray-100 transition-colors">
           <Bell size={18} />
-          <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-orange-600 ring-2 ring-white" />
+          <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#AE3E27] ring-2 ring-white" />
         </button>
 
         {/* Avatar */}
-        <div className="w-9 h-9 rounded-full overflow-hidden cursor-pointer ring-2 ring-orange-200 hover:ring-orange-400 transition-all">
+        <div className="w-9 h-9 rounded-full overflow-hidden cursor-pointer ring-2 ring-orange-200 hover:ring-[#AE3E27] transition-all">
           <img
             src="https://i.pravatar.cc/36?img=10"
             alt="Admin"

@@ -104,10 +104,10 @@
 //         {/* Logo */}
 //         <motion.div variants={itemVariants} className="mb-8">
 //           <div className="flex items-center gap-2">
-//             <div className="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center">
+//             <div className="w-8 h-8 bg-[#AE3E27] rounded-full flex items-center justify-center">
 //               <span className="text-white font-bold text-lg">F</span>
 //             </div>
-//             <span className="text-xl font-bold text-gray-900">Fashly / WillOfGod</span>
+//             <span className="text-xl font-bold text-gray-900">Atelierselvedge / WillOfGod</span>
 //           </div>
 //         </motion.div>
 
@@ -150,11 +150,11 @@
 //                 name="rememberMe"
 //                 checked={formData.rememberMe}
 //                 onChange={handleChange}
-//                 className="w-4 h-4 text-orange-600 rounded focus:ring-orange-500"
+//                 className="w-4 h-4 text-[#AE3E27] rounded focus:ring-[#AE3E27]"
 //               />
 //               Remember me
 //             </label>
-//             <Link to="/forgot-password" className="text-sm text-orange-600 hover:underline">
+//             <Link to="/forgot-password" className="text-sm text-[#AE3E27] hover:underline">
 //               Forgot Password?
 //             </Link>
 //           </motion.div>
@@ -194,7 +194,7 @@
 
 //           <motion.div variants={itemVariants} className="text-center text-sm text-gray-600 pt-4">
 //             Don't have an account?{' '}
-//             <Link to="/register" className="text-orange-600 font-medium hover:underline">
+//             <Link to="/register" className="text-[#AE3E27] font-medium hover:underline">
 //               Sign up
 //             </Link>
 //           </motion.div>
@@ -288,7 +288,7 @@ export const LoginPage = () => {
         {/* Logo + Header */}
         <motion.div variants={itemVariants} className="mb-8 text-center">
           <div className="flex justify-center mb-4">
-            <div className="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center">
+            <div className="w-12 h-12 bg-[#AE3E27] rounded-full flex items-center justify-center">
               <span className="text-white text-2xl font-bold">F</span>
             </div>
           </div>
@@ -319,7 +319,7 @@ export const LoginPage = () => {
               <input type="checkbox" name="rememberMe" checked={formData.rememberMe} onChange={handleChange} />
               <span className="text-sm">Remember me</span>
             </label>
-            <Link to="/forgot-password" className="text-orange-600 text-sm hover:underline">Forgot Password?</Link>
+            <Link to="/forgot-password" className="text-[#AE3E27] text-sm hover:underline">Forgot Password?</Link>
           </div>
 
           {apiError && <p className="text-red-600 text-center bg-red-50 p-3 rounded-lg">{apiError}</p>}
@@ -345,7 +345,7 @@ export const LoginPage = () => {
 
           <p className="text-center text-sm text-gray-600">
             Don't have an account?{' '}
-            <Link to="/register" className="text-orange-600 font-medium">Sign up</Link>
+            <Link to="/register" className="text-[#AE3E27] font-medium">Sign up</Link>
           </p>
         </motion.form>
       </motion.div>

@@ -26,7 +26,7 @@ function BankCard({ card, onDelete }) {
       whileHover={{ y: -3, boxShadow: '0 16px 40px rgba(218,86,5,0.18)' }}
       className="relative w-full max-w-xs rounded-2xl overflow-hidden shadow-md"
       style={{
-        background: 'linear-gradient(135deg, #DA5605 0%, #c04a04 60%, #8b3203 100%)',
+        background: 'linear-gradient(135deg, #AE3E27 0%, #8f3320 60%, #8b3203 100%)',
         aspectRatio: '1.586 / 1',
       }}
     >
@@ -80,7 +80,7 @@ export default function PaymentMethodsPage() {
         className="flex items-center justify-between mb-5 pb-3 border-b border-gray-100"
       >
         <h2 className="text-base font-bold text-gray-900 flex items-center gap-2">
-          <CreditCard className="w-4 h-4 text-[#DA5605]" />
+          <CreditCard className="w-4 h-4 text-[#AE3E27]" />
           Payment Method
         </h2>
       </motion.div>
@@ -103,7 +103,7 @@ export default function PaymentMethodsPage() {
               {!card.isDefault && (
                 <button
                   onClick={() => setCards((c) => c.map((ca) => ({ ...ca, isDefault: ca.id === card.id })))}
-                  className="text-xs font-semibold text-[#DA5605] hover:underline"
+                  className="text-xs font-semibold text-[#AE3E27] hover:underline"
                 >
                   Set Default
                 </button>
@@ -128,7 +128,7 @@ export default function PaymentMethodsPage() {
         className="mt-6 pt-5 border-t border-gray-100"
       >
         <p className="text-sm font-bold text-gray-700 mb-3 flex items-center gap-2">
-          <Plus className="w-4 h-4 text-[#DA5605]" />
+          <Plus className="w-4 h-4 text-[#AE3E27]" />
           Add Credit/Debit Card
         </p>
 
@@ -139,7 +139,7 @@ export default function PaymentMethodsPage() {
           <p className="text-xs text-gray-400 mt-1">Your card details are encrypted and never stored on our servers.</p>
           <motion.button
             whileTap={{ scale: 0.97 }}
-            className="mt-4 px-6 py-2.5 bg-[#DA5605] hover:bg-[#c04a04] text-white text-sm font-bold rounded-xl transition-all"
+            className="mt-4 px-6 py-2.5 bg-[#AE3E27] hover:bg-[#8f3320] text-white text-sm font-bold rounded-xl transition-all"
           >
             Add New Card
           </motion.button>

@@ -45,7 +45,7 @@ export default function Pagination({ page, pages, onChange }) {
               className={[
                 'w-8 h-8 rounded-lg text-sm font-medium transition-colors',
                 p === page
-                  ? 'bg-orange-600 text-white shadow-sm'
+                  ? 'bg-[#AE3E27] text-white shadow-sm'
                   : 'text-gray-600 hover:bg-gray-100',
               ].join(' ')}
             >

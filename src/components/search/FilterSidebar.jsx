@@ -29,14 +29,14 @@ export default function FilterSidebar({
         return (
           <label
             key={sub.id}
-            className="flex items-center gap-3 cursor-pointer group py-1 px-1 rounded-lg hover:bg-orange-50 transition-colors"
+            className="flex items-center gap-3 cursor-pointer group py-1 px-1 rounded-lg hover:bg-[#fdf2f0] transition-colors"
           >
             {/* Custom checkbox */}
             <span
               className={`w-4 h-4 rounded flex-shrink-0 border-2 flex items-center justify-center transition-colors ${
                 checked
-                  ? 'bg-[#DA5605] border-[#DA5605]'
-                  : 'border-gray-300 group-hover:border-[#DA5605]'
+                  ? 'bg-[#AE3E27] border-[#AE3E27]'
+                  : 'border-gray-300 group-hover:border-[#AE3E27]'
               }`}
               onClick={() => onToggle(sub.slug)}
             >
@@ -49,7 +49,7 @@ export default function FilterSidebar({
             <span
               onClick={() => onToggle(sub.slug)}
               className={`text-sm transition-colors font-['Poppins'] ${
-                checked ? 'text-[#DA5605] font-semibold' : 'text-gray-700'
+                checked ? 'text-[#AE3E27] font-semibold' : 'text-gray-700'
               }`}
             >
               {sub.name}
@@ -62,7 +62,7 @@ export default function FilterSidebar({
       {activeSubcategories.length > 0 && (
         <button
           onClick={onClearAll}
-          className="mt-2 text-xs text-[#DA5605] hover:text-[#c04a04] font-medium underline underline-offset-2 text-left transition-colors"
+          className="mt-2 text-xs text-[#AE3E27] hover:text-[#8f3320] font-medium underline underline-offset-2 text-left transition-colors"
         >
           Clear all
         </button>
@@ -94,10 +94,10 @@ export default function FilterSidebar({
           className="w-full flex items-center justify-between p-4"
         >
           <span className="flex items-center gap-2 text-sm font-bold text-gray-900 font-['Poppins'] uppercase tracking-wide">
-            <SlidersHorizontal className="w-4 h-4 text-[#DA5605]" />
+            <SlidersHorizontal className="w-4 h-4 text-[#AE3E27]" />
             Filter
             {activeSubcategories.length > 0 && (
-              <span className="ml-1 bg-[#DA5605] text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
+              <span className="ml-1 bg-[#AE3E27] text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
                 {activeSubcategories.length}
               </span>
             )}

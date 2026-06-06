@@ -153,7 +153,7 @@ const HeroSection = () => {
               {/* Primary Action: High-emphasis conversion button */}
               <a
                 href={heroContent.primaryCta.href}
-                className="inline-flex items-center justify-center px-10 py-3.5 bg-orange-600 hover:bg-orange-700 active:bg-orange-800 text-white font-semibold text-sm uppercase tracking-wider transition-all duration-300 rounded-sm shadow-sm hover:shadow-lg transform hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center px-10 py-3.5 bg-[#AE3E27] hover:bg-[#8f3320] active:bg-[#6e2517] text-white font-semibold text-sm uppercase tracking-wider transition-all duration-300 rounded-sm shadow-sm hover:shadow-lg transform hover:-translate-y-0.5"
               >
                 {heroContent.primaryCta.label}
               </a>
@@ -161,7 +161,7 @@ const HeroSection = () => {
               {/* Secondary Action: Low-emphasis exploration button */}
               <a
                 href={heroContent.secondaryCta.href}
-                className="inline-flex items-center justify-center px-8 py-3.5 border-2 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white active:bg-orange-700 font-semibold text-sm uppercase tracking-wider transition-all duration-300 rounded-sm"
+                className="inline-flex items-center justify-center px-8 py-3.5 border-2 border-[#AE3E27] text-[#AE3E27] hover:bg-[#AE3E27] hover:text-white active:bg-[#8f3320] font-semibold text-sm uppercase tracking-wider transition-all duration-300 rounded-sm"
               >
                 {heroContent.secondaryCta.label}
               </a>
@@ -177,7 +177,7 @@ const HeroSection = () => {
           >
             <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-lg ">
               {/* Soft ambient glow effect behind model */}
-              <div className="absolute -inset-4 bg-orange-200/30 rounded-full blur-3xl opacity-40"></div>
+              <div className="absolute -inset-4 bg-[#f8cec7]/30 rounded-full blur-3xl opacity-40"></div>
               
               <img
                 src={heroContent.heroImage.src}

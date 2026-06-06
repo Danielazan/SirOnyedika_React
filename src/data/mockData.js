@@ -33,10 +33,10 @@ export const MOCK_DASHBOARD = {
     { month: 'Dec', revenue: 4_250_000 },
   ],
   trafficSources: [
-    { name: 'Organic',  value: 45, color: '#EA580C' },
-    { name: 'Social',   value: 30, color: '#F97316' },
+    { name: 'Organic',  value: 45, color: '#AE3E27' },
+    { name: 'Social',   value: 30, color: '#AE3E27' },
     { name: 'Direct',   value: 15, color: '#FDBA74' },
-    { name: 'Referral', value: 10, color: '#FED7AA' },
+    { name: 'Referral', value: 10, color: '#f8cec7' },
   ],
   recentOrders: [
     { id: '#ORD-7821', customer: 'Sophia Williams', product: 'Classic Blazer',   date: '2026-04-30', amount: 45_000,  paymentMethod: 'Card',     status: 'delivered'  },

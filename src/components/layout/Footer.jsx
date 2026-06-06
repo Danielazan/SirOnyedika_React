@@ -14,12 +14,12 @@
 //   };
 
 //   return (
-//     <footer className="bg-orange-600 text-white pt-10 pb-6">
+//     <footer className="bg-[#AE3E27] text-white pt-10 pb-6">
 //       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 //         <motion.div variants={containerVariants} initial="hidden" animate="visible" className="flex flex-col md:flex-row justify-between w-full mb-8 gap-6">
 //           <motion.div variants={columnVariants} className="space-y-3">
-//             <h3 className="text-xl tracking-tight font-[Pacifico]">Fashly</h3>
-//             <p className="text-orange-100 text-xs leading-relaxed max-w-xs">
+//             <h3 className="text-xl tracking-tight font-[Pacifico]">Atelierselvedge</h3>
+//             <p className="text-[#fce5e0] text-xs leading-relaxed max-w-xs">
 //               Where modern design meets with effortless style designed for everyday comfort and confidence to express your individuality
 //             </p>
 //             <div className="flex gap-3 text-lg">
@@ -38,7 +38,7 @@
 //           <div className="grid grid-cols-3 gap-4 md:gap-8">
 //             <motion.div variants={columnVariants}>
 //               <h4 className="text-sm font-semibold mb-3">Quick Links</h4>
-//               <ul className="space-y-1.5 text-orange-100 text-xs">
+//               <ul className="space-y-1.5 text-[#fce5e0] text-xs">
 //                 <li><a href="#" className="hover:text-white transition-colors">Home</a></li>
 //                 <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
 //                 <li><a href="#" className="hover:text-white transition-colors">Offers & Deals</a></li>
@@ -49,7 +49,7 @@
 
 //             <motion.div variants={columnVariants}>
 //               <h4 className="text-sm font-semibold mb-3">Help</h4>
-//               <ul className="space-y-1.5 text-orange-100 text-xs">
+//               <ul className="space-y-1.5 text-[#fce5e0] text-xs">
 //                 <li><a href="#" className="hover:text-white transition-colors">Delivery Information</a></li>
 //                 <li><a href="#" className="hover:text-white transition-colors">Payment methods</a></li>
 //                 <li><a href="#" className="hover:text-white transition-colors">Contact us</a></li>
@@ -59,7 +59,7 @@
 
 //             <motion.div variants={columnVariants}>
 //               <h4 className="text-sm font-semibold mb-3">Contact Info</h4>
-//               <ul className="space-y-1.5 text-orange-100 text-xs">
+//               <ul className="space-y-1.5 text-[#fce5e0] text-xs">
 //                 <li>+0123-345-678</li>
 //                 <li>fahly111@gmail.com</li>
 //                 <li>12 Kingtown rd. New Haven</li>
@@ -68,7 +68,7 @@
 //           </div>
 //         </motion.div>
 
-//         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.8 }} className="pt-6 border-t border-white/20 text-center text-[11px] text-orange-200">
+//         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.8 }} className="pt-6 border-t border-white/20 text-center text-[11px] text-[#f8cec7]">
 //           Copyright 2026 fashion Website Design. All Rights Reserved
 //         </motion.div>
 //       </div>
@@ -108,7 +108,7 @@ const columnVariants = {
 
 const Footer = () => {
   return (
-    <footer className="bg-orange-600 text-white pt-10 pb-6">
+    <footer className="bg-[#AE3E27] text-white pt-10 pb-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
@@ -118,8 +118,8 @@ const Footer = () => {
         >
           {/* ── Brand column ── */}
           <motion.div variants={columnVariants} className="col-span-2 md:col-span-1 space-y-3">
-            <h3 className="text-xl tracking-tight font-[Pacifico]">Selvedge Atelier</h3>
-            <p className="text-orange-100 text-xs leading-relaxed max-w-xs">
+            <h3 className="text-xl tracking-tight font-[Pacifico]">Atelierselvedge</h3>
+            <p className="text-[#fce5e0] text-xs leading-relaxed max-w-xs">
               Premium cosmetics, body care, and fashion crafted for the modern wardrobe.
             </p>
             <div className="flex gap-3 text-lg">
@@ -150,7 +150,7 @@ const Footer = () => {
           {/* ── Quick Links ── */}
           <motion.div variants={columnVariants}>
             <h4 className="text-sm font-semibold mb-3 uppercase tracking-wider">Quick Links</h4>
-            <ul className="space-y-1.5 text-orange-100 text-xs">
+            <ul className="space-y-1.5 text-[#fce5e0] text-xs">
               <li><Link to="/"      className="hover:text-white transition-colors">Home</Link></li>
               <li><Link to="/shop"  className="hover:text-white transition-colors">All Products</Link></li>
               <li><a href="#"       className="hover:text-white transition-colors">About Us</a></li>
@@ -162,7 +162,7 @@ const Footer = () => {
           {/* ── Policies ── */}
           <motion.div variants={columnVariants}>
             <h4 className="text-sm font-semibold mb-3 uppercase tracking-wider">Policies</h4>
-            <ul className="space-y-1.5 text-orange-100 text-xs">
+            <ul className="space-y-1.5 text-[#fce5e0] text-xs">
               {POLICY_LINKS.map(({ label, to }) => (
                 <li key={to}>
                   <Link to={to} className="hover:text-white transition-colors">
@@ -176,7 +176,7 @@ const Footer = () => {
           {/* ── Contact ── */}
           <motion.div variants={columnVariants}>
             <h4 className="text-sm font-semibold mb-3 uppercase tracking-wider">Contact</h4>
-            <ul className="space-y-1.5 text-orange-100 text-xs">
+            <ul className="space-y-1.5 text-[#fce5e0] text-xs">
               <li>customercare@selvedgeatelier.com</li>
               <li>Mon – Fri, 9 am – 5 pm EST</li>
             </ul>
@@ -188,9 +188,9 @@ const Footer = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="pt-6 border-t border-white/20 text-center text-[11px] text-orange-200"
+          className="pt-6 border-t border-white/20 text-center text-[11px] text-[#f8cec7]"
         >
-          Copyright &copy; {new Date().getFullYear()} Selvedge Atelier. All Rights Reserved.
+          Copyright &copy; {new Date().getFullYear()} Atelierselvedge. All Rights Reserved.
         </motion.div>
       </div>
     </footer>

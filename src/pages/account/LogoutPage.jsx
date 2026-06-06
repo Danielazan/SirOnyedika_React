@@ -23,9 +23,9 @@ export default function LogoutPage() {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.45, type: 'spring', stiffness: 200 }}
-        className="w-20 h-20 rounded-full bg-orange-50 border-4 border-[#DA5605]/20 flex items-center justify-center mb-5"
+        className="w-20 h-20 rounded-full bg-[#fdf2f0] border-4 border-[#AE3E27]/20 flex items-center justify-center mb-5"
       >
-        <LogOut className="w-8 h-8 text-[#DA5605]" />
+        <LogOut className="w-8 h-8 text-[#AE3E27]" />
       </motion.div>
 
       {/* Heading */}
@@ -66,7 +66,7 @@ export default function LogoutPage() {
         <motion.button
           whileTap={{ scale: 0.97 }}
           onClick={handleLogout}
-          className="flex items-center gap-2 px-8 py-3 bg-[#DA5605] hover:bg-[#c04a04] text-white font-bold text-sm rounded-xl transition-all shadow-md"
+          className="flex items-center gap-2 px-8 py-3 bg-[#AE3E27] hover:bg-[#8f3320] text-white font-bold text-sm rounded-xl transition-all shadow-md"
         >
           <LogOut className="w-4 h-4" />
           Yes, Log Out

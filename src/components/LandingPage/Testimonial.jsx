@@ -114,7 +114,7 @@ const Testimonial = () => {
 
             {/* Right Arrow - Orange background */}
             <motion.button
-              className="w-12 h-12 flex items-center justify-center bg-orange-500 rounded-lg transition-all duration-300 hover:bg-orange-600"
+              className="w-12 h-12 flex items-center justify-center bg-[#AE3E27] rounded-lg transition-all duration-300 hover:bg-[#AE3E27]"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               aria-label="Next testimonial"
@@ -146,7 +146,7 @@ const Testimonial = () => {
 
               {/* Orange Quote Icon - Positioned to overlap the image */}
               <motion.div
-                className="absolute -top-3 -right-3 w-14 h-14 bg-orange-500 rounded-xl flex items-center justify-center shadow-lg"
+                className="absolute -top-3 -right-3 w-14 h-14 bg-[#AE3E27] rounded-xl flex items-center justify-center shadow-lg"
                 variants={quoteIconVariants}
               >
                 <Quote className="w-7 h-7 text-white fill-white" />

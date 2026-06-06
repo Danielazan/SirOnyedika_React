@@ -5,7 +5,7 @@ const TimeBox = ({ value, delay }) => (
     initial={{ opacity: 0, scale: 0.5, y: 10 }}
     animate={{ opacity: 1, scale: 1, y: 0 }}
     transition={{ duration: 0.4, delay, ease: "backOut" }}
-    className="bg-orange-500 text-white font-bold text-lg md:text-xl px-3 py-2 md:px-4 md:py-2.5 rounded-lg min-w-[40px] md:min-w-[48px] text-center shadow-sm"
+    className="bg-[#AE3E27] text-white font-bold text-lg md:text-xl px-3 py-2 md:px-4 md:py-2.5 rounded-lg min-w-[40px] md:min-w-[48px] text-center shadow-sm"
   >
     {value}
   </motion.div>
@@ -16,7 +16,7 @@ const Colon = ({ delay }) => (
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{ duration: 0.3, delay }}
-    className="text-orange-500 font-bold text-lg md:text-xl mx-1"
+    className="text-[#AE3E27] font-bold text-lg md:text-xl mx-1"
   >
     :
   </motion.span>

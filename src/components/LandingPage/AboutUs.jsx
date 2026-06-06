@@ -57,7 +57,7 @@ const AboutSection = () => {
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight font-[poppins]">
               About
             </h2>
-            <span className="text-2xl md:text-3xl font-bold text-orange-500">
+            <span className="text-2xl md:text-3xl font-bold text-[#AE3E27]">
               Us
             </span>
           </motion.div>
@@ -76,7 +76,7 @@ const AboutSection = () => {
             variants={slideFromLeft}
             className="relative"
           >
-            <div className="relative aspect-[4/5] md:aspect-[3/4] bg-orange-50/50 rounded-3xl overflow-hidden">
+            <div className="relative aspect-[4/5] md:aspect-[3/4] bg-[#fdf2f0]/50 rounded-3xl overflow-hidden">
               <motion.img
                 src={img}
                 alt="Fashion model in beige outfit"
@@ -102,7 +102,7 @@ const AboutSection = () => {
             {/* Heading */}
             <motion.h3 
               variants={slideFromRight}
-              className="text-xl md:text-2xl lg:text-4xl font-bold text-orange-500 leading-tight font-[poppins]"
+              className="text-xl md:text-2xl lg:text-4xl font-bold text-[#AE3E27] leading-tight font-[poppins]"
             >
               Designed for your
               <br />
@@ -134,7 +134,7 @@ const AboutSection = () => {
               <motion.button
                 whileHover={{ scale: 1.05, x: 5 }}
                 whileTap={{ scale: 0.95 }}
-                className="group inline-flex items-center gap-3 px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-lg shadow-orange-500/25 transition-all duration-200"
+                className="group inline-flex items-center gap-3 px-8 py-4 bg-[#AE3E27] hover:bg-[#AE3E27] text-white font-semibold rounded-lg shadow-lg shadow-orange-500/25 transition-all duration-200"
               >
                 <span>Explore our Story</span>
                 <motion.svg 

@@ -61,7 +61,7 @@
 // //             {/* Logo */}
 // //             <Link to="/" className="flex items-center gap-2.5">
 // //               <span className="font-['Pacifico'] text-3xl font-bold tracking-tight text-black">
-// //                 Fashly
+// //                 Atelierselvedge
 // //               </span>
 // //             </Link>
 
@@ -91,7 +91,7 @@
 // //               {/* Smart Login / Shop Button */}
 // //               <button
 // //                 onClick={handleAuthClick}
-// //                 className="w-32 h-10 rounded-2xl flex items-center justify-center text-white bg-[#DA5605] font-medium font-[Poppins] gap-2 px-4 hover:bg-[#c04a04] transition-all"
+// //                 className="w-32 h-10 rounded-2xl flex items-center justify-center text-white bg-[#AE3E27] font-medium font-[Poppins] gap-2 px-4 hover:bg-[#8f3320] transition-all"
 // //               >
 // //                 <User className="h-5 w-5" />
 // //                 {isAuthenticated ? 'Shop Now' : 'Login'}
@@ -133,7 +133,7 @@
 // //         className="fixed right-0 top-0 z-50 h-full w-4/5 max-w-sm bg-white shadow-2xl lg:hidden"
 // //       >
 // //         <div className="flex h-20 items-center justify-between px-6 border-b">
-// //           <span className="text-2xl font-bold text-gray-900 font-['Pacifico']">Fashly</span>
+// //           <span className="text-2xl font-bold text-gray-900 font-['Pacifico']">Atelierselvedge</span>
 // //           <button onClick={() => setIsMobileOpen(false)}>
 // //             <X className="h-7 w-7" />
 // //           </button>
@@ -240,7 +240,7 @@
 //             {/* Logo */}
 //             <Link to="/" className="flex items-center gap-2.5">
 //               <span className="font-['Pacifico'] text-3xl font-bold tracking-tight text-black">
-//                 Fashly
+//                 Atelierselvedge
 //               </span>
 //             </Link>
 
@@ -279,7 +279,7 @@
 //               {/* Smart Login / Shop Button - only minimal UI tweak (removed internal User icon + gap) to match the clean Login button in the updated image; all original logic untouched */}
 //               <button
 //                 onClick={handleAuthClick}
-//                 className="w-32 h-10 rounded-2xl flex items-center justify-center text-white bg-[#DA5605] font-medium font-[Poppins] px-4 hover:bg-[#c04a04] transition-all"
+//                 className="w-32 h-10 rounded-2xl flex items-center justify-center text-white bg-[#AE3E27] font-medium font-[Poppins] px-4 hover:bg-[#8f3320] transition-all"
 //               >
 //                 {isAuthenticated ? 'Shop Now' : 'Login'}
 //               </button>
@@ -320,7 +320,7 @@
 //         className="fixed right-0 top-0 z-50 h-full w-4/5 max-w-sm bg-white shadow-2xl lg:hidden"
 //       >
 //         <div className="flex h-20 items-center justify-between px-6 border-b">
-//           <span className="text-2xl font-bold text-gray-900 font-['Pacifico']">Fashly</span>
+//           <span className="text-2xl font-bold text-gray-900 font-['Pacifico']">Atelierselvedge</span>
 //           <button onClick={() => setIsMobileOpen(false)}>
 //             <X className="h-7 w-7" />
 //           </button>
@@ -451,7 +451,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2.5">
               <span className="font-['Pacifico'] text-3xl font-bold tracking-tight text-black">
-                Fashly
+                Atelierselvedge
               </span>
             </Link>
 
@@ -490,7 +490,7 @@ export default function Navbar() {
               {/* Smart Login / Shop Button (unchanged) */}
               <button
                 onClick={handleAuthClick}
-                className="w-32 h-10 rounded-2xl flex items-center justify-center text-white bg-[#DA5605] font-medium font-[Poppins] px-4 hover:bg-[#c04a04] transition-all"
+                className="w-32 h-10 rounded-2xl flex items-center justify-center text-white bg-[#AE3E27] font-medium font-[Poppins] px-4 hover:bg-[#8f3320] transition-all"
               >
                 {isAuthenticated ? 'Shop Now' : 'Login'}
               </button>
@@ -531,7 +531,7 @@ export default function Navbar() {
         className="fixed right-0 top-0 z-50 h-full w-4/5 max-w-sm bg-white shadow-2xl lg:hidden"
       >
         <div className="flex h-20 items-center justify-between px-6 border-b">
-          <span className="text-2xl font-bold text-gray-900 font-['Pacifico']">Fashly</span>
+          <span className="text-2xl font-bold text-gray-900 font-['Pacifico']">Atelierselvedge</span>
           <button onClick={() => setIsMobileOpen(false)}>
             <X className="h-7 w-7" />
           </button>

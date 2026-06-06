@@ -1,4 +1,3 @@
-
 // import { useState, useMemo, useEffect } from "react";
 // import { motion, AnimatePresence } from "framer-motion";
 // import { Truck, Tag, CreditCard, Headphones, ChevronRight } from "lucide-react";
@@ -170,13 +169,13 @@
 //         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">
 //           Shop
 //         </h1>
-//         <p className="mt-1 text-base font-semibold text-[#DA5605]">
+//         <p className="mt-1 text-base font-semibold text-[#AE3E27]">
 //           {activeCategory?.name ?? "Women"}
 //         </p>
 
 //         {/* Breadcrumb */}
 //         <nav className="mt-3 flex items-center justify-center gap-1 text-xs text-gray-500">
-//           <Link to="/" className="hover:text-[#DA5605] transition-colors">
+//           <Link to="/" className="hover:text-[#AE3E27] transition-colors">
 //             Home
 //           </Link>
 //           <ChevronRight className="w-3 h-3" />
@@ -184,7 +183,7 @@
 //           {activeCategory && (
 //             <>
 //               <ChevronRight className="w-3 h-3" />
-//               <span className="text-[#DA5605] font-medium">
+//               <span className="text-[#AE3E27] font-medium">
 //                 {activeCategory.name}
 //               </span>
 //             </>
@@ -217,7 +216,7 @@
 //                       onClick={() => handleCategoryChange(cat.slug)}
 //                       className={`relative flex-shrink-0 px-4 sm:px-5 py-4 text-sm font-medium transition-all duration-200 whitespace-nowrap ${
 //                         isActive
-//                           ? "text-[#DA5605]"
+//                           ? "text-[#AE3E27]"
 //                           : "text-gray-500 hover:text-gray-800"
 //                       }`}
 //                     >
@@ -226,7 +225,7 @@
 //                       {isActive && (
 //                         <motion.span
 //                           layoutId="category-underline"
-//                           className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#DA5605] rounded-full"
+//                           className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#AE3E27] rounded-full"
 //                         />
 //                       )}
 //                     </button>
@@ -323,8 +322,8 @@
 //                 variants={badgeItemVariants}
 //                 className="flex flex-col items-center text-center gap-2"
 //               >
-//                 <span className="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center">
-//                   <Icon className="w-5 h-5 text-[#DA5605]" />
+//                 <span className="w-10 h-10 rounded-full bg-[#fdf2f0] flex items-center justify-center">
+//                   <Icon className="w-5 h-5 text-[#AE3E27]" />
 //                 </span>
 //                 <p className="text-sm font-semibold text-gray-800">{label}</p>
 //                 <p className="text-xs text-gray-400 leading-snug">{sub}</p>
@@ -335,15 +334,15 @@
 //       </section>
 
 //       {/* ── Footer ─────────────────────────────────────────────────────── */}
-//       <footer className="bg-[#DA5605] text-white">
+//       <footer className="bg-[#AE3E27] text-white">
 //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 //           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 //             {/* Brand column */}
 //             <div className="lg:col-span-1">
 //               <span className="font-['Pacifico'] text-2xl font-bold">
-//                 Fashly
+//                 Atelierselvedge
 //               </span>
-//               <p className="mt-3 text-sm text-orange-100 leading-relaxed max-w-xs">
+//               <p className="mt-3 text-sm text-[#fce5e0] leading-relaxed max-w-xs">
 //                 Your one-stop destination for curated fashion, accessories, and
 //                 lifestyle products.
 //               </p>
@@ -363,7 +362,7 @@
 
 //             {/* Quick links */}
 //             <div>
-//               <h4 className="text-sm font-bold uppercase tracking-wider mb-4 text-orange-100">
+//               <h4 className="text-sm font-bold uppercase tracking-wider mb-4 text-[#fce5e0]">
 //                 Quick Links
 //               </h4>
 //               <ul className="space-y-2.5">
@@ -371,7 +370,7 @@
 //                   <li key={link}>
 //                     <a
 //                       href="#"
-//                       className="text-sm text-orange-100 hover:text-white transition-colors"
+//                       className="text-sm text-[#fce5e0] hover:text-white transition-colors"
 //                     >
 //                       {link}
 //                     </a>
@@ -382,7 +381,7 @@
 
 //             {/* Help */}
 //             <div>
-//               <h4 className="text-sm font-bold uppercase tracking-wider mb-4 text-orange-100">
+//               <h4 className="text-sm font-bold uppercase tracking-wider mb-4 text-[#fce5e0]">
 //                 Help
 //               </h4>
 //               <ul className="space-y-2.5">
@@ -390,7 +389,7 @@
 //                   <li key={link}>
 //                     <a
 //                       href="#"
-//                       className="text-sm text-orange-100 hover:text-white transition-colors"
+//                       className="text-sm text-[#fce5e0] hover:text-white transition-colors"
 //                     >
 //                       {link}
 //                     </a>
@@ -401,21 +400,21 @@
 
 //             {/* Contact info */}
 //             <div>
-//               <h4 className="text-sm font-bold uppercase tracking-wider mb-4 text-orange-100">
+//               <h4 className="text-sm font-bold uppercase tracking-wider mb-4 text-[#fce5e0]">
 //                 Contact Info
 //               </h4>
-//               <ul className="space-y-2.5 text-sm text-orange-100">
+//               <ul className="space-y-2.5 text-sm text-[#fce5e0]">
 //                 <li>123 Fashion Street, Lagos</li>
-//                 <li>+234 800 FASHLY</li>
-//                 <li>hello@fashly.com</li>
+//                 <li>+234 800 ATELIERSELVEDGE</li>
+//                 <li>hello@atelierselvedge.com</li>
 //                 <li>Mon – Fri, 9am – 6pm</li>
 //               </ul>
 //             </div>
 //           </div>
 
 //           {/* Copyright bar */}
-//           <div className="mt-10 pt-6 border-t border-white/20 text-center text-xs text-orange-100">
-//             © {new Date().getFullYear()} Fashly Website Design. All Rights
+//           <div className="mt-10 pt-6 border-t border-white/20 text-center text-xs text-[#fce5e0]">
+//             © {new Date().getFullYear()} Atelierselvedge Website Design. All Rights
 //             Reserved.
 //           </div>
 //         </div>
@@ -577,12 +576,12 @@
 //         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">
 //           Shop
 //         </h1>
-//         <p className="mt-1 text-base font-semibold text-[#DA5605]">
+//         <p className="mt-1 text-base font-semibold text-[#AE3E27]">
 //           {activeCategory?.name ?? "Women"}
 //         </p>
 
 //         <nav className="mt-3 flex items-center justify-center gap-1 text-xs text-gray-500">
-//           <Link to="/" className="hover:text-[#DA5605] transition-colors">
+//           <Link to="/" className="hover:text-[#AE3E27] transition-colors">
 //             Home
 //           </Link>
 //           <ChevronRight className="w-3 h-3" />
@@ -590,7 +589,7 @@
 //           {activeCategory && (
 //             <>
 //               <ChevronRight className="w-3 h-3" />
-//               <span className="text-[#DA5605] font-medium">
+//               <span className="text-[#AE3E27] font-medium">
 //                 {activeCategory.name}
 //               </span>
 //             </>
@@ -621,7 +620,7 @@
 //                       onClick={() => handleCategoryChange(cat.slug)}
 //                       className={`relative flex-shrink-0 px-4 sm:px-5 py-4 text-sm font-medium transition-all duration-200 whitespace-nowrap ${
 //                         isActive
-//                           ? "text-[#DA5605]"
+//                           ? "text-[#AE3E27]"
 //                           : "text-gray-500 hover:text-gray-800"
 //                       }`}
 //                     >
@@ -629,7 +628,7 @@
 //                       {isActive && (
 //                         <motion.span
 //                           layoutId="category-underline"
-//                           className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#DA5605] rounded-full"
+//                           className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#AE3E27] rounded-full"
 //                         />
 //                       )}
 //                     </button>
@@ -717,8 +716,8 @@
 //                 variants={badgeItemVariants}
 //                 className="flex flex-col items-center text-center gap-2"
 //               >
-//                 <span className="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center">
-//                   <Icon className="w-5 h-5 text-[#DA5605]" />
+//                 <span className="w-10 h-10 rounded-full bg-[#fdf2f0] flex items-center justify-center">
+//                   <Icon className="w-5 h-5 text-[#AE3E27]" />
 //                 </span>
 //                 <p className="text-sm font-semibold text-gray-800">{label}</p>
 //                 <p className="text-xs text-gray-400 leading-snug">{sub}</p>
@@ -728,14 +727,14 @@
 //         </div>
 //       </section>
 
-//       <footer className="bg-[#DA5605] text-white">
+//       <footer className="bg-[#AE3E27] text-white">
 //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 //           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 //             <div className="lg:col-span-1">
 //               <span className="font-['Pacifico'] text-2xl font-bold">
-//                 Fashly
+//                 Atelierselvedge
 //               </span>
-//               <p className="mt-3 text-sm text-orange-100 leading-relaxed max-w-xs">
+//               <p className="mt-3 text-sm text-[#fce5e0] leading-relaxed max-w-xs">
 //                 Your one-stop destination for curated fashion, accessories, and
 //                 lifestyle products.
 //               </p>
@@ -753,7 +752,7 @@
 //             </div>
 
 //             <div>
-//               <h4 className="text-sm font-bold uppercase tracking-wider mb-4 text-orange-100">
+//               <h4 className="text-sm font-bold uppercase tracking-wider mb-4 text-[#fce5e0]">
 //                 Quick Links
 //               </h4>
 //               <ul className="space-y-2.5">
@@ -761,7 +760,7 @@
 //                   <li key={link}>
 //                     <a
 //                       href="#"
-//                       className="text-sm text-orange-100 hover:text-white transition-colors"
+//                       className="text-sm text-[#fce5e0] hover:text-white transition-colors"
 //                     >
 //                       {link}
 //                     </a>
@@ -771,7 +770,7 @@
 //             </div>
 
 //             <div>
-//               <h4 className="text-sm font-bold uppercase tracking-wider mb-4 text-orange-100">
+//               <h4 className="text-sm font-bold uppercase tracking-wider mb-4 text-[#fce5e0]">
 //                 Help
 //               </h4>
 //               <ul className="space-y-2.5">
@@ -779,7 +778,7 @@
 //                   <li key={link}>
 //                     <a
 //                       href="#"
-//                       className="text-sm text-orange-100 hover:text-white transition-colors"
+//                       className="text-sm text-[#fce5e0] hover:text-white transition-colors"
 //                     >
 //                       {link}
 //                     </a>
@@ -789,20 +788,20 @@
 //             </div>
 
 //             <div>
-//               <h4 className="text-sm font-bold uppercase tracking-wider mb-4 text-orange-100">
+//               <h4 className="text-sm font-bold uppercase tracking-wider mb-4 text-[#fce5e0]">
 //                 Contact Info
 //               </h4>
-//               <ul className="space-y-2.5 text-sm text-orange-100">
+//               <ul className="space-y-2.5 text-sm text-[#fce5e0]">
 //                 <li>123 Fashion Street, Lagos</li>
-//                 <li>+234 800 FASHLY</li>
-//                 <li>hello@fashly.com</li>
+//                 <li>+234 800 ATELIERSELVEDGE</li>
+//                 <li>hello@atelierselvedge.com</li>
 //                 <li>Mon – Fri, 9am – 6pm</li>
 //               </ul>
 //             </div>
 //           </div>
 
-//           <div className="mt-10 pt-6 border-t border-white/20 text-center text-xs text-orange-100">
-//             © {new Date().getFullYear()} Fashly Website Design. All Rights
+//           <div className="mt-10 pt-6 border-t border-white/20 text-center text-xs text-[#fce5e0]">
+//             © {new Date().getFullYear()} Atelierselvedge Website Design. All Rights
 //             Reserved.
 //           </div>
 //         </div>
@@ -864,6 +863,8 @@ export default function ProductListingPage() {
     if (activeCategorySlug) params.categorySlug = activeCategorySlug;
     if (activeSubcategories.length === 1) {
       params.subcategorySlug = activeSubcategories[0];
+    } else if (activeSubcategories.length > 1) {
+      params.subcategorySlugs = activeSubcategories.join(',');
     }
     return params;
   }, [activeCategorySlug, activeSubcategories]);
@@ -895,12 +896,9 @@ export default function ProductListingPage() {
     });
   }, [rawProducts]);
 
-  const filteredProducts = useMemo(() => {
-    if (!products || !activeSubcategories.length) return products || [];
-    return products.filter((p) =>
-      activeSubcategories.includes(p.subcategorySlug),
-    );
-  }, [products, activeSubcategories]);
+  // Backend already filters by subcategorySlug/subcategorySlugs (including all descendants
+  // via getDescendantCategoryIds), so no client-side subcategory filter is needed.
+  const filteredProducts = products || [];
 
   const handleCategoryChange = (slug) => {
     setActiveCategorySlug(slug);
@@ -929,12 +927,12 @@ export default function ProductListingPage() {
         }}
       >
         <h1 className="text-[28px] font-bold text-gray-900 tracking-tight">Shop</h1>
-        <p className="mt-1 text-[15px] font-semibold text-[#DA5605]">
+        <p className="mt-1 text-[15px] font-semibold text-[#AE3E27]">
           {activeCategory?.name ?? "Men"}
         </p>
 
         <nav className="mt-2 flex items-center justify-center gap-1 text-[11px] text-gray-500">
-          <Link to="/" className="hover:text-[#DA5605] transition-colors">
+          <Link to="/" className="hover:text-[#AE3E27] transition-colors">
             Home
           </Link>
           <ChevronRight className="w-3 h-3" />
@@ -942,7 +940,7 @@ export default function ProductListingPage() {
           {activeCategory && (
             <>
               <ChevronRight className="w-3 h-3" />
-              <span className="text-[#DA5605] font-medium">
+              <span className="text-[#AE3E27] font-medium">
                 {activeCategory.name}
               </span>
             </>
@@ -969,7 +967,7 @@ export default function ProductListingPage() {
                       onClick={() => handleCategoryChange(cat.slug)}
                       className={`px-5 py-1.5 rounded-full text-[12px] font-medium border transition-all duration-200 ${
                         isActive
-                          ? "bg-[#DA5605] text-white border-[#DA5605]"
+                          ? "bg-[#AE3E27] text-white border-[#AE3E27]"
                           : "bg-white text-gray-700 border-gray-300 hover:border-gray-400"
                       }`}
                     >
@@ -993,18 +991,34 @@ export default function ProductListingPage() {
             {activeCategory?.children?.length > 0 ? (
               <div className="space-y-3">
                 {activeCategory.children.map((sub) => (
-                  <label
-                    key={sub.id}
-                    className="flex items-center gap-2.5 cursor-pointer"
-                  >
-                    <input
-                      type="checkbox"
-                      checked={activeSubcategories.includes(sub.slug)}
-                      onChange={() => handleSubcategoryToggle(sub.slug)}
-                      className="h-3.5 w-3.5 border border-gray-300 text-[#DA5605] focus:ring-[#DA5605] cursor-pointer rounded-none"
-                    />
-                    <span className="text-[13px] text-gray-700">{sub.name}</span>
-                  </label>
+                  <div key={sub.id}>
+                    <label className="flex items-center gap-2.5 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={activeSubcategories.includes(sub.slug)}
+                        onChange={() => handleSubcategoryToggle(sub.slug)}
+                        className="h-3.5 w-3.5 border border-gray-300 text-[#AE3E27] focus:ring-[#AE3E27] cursor-pointer rounded-none"
+                      />
+                      <span className="text-[13px] text-gray-700">{sub.name}</span>
+                    </label>
+
+                    {/* Level-3: show children nested under this level-2 item when it's checked */}
+                    {activeSubcategories.includes(sub.slug) && sub.children?.length > 0 && (
+                      <div className="mt-2 ml-5 space-y-2">
+                        {sub.children.map((child) => (
+                          <label key={child.id} className="flex items-center gap-2.5 cursor-pointer">
+                            <input
+                              type="checkbox"
+                              checked={activeSubcategories.includes(child.slug)}
+                              onChange={() => handleSubcategoryToggle(child.slug)}
+                              className="h-3.5 w-3.5 border border-gray-300 text-[#AE3E27] focus:ring-[#AE3E27] cursor-pointer rounded-none"
+                            />
+                            <span className="text-[12px] text-gray-600">{child.name}</span>
+                          </label>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
             ) : (
@@ -1059,7 +1073,7 @@ export default function ProductListingPage() {
                       onClick={() => {
                         console.log("Add to cart:", product);
                       }}
-                      className="w-full bg-[#DA5605] hover:bg-[#c04a04] text-white text-[10px] font-medium py-1.5 rounded transition-colors"
+                      className="w-full bg-[#AE3E27] hover:bg-[#8f3320] text-white text-[10px] font-medium py-1.5 rounded transition-colors"
                     >
                       Add to Cart
                     </button>
@@ -1077,7 +1091,7 @@ export default function ProductListingPage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {TRUST_BADGES.map(({ icon: Icon, label, sub }) => (
               <div key={label} className="flex items-start gap-2.5">
-                <Icon className="w-4 h-4 text-[#DA5605] flex-shrink-0 mt-0.5" />
+                <Icon className="w-4 h-4 text-[#AE3E27] flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="text-[13px] font-semibold text-gray-900">{label}</p>
                   <p className="text-[11px] text-gray-500 mt-0.5">{sub}</p>

@@ -36,12 +36,12 @@ export default function DataTable({
       <table className="w-full text-sm">
         {/* Table header — orange-tinted background matching design */}
         <thead>
-          <tr className="bg-[#3D2B1F]">
+          <tr className="bg-[#AE3E27]">
             {columns.map((col) => (
               <th
                 key={col.key}
                 className={[
-                  'px-4 py-3 text-left text-xs font-semibold text-orange-400 uppercase tracking-wider whitespace-nowrap',
+                  'px-4 py-3 text-left text-xs font-semibold text-[#AE3E27] uppercase tracking-wider whitespace-nowrap',
                   col.headerClassName ?? '',
                 ].join(' ')}
                 style={col.width ? { width: col.width } : {}}
@@ -83,7 +83,7 @@ export default function DataTable({
                   onClick={() => onRowClick?.(row)}
                   className={[
                     'border-t border-gray-50 bg-white',
-                    'hover:bg-orange-50/30 transition-colors duration-150',
+                    'hover:bg-[#fdf2f0]/30 transition-colors duration-150',
                     onRowClick ? 'cursor-pointer' : '',
                   ].join(' ')}
                 >

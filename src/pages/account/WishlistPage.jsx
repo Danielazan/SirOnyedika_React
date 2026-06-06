@@ -48,7 +48,7 @@ function WishlistCard({ item, index, onRemove }) {
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
         {variant.isOnSale && (
-          <span className="absolute top-2 left-2 bg-[#DA5605] text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+          <span className="absolute top-2 left-2 bg-[#AE3E27] text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
             Sale
           </span>
         )}
@@ -81,7 +81,7 @@ function WishlistCard({ item, index, onRemove }) {
           whileTap={{ scale: 0.96 }}
           onClick={handleAddToCart}
           className={`mt-auto w-full flex items-center justify-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-white rounded-lg py-2 transition-all ${
-            added ? 'bg-green-500' : 'bg-[#DA5605] hover:bg-[#c04a04]'
+            added ? 'bg-green-500' : 'bg-[#AE3E27] hover:bg-[#8f3320]'
           }`}
         >
           <ShoppingCart className="w-3.5 h-3.5" />
@@ -104,7 +104,7 @@ export default function WishlistPage() {
         className="flex items-center justify-between mb-5 pb-3 border-b border-gray-100"
       >
         <h2 className="text-base font-bold text-gray-900 flex items-center gap-2">
-          <Heart className="w-4 h-4 text-[#DA5605] fill-[#DA5605]" />
+          <Heart className="w-4 h-4 text-[#AE3E27] fill-[#AE3E27]" />
           Wishlist
           {!loading && items.length > 0 && (
             <span className="text-sm text-gray-400 font-normal">({items.length} items)</span>

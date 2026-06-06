@@ -71,7 +71,7 @@ export const VerifyCodeInput = ({ length = 6, onComplete, error }) => {
             className={`
               w-10 h-12 text-center text-lg font-semibold 
               border rounded-md bg-white
-              focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-600
+              focus:outline-none focus:ring-2 focus:ring-[#AE3E27]/20 focus:border-[#AE3E27]
               transition-all duration-200
               ${error ? 'border-red-500' : 'border-gray-300'}
             `}

@@ -84,7 +84,7 @@
 //       disabled={busy}
 //       className={[
 //         'relative w-10 h-5 rounded-full transition-colors duration-200 focus:outline-none',
-//         on ? 'bg-orange-500' : 'bg-gray-200',
+//         on ? 'bg-[#AE3E27]' : 'bg-gray-200',
 //         busy ? 'opacity-60 cursor-not-allowed' : '',
 //       ].join(' ')}
 //     >
@@ -156,7 +156,7 @@
 //           {row.image ? (
 //             <img src={resolveImageUrl(row.image)} alt={v} className="w-9 h-9 rounded-lg object-cover border border-gray-100 shrink-0" />
 //           ) : (
-//             <div className="w-9 h-9 rounded-lg bg-orange-50 flex items-center justify-center shrink-0 text-orange-400 text-xs font-bold">
+//             <div className="w-9 h-9 rounded-lg bg-[#fdf2f0] flex items-center justify-center shrink-0 text-[#AE3E27] text-xs font-bold">
 //               {v?.charAt(0)?.toUpperCase() || '?'}
 //             </div>
 //           )}
@@ -212,7 +212,7 @@
 //         <div className="flex items-center gap-2">
 //           <button
 //             onClick={() => navigate(`/admin/products/${v}/edit`)}
-//             className="flex items-center gap-1 text-xs text-orange-600 hover:text-orange-700 font-medium transition-colors"
+//             className="flex items-center gap-1 text-xs text-[#AE3E27] hover:text-[#8f3320] font-medium transition-colors"
 //           >
 //             <Pencil size={12} /> Edit
 //           </button>
@@ -263,7 +263,7 @@
 //               {/* All Categories option */}
 //               <button
 //                 onClick={() => handleCategory('All Categories')}
-//                 className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors"
+//                 className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-[#fdf2f0] hover:text-[#AE3E27] transition-colors"
 //               >
 //                 All Categories
 //               </button>
@@ -271,7 +271,7 @@
 //                 <button
 //                   key={cat.id}
 //                   onClick={() => handleCategory(cat.name)}
-//                   className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors"
+//                   className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-[#fdf2f0] hover:text-[#AE3E27] transition-colors"
 //                   style={{ paddingLeft: `${16 + (cat.depth ?? 0) * 12}px` }}
 //                 >
 //                   {cat.name}
@@ -285,7 +285,7 @@
 //         <button
 //           onClick={() => navigate('/admin/products/create')}
 //           className="ml-auto flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white
-//                      bg-orange-600 rounded-lg hover:bg-orange-700 transition-colors shadow-sm"
+//                      bg-[#AE3E27] rounded-lg hover:bg-[#8f3320] transition-colors shadow-sm"
 //         >
 //           <Plus size={16} />
 //           Add Product
@@ -429,7 +429,7 @@ function StatusToggle({ productId, active, onToggle }) {
       disabled={busy}
       className={[
         'relative w-11 h-6 rounded-full transition-colors duration-200 focus:outline-none',
-        on ? 'bg-orange-500' : 'bg-gray-300',
+        on ? 'bg-[#AE3E27]' : 'bg-gray-300',
         busy ? 'opacity-60 cursor-not-allowed' : '',
       ].join(' ')}
     >
@@ -452,7 +452,7 @@ function StockBadge({ qty, lowThreshold = 5 }) {
   }
   if (qty <= lowThreshold) {
     return (
-      <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-orange-50 text-orange-500">
+      <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-[#fdf2f0] text-[#AE3E27]">
         Low Stock: {qty}
       </span>
     );
@@ -491,7 +491,7 @@ function FilterDropdown({ label, value, options, open, setOpen, onSelect }) {
             <button
               key={opt.key || opt}
               onClick={() => { onSelect(opt); setOpen(false); }}
-              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors"
+              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-[#fdf2f0] hover:text-[#AE3E27] transition-colors"
             >
               {opt.label || opt}
             </button>
@@ -572,7 +572,7 @@ function CustomPagination({ page, pages, onChange }) {
               className={[
                 'w-9 h-9 rounded-full text-sm font-medium transition-colors',
                 num === page
-                  ? 'bg-orange-500 text-white'
+                  ? 'bg-[#AE3E27] text-white'
                   : 'text-gray-600 hover:bg-gray-100',
               ].join(' ')}
             >
@@ -703,8 +703,8 @@ export default function ProductsPage() {
           icon={Package}
           label="Total Products"
           value={stats.total}
-          iconBg="bg-orange-50"
-          iconColor="text-orange-500"
+          iconBg="bg-[#fdf2f0]"
+          iconColor="text-[#AE3E27]"
         />
         <StatCard
           icon={CheckCircle2}
@@ -733,8 +733,8 @@ export default function ProductsPage() {
             value={search}
             onChange={handleSearch}
             className="w-full pl-10 pr-4 py-2.5 text-sm bg-white border border-gray-200 rounded-full
-                       placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20
-                       focus:border-orange-500 transition-colors"
+                       placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#AE3E27]/20
+                       focus:border-[#AE3E27] transition-colors"
           />
         </div>
 
@@ -762,7 +762,7 @@ export default function ProductsPage() {
         <button
           onClick={() => navigate('/admin/products/create')}
           className="ml-auto flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white
-                     bg-orange-500 rounded-full hover:bg-orange-600 transition-colors shadow-sm"
+                     bg-[#AE3E27] rounded-full hover:bg-[#AE3E27] transition-colors shadow-sm"
         >
           <Plus size={16} />
           Add Product
@@ -778,29 +778,29 @@ export default function ProductsPage() {
           <table className="w-full">
             {/* Header */}
             <thead>
-              <tr className="bg-orange-50">
+              <tr className="bg-[#fdf2f0]">
                 <th className="px-4 py-3 text-left">
-                  <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500" />
+                  <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-[#AE3E27] focus:ring-[#AE3E27]" />
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-orange-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-semibold text-[#8f3320] uppercase tracking-wider">
                   Product
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-orange-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-semibold text-[#8f3320] uppercase tracking-wider">
                   Category
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-orange-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-semibold text-[#8f3320] uppercase tracking-wider">
                   Variants
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-orange-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-semibold text-[#8f3320] uppercase tracking-wider">
                   Amount
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-orange-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-semibold text-[#8f3320] uppercase tracking-wider">
                   Stock
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-orange-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-semibold text-[#8f3320] uppercase tracking-wider">
                   Status
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-orange-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-semibold text-[#8f3320] uppercase tracking-wider">
                   Action
                 </th>
               </tr>
@@ -833,7 +833,7 @@ export default function ProductsPage() {
                     <tr key={row.id} className="border-b border-gray-50 hover:bg-gray-50/50 transition-colors">
                       {/* Checkbox */}
                       <td className="px-4 py-4">
-                        <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500" />
+                        <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-[#AE3E27] focus:ring-[#AE3E27]" />
                       </td>
 
                       {/* Product */}
@@ -846,7 +846,7 @@ export default function ProductsPage() {
                               className="w-10 h-10 rounded-full object-cover border border-gray-100 shrink-0"
                             />
                           ) : (
-                            <div className="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center shrink-0 text-orange-400 text-xs font-bold">
+                            <div className="w-10 h-10 rounded-full bg-[#fdf2f0] flex items-center justify-center shrink-0 text-[#AE3E27] text-xs font-bold">
                               {row.name?.charAt(0)?.toUpperCase() || '?'}
                             </div>
                           )}
@@ -888,7 +888,7 @@ export default function ProductsPage() {
                         <div className="flex items-center gap-3">
                           <button
                             onClick={() => navigate(`/admin/products/${row.id}/edit`)}
-                            className="text-gray-400 hover:text-orange-500 transition-colors"
+                            className="text-gray-400 hover:text-[#AE3E27] transition-colors"
                           >
                             <Pencil size={16} />
                           </button>

@@ -36,7 +36,7 @@ const DotPattern = ({ className = '', delay = 0 }) => {
         <motion.div
           key={dot}
           variants={dotVariants}
-          className="w-1.5 h-1.5 rounded-full bg-orange-500/40"
+          className="w-1.5 h-1.5 rounded-full bg-[#AE3E27]/40"
         />
       ))}
     </motion.div>

@@ -34,7 +34,7 @@ export default function SubcategoryFilter({ selected, onChange }) {
               }}
               className="w-5 h-5 accent-orange-500 border-2 border-gray-300 rounded focus:ring-0"
             />
-            <span className="text-gray-700 group-hover:text-orange-500 transition-colors">
+            <span className="text-gray-700 group-hover:text-[#AE3E27] transition-colors">
               {item.name}
             </span>
           </motion.label>

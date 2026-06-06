@@ -12,7 +12,7 @@ function CustomTooltip({ active, payload }) {
   return (
     <div className="bg-white border border-gray-100 shadow-md rounded-lg px-3 py-1.5">
       <p className="text-xs font-medium text-gray-700">
-        {payload[0].name}: <span className="text-orange-600">{payload[0].value}%</span>
+        {payload[0].name}: <span className="text-[#AE3E27]">{payload[0].value}%</span>
       </p>
     </div>
   );

@@ -71,7 +71,7 @@ const FAQ = () => {
           variants={labelVariants}
           initial="hidden"
           animate="visible"
-          className="text-center text-orange-500 uppercase tracking-widest text-sm md:text-base font-medium mb-3"
+          className="text-center text-[#AE3E27] uppercase tracking-widest text-sm md:text-base font-medium mb-3"
         >
           FAQ
         </motion.p>

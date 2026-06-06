@@ -81,7 +81,7 @@
 
 //   // Keep browser tab title in sync
 //   useEffect(() => {
-//     if (page?.title) document.title = `${page.title} — Selvedge Atelier`;
+//     if (page?.title) document.title = `${page.title} — Atelierselvedge`;
 //   }, [page?.title]);
 
 //   return (
@@ -106,7 +106,7 @@
 //             </h1>
 //             {/* Decorative orange star — only shown when content is loaded */}
 //             {!loading && (
-//               <StarIcon className="w-7 h-7 text-orange-500 shrink-0 mt-1" />
+//               <StarIcon className="w-7 h-7 text-[#AE3E27] shrink-0 mt-1" />
 //             )}
 //           </div>
 //         </motion.div>
@@ -149,10 +149,10 @@
 //                 [&_strong]:font-semibold [&_strong]:text-gray-900
 //                 [&_em]:italic
 
-//                 [&_a]:text-orange-600 [&_a]:underline [&_a]:underline-offset-2
-//                 [&_a:hover]:text-orange-700
+//                 [&_a]:text-[#AE3E27] [&_a]:underline [&_a]:underline-offset-2
+//                 [&_a:hover]:text-[#8f3320]
 
-//                 [&_blockquote]:border-l-4 [&_blockquote]:border-orange-200
+//                 [&_blockquote]:border-l-4 [&_blockquote]:border-[#f8cec7]
 //                 [&_blockquote]:pl-5 [&_blockquote]:py-1 [&_blockquote]:my-4
 //                 [&_blockquote]:text-gray-600 [&_blockquote]:italic
 
@@ -320,7 +320,7 @@ export default function PolicyPage({ pageKey }) {
 
   // Keep browser tab title in sync
   useEffect(() => {
-    if (page?.title) document.title = `${page.title} — Selvedge Atelier`;
+    if (page?.title) document.title = `${page.title} — Atelierselvedge`;
   }, [page?.title]);
 
   // Sanitize content when page loads
@@ -350,7 +350,7 @@ export default function PolicyPage({ pageKey }) {
             </h1>
             {/* Decorative orange star — only shown when content is loaded */}
             {!loading && (
-              <StarIcon className="w-7 h-7 text-orange-500 shrink-0 mt-1" />
+              <StarIcon className="w-7 h-7 text-[#AE3E27] shrink-0 mt-1" />
             )}
           </div>
         </motion.div>

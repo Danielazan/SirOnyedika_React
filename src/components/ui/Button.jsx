@@ -2,9 +2,9 @@
 // import React from 'react';
 
 // const THEME = {
-//   primary: 'bg-orange-600 hover:bg-orange-700 focus:ring-orange-500 text-white',
+//   primary: 'bg-[#AE3E27] hover:bg-[#8f3320] focus:ring-[#AE3E27] text-white',
 //   secondary: 'bg-gray-200 hover:bg-gray-300 text-gray-800 focus:ring-gray-500',
-//   outline: 'border-2 border-orange-600 text-orange-600 hover:bg-orange-50',
+//   outline: 'border-2 border-[#AE3E27] text-[#AE3E27] hover:bg-[#fdf2f0]',
 //   danger: 'bg-red-600 hover:bg-red-700 focus:ring-red-500 text-white',
 // };
 
@@ -54,8 +54,8 @@
 // // export const Button = ({ children, className = '', variant = 'primary', ...props }) => {
 // //   const baseStyle = "px-6 py-2.5 rounded-full font-medium transition-all duration-300 flex items-center justify-center gap-2";
 // //   const variants = {
-// //     primary: "bg-[#D97706] hover:bg-[#B45309] text-white shadow-lg shadow-orange-500/30",
-// //     outline: "border-2 border-gray-200 hover:border-[#D97706] hover:text-[#D97706] text-gray-600 bg-white",
+// //     primary: "bg-[#AE3E27] hover:bg-[#8f3320] text-white shadow-lg shadow-orange-500/30",
+// //     outline: "border-2 border-gray-200 hover:border-[#AE3E27] hover:text-[#AE3E27] text-gray-600 bg-white",
 // //     ghost: "hover:bg-gray-100 text-gray-600"
 // //   };
 
@@ -89,11 +89,11 @@ import { Loader2 } from 'lucide-react';
 
 // ── Variant styles ────────────────────────────────────────────────────────────
 const VARIANTS = {
-  primary:   'bg-orange-600 hover:bg-orange-700 focus:ring-orange-500 text-white border border-orange-600 shadow-sm',
+  primary:   'bg-[#AE3E27] hover:bg-[#8f3320] focus:ring-[#AE3E27] text-white border border-[#AE3E27] shadow-sm',
   secondary: 'bg-gray-200   hover:bg-gray-300   focus:ring-gray-500   text-gray-800 border border-gray-200',
-  outline:   'bg-transparent hover:bg-orange-50 focus:ring-orange-500 text-orange-600 border-2 border-orange-600',
+  outline:   'bg-transparent hover:bg-[#fdf2f0] focus:ring-[#AE3E27] text-[#AE3E27] border-2 border-[#AE3E27]',
   danger:    'bg-red-600    hover:bg-red-700    focus:ring-red-500    text-white border border-red-600 shadow-sm',
-  ghost:     'bg-transparent hover:bg-orange-50 focus:ring-orange-400 text-orange-600 border border-transparent',
+  ghost:     'bg-transparent hover:bg-[#fdf2f0] focus:ring-[#AE3E27] text-[#AE3E27] border border-transparent',
 };
 
 // ── Size styles ───────────────────────────────────────────────────────────────

@@ -28,7 +28,7 @@ export default function ForbiddenPage() {
 
         <Link
           to="/admin"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-orange-600 text-white rounded-lg font-medium hover:bg-orange-700 transition-colors"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-[#AE3E27] text-white rounded-lg font-medium hover:bg-[#8f3320] transition-colors"
         >
           <ArrowLeft size={18} />
           Back to Dashboard

@@ -33,7 +33,7 @@ const COLUMNS = [
   {
     key: 'id',
     header: 'Order ID',
-    render: (v) => <span className="text-orange-600 font-medium text-xs">{v}</span>,
+    render: (v) => <span className="text-[#AE3E27] font-medium text-xs">{v}</span>,
   },
   {
     key: 'customer',
@@ -101,7 +101,7 @@ export default function OrdersPage() {
               className={[
                 'px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all duration-150',
                 activeTab === value
-                  ? 'bg-orange-600 text-white shadow-sm'
+                  ? 'bg-[#AE3E27] text-white shadow-sm'
                   : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50',
               ].join(' ')}
             >

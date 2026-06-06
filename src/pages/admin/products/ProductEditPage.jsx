@@ -29,8 +29,8 @@
 //   return (
 //     <motion.div variants={cardVariants} className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
 //       <div className="px-6 py-4 border-b border-gray-50 flex items-center gap-3">
-//         <span className="w-8 h-8 rounded-lg bg-orange-50 flex items-center justify-center shrink-0">
-//           <Icon size={16} className="text-orange-600" />
+//         <span className="w-8 h-8 rounded-lg bg-[#fdf2f0] flex items-center justify-center shrink-0">
+//           <Icon size={16} className="text-[#AE3E27]" />
 //         </span>
 //         <div>
 //           <h2 className="text-sm font-semibold text-gray-900">{title}</h2>
@@ -61,7 +61,7 @@
 //       {...props}
 //       className={[
 //         'w-full px-3.5 py-2.5 text-sm text-gray-900 bg-white border border-gray-200 rounded-xl',
-//         'placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500',
+//         'placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#AE3E27]/20 focus:border-[#AE3E27]',
 //         'transition-colors duration-150',
 //         props.disabled ? 'bg-gray-50 text-gray-400' : '',
 //         className,
@@ -76,7 +76,7 @@
 //       {...props}
 //       className={[
 //         'w-full px-3.5 py-2.5 text-sm text-gray-900 bg-white border border-gray-200 rounded-xl',
-//         'placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500',
+//         'placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#AE3E27]/20 focus:border-[#AE3E27]',
 //         'transition-colors resize-none',
 //         className,
 //       ].join(' ')}
@@ -109,7 +109,7 @@
 //         type="button"
 //         onClick={() => setOpen((v) => !v)}
 //         className="w-full flex items-center justify-between px-3.5 py-2.5 text-sm bg-white border border-gray-200
-//                    rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500
+//                    rounded-xl focus:outline-none focus:ring-2 focus:ring-[#AE3E27]/20 focus:border-[#AE3E27]
 //                    transition-colors text-left"
 //       >
 //         <span className={selectedNames.length ? 'text-gray-900' : 'text-gray-400'}>
@@ -125,14 +125,14 @@
 //               key={cat.id}
 //               type="button"
 //               onClick={() => toggle(cat.id)}
-//               className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm hover:bg-orange-50 transition-colors text-left"
+//               className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm hover:bg-[#fdf2f0] transition-colors text-left"
 //               style={{ paddingLeft: `${16 + cat.depth * 16}px` }}
 //             >
 //               <span className={['w-4 h-4 rounded border-2 flex items-center justify-center shrink-0 transition-colors',
-//                 selected.includes(cat.id) ? 'bg-orange-600 border-orange-600' : 'border-gray-300'].join(' ')}>
+//                 selected.includes(cat.id) ? 'bg-[#AE3E27] border-[#AE3E27]' : 'border-gray-300'].join(' ')}>
 //                 {selected.includes(cat.id) && <Check size={10} className="text-white" strokeWidth={3} />}
 //               </span>
-//               <span className={selected.includes(cat.id) ? 'text-orange-700 font-medium' : 'text-gray-700'}>{cat.name}</span>
+//               <span className={selected.includes(cat.id) ? 'text-[#8f3320] font-medium' : 'text-gray-700'}>{cat.name}</span>
 //             </button>
 //           ))}
 //         </div>
@@ -171,7 +171,7 @@
 //           ))}
 //           {newPreviews.map((src, i) => (
 //             <div key={i} className="relative group">
-//               <img src={src} alt="" className="w-16 h-16 object-cover rounded-lg border border-dashed border-orange-300" />
+//               <img src={src} alt="" className="w-16 h-16 object-cover rounded-lg border border-dashed border-[#d4877a]" />
 //               <button
 //                 type="button"
 //                 onClick={() => onRemoveNew(i)}
@@ -190,8 +190,8 @@
 //         onDragOver={(e) => e.preventDefault()}
 //         onDrop={(e) => { e.preventDefault(); handleFiles(e.dataTransfer.files); }}
 //         className="flex items-center gap-2.5 px-4 py-2.5 border-2 border-dashed border-gray-200
-//                    rounded-xl text-sm text-gray-500 hover:border-orange-400 hover:text-orange-600
-//                    hover:bg-orange-50 transition-all cursor-pointer w-full justify-center"
+//                    rounded-xl text-sm text-gray-500 hover:border-[#AE3E27] hover:text-[#AE3E27]
+//                    hover:bg-[#fdf2f0] transition-all cursor-pointer w-full justify-center"
 //       >
 //         <ImagePlus size={16} /><span>Add images</span>
 //       </button>
@@ -219,10 +219,10 @@
 //   };
 
 //   return (
-//     <div className={['border rounded-xl p-5 space-y-5', isNew ? 'border-orange-200 bg-orange-50/30' : 'border-gray-200 bg-gray-50/50'].join(' ')}>
+//     <div className={['border rounded-xl p-5 space-y-5', isNew ? 'border-[#f8cec7] bg-[#fdf2f0]/30' : 'border-gray-200 bg-gray-50/50'].join(' ')}>
 //       <div className="flex items-center justify-between">
 //         <span className={['text-xs font-semibold px-2.5 py-1 rounded-full',
-//           isNew ? 'text-orange-600 bg-orange-100' : 'text-gray-500 bg-gray-100'].join(' ')}>
+//           isNew ? 'text-[#AE3E27] bg-[#fce5e0]' : 'text-gray-500 bg-gray-100'].join(' ')}>
 //           {isNew ? 'New Variant' : `Variant ${index + 1}`}
 //         </span>
 //         {canDelete && (
@@ -257,7 +257,7 @@
 //         <button
 //           type="button"
 //           onClick={() => update('isOnSale', !variant.isOnSale)}
-//           className={['relative w-10 h-5 rounded-full transition-colors duration-200', variant.isOnSale ? 'bg-orange-500' : 'bg-gray-200'].join(' ')}
+//           className={['relative w-10 h-5 rounded-full transition-colors duration-200', variant.isOnSale ? 'bg-[#AE3E27]' : 'bg-gray-200'].join(' ')}
 //         >
 //           <span className={['absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white shadow transition-transform duration-200', variant.isOnSale ? 'translate-x-5' : 'translate-x-0'].join(' ')} />
 //         </button>
@@ -268,7 +268,7 @@
 //       <div>
 //         <div className="flex items-center justify-between mb-2">
 //           <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Attributes</span>
-//           <button type="button" onClick={addAttr} className="text-xs text-orange-600 hover:text-orange-700 font-medium flex items-center gap-1"><Plus size={12} /> Add</button>
+//           <button type="button" onClick={addAttr} className="text-xs text-[#AE3E27] hover:text-[#8f3320] font-medium flex items-center gap-1"><Plus size={12} /> Add</button>
 //         </div>
 //         <div className="space-y-2">
 //           {(variant.attributes || []).map((attr, i) => (
@@ -510,7 +510,7 @@
 //               <button
 //                 type="button"
 //                 onClick={() => setIsActive((v) => !v)}
-//                 className={['relative w-11 h-6 rounded-full transition-colors duration-200', isActive ? 'bg-orange-500' : 'bg-gray-200'].join(' ')}
+//                 className={['relative w-11 h-6 rounded-full transition-colors duration-200', isActive ? 'bg-[#AE3E27]' : 'bg-gray-200'].join(' ')}
 //               >
 //                 <span className={['absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform duration-200', isActive ? 'translate-x-5' : 'translate-x-0'].join(' ')} />
 //               </button>
@@ -543,8 +543,8 @@
 //               type="button"
 //               onClick={addVariant}
 //               className="w-full flex items-center justify-center gap-2 py-3 border-2 border-dashed border-gray-200
-//                          rounded-xl text-sm text-gray-500 hover:border-orange-400 hover:text-orange-600
-//                          hover:bg-orange-50 transition-all font-medium"
+//                          rounded-xl text-sm text-gray-500 hover:border-[#AE3E27] hover:text-[#AE3E27]
+//                          hover:bg-[#fdf2f0] transition-all font-medium"
 //             >
 //               <Plus size={16} />Add Another Variant
 //             </button>
@@ -564,7 +564,7 @@
 //             type="submit"
 //             disabled={submitting}
 //             className="flex items-center gap-2 px-6 py-2.5 text-sm font-semibold text-white
-//                        bg-orange-600 rounded-xl hover:bg-orange-700 transition-colors
+//                        bg-[#AE3E27] rounded-xl hover:bg-[#8f3320] transition-colors
 //                        disabled:opacity-60 disabled:cursor-not-allowed shadow-sm"
 //           >
 //             {submitting ? (
@@ -627,8 +627,8 @@ function SectionCard({ icon: Icon, title, subtitle, children }) {
   return (
     <motion.div variants={cardVariants} className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
       <div className="px-6 py-4 border-b border-gray-50 flex items-center gap-3">
-        <span className="w-8 h-8 rounded-lg bg-orange-50 flex items-center justify-center shrink-0">
-          <Icon size={16} className="text-orange-600" />
+        <span className="w-8 h-8 rounded-lg bg-[#fdf2f0] flex items-center justify-center shrink-0">
+          <Icon size={16} className="text-[#AE3E27]" />
         </span>
         <div>
           <h2 className="text-sm font-semibold text-gray-900">{title}</h2>
@@ -659,7 +659,7 @@ function StyledInput({ className = '', ...props }) {
       {...props}
       className={[
         'w-full px-3.5 py-2.5 text-sm text-gray-900 bg-white border border-gray-200 rounded-xl',
-        'placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500',
+        'placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#AE3E27]/20 focus:border-[#AE3E27]',
         'transition-colors duration-150',
         props.disabled ? 'bg-gray-50 text-gray-400' : '',
         className,
@@ -674,7 +674,7 @@ function StyledTextarea({ className = '', ...props }) {
       {...props}
       className={[
         'w-full px-3.5 py-2.5 text-sm text-gray-900 bg-white border border-gray-200 rounded-xl',
-        'placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500',
+        'placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#AE3E27]/20 focus:border-[#AE3E27]',
         'transition-colors resize-none',
         className,
       ].join(' ')}
@@ -707,7 +707,7 @@ function CategorySelect({ categories, selected, onChange }) {
         type="button"
         onClick={() => setOpen((v) => !v)}
         className="w-full flex items-center justify-between px-3.5 py-2.5 text-sm bg-white border border-gray-200
-                   rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500
+                   rounded-xl focus:outline-none focus:ring-2 focus:ring-[#AE3E27]/20 focus:border-[#AE3E27]
                    transition-colors text-left"
       >
         <span className={selectedNames.length ? 'text-gray-900' : 'text-gray-400'}>
@@ -723,14 +723,14 @@ function CategorySelect({ categories, selected, onChange }) {
               key={cat.id}
               type="button"
               onClick={() => toggle(cat.id)}
-              className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm hover:bg-orange-50 transition-colors text-left"
+              className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm hover:bg-[#fdf2f0] transition-colors text-left"
               style={{ paddingLeft: `${16 + cat.depth * 16}px` }}
             >
               <span className={['w-4 h-4 rounded border-2 flex items-center justify-center shrink-0 transition-colors',
-                selected.includes(cat.id) ? 'bg-orange-600 border-orange-600' : 'border-gray-300'].join(' ')}>
+                selected.includes(cat.id) ? 'bg-[#AE3E27] border-[#AE3E27]' : 'border-gray-300'].join(' ')}>
                 {selected.includes(cat.id) && <Check size={10} className="text-white" strokeWidth={3} />}
               </span>
-              <span className={selected.includes(cat.id) ? 'text-orange-700 font-medium' : 'text-gray-700'}>{cat.name}</span>
+              <span className={selected.includes(cat.id) ? 'text-[#8f3320] font-medium' : 'text-gray-700'}>{cat.name}</span>
             </button>
           ))}
         </div>
@@ -773,7 +773,7 @@ function VariantImageManager({ existingImages = [], newPreviews = [], onDeleteEx
           ))}
           {newPreviews.map((src, i) => (
             <div key={i} className="relative group">
-              <img src={src} alt="" className="w-16 h-16 object-cover rounded-lg border border-dashed border-orange-300" />
+              <img src={src} alt="" className="w-16 h-16 object-cover rounded-lg border border-dashed border-[#d4877a]" />
               <button
                 type="button"
                 onClick={() => onRemoveNew(i)}
@@ -792,8 +792,8 @@ function VariantImageManager({ existingImages = [], newPreviews = [], onDeleteEx
         onDragOver={(e) => e.preventDefault()}
         onDrop={(e) => { e.preventDefault(); handleFiles(e.dataTransfer.files); }}
         className="flex items-center gap-2.5 px-4 py-2.5 border-2 border-dashed border-gray-200
-                   rounded-xl text-sm text-gray-500 hover:border-orange-400 hover:text-orange-600
-                   hover:bg-orange-50 transition-all cursor-pointer w-full justify-center"
+                   rounded-xl text-sm text-gray-500 hover:border-[#AE3E27] hover:text-[#AE3E27]
+                   hover:bg-[#fdf2f0] transition-all cursor-pointer w-full justify-center"
       >
         <ImagePlus size={16} /><span>Add images</span>
       </button>
@@ -821,10 +821,10 @@ function VariantEditCard({ variant, index, onChange, onDelete, isNew, canDelete 
   };
 
   return (
-    <div className={['border rounded-xl p-5 space-y-5', isNew ? 'border-orange-200 bg-orange-50/30' : 'border-gray-200 bg-gray-50/50'].join(' ')}>
+    <div className={['border rounded-xl p-5 space-y-5', isNew ? 'border-[#f8cec7] bg-[#fdf2f0]/30' : 'border-gray-200 bg-gray-50/50'].join(' ')}>
       <div className="flex items-center justify-between">
         <span className={['text-xs font-semibold px-2.5 py-1 rounded-full',
-          isNew ? 'text-orange-600 bg-orange-100' : 'text-gray-500 bg-gray-100'].join(' ')}>
+          isNew ? 'text-[#AE3E27] bg-[#fce5e0]' : 'text-gray-500 bg-gray-100'].join(' ')}>
           {isNew ? 'New Variant' : `Variant ${index + 1}`}
         </span>
         {canDelete && (
@@ -859,7 +859,7 @@ function VariantEditCard({ variant, index, onChange, onDelete, isNew, canDelete 
         <button
           type="button"
           onClick={() => update('isOnSale', !variant.isOnSale)}
-          className={['relative w-10 h-5 rounded-full transition-colors duration-200', variant.isOnSale ? 'bg-orange-500' : 'bg-gray-200'].join(' ')}
+          className={['relative w-10 h-5 rounded-full transition-colors duration-200', variant.isOnSale ? 'bg-[#AE3E27]' : 'bg-gray-200'].join(' ')}
         >
           <span className={['absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white shadow transition-transform duration-200', variant.isOnSale ? 'translate-x-5' : 'translate-x-0'].join(' ')} />
         </button>
@@ -870,7 +870,7 @@ function VariantEditCard({ variant, index, onChange, onDelete, isNew, canDelete 
       <div>
         <div className="flex items-center justify-between mb-2">
           <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Attributes</span>
-          <button type="button" onClick={addAttr} className="text-xs text-orange-600 hover:text-orange-700 font-medium flex items-center gap-1"><Plus size={12} /> Add</button>
+          <button type="button" onClick={addAttr} className="text-xs text-[#AE3E27] hover:text-[#8f3320] font-medium flex items-center gap-1"><Plus size={12} /> Add</button>
         </div>
         <div className="space-y-2">
           {(variant.attributes || []).map((attr, i) => (
@@ -1112,7 +1112,7 @@ export default function ProductEditPage() {
               <button
                 type="button"
                 onClick={() => setIsActive((v) => !v)}
-                className={['relative w-11 h-6 rounded-full transition-colors duration-200', isActive ? 'bg-orange-500' : 'bg-gray-200'].join(' ')}
+                className={['relative w-11 h-6 rounded-full transition-colors duration-200', isActive ? 'bg-[#AE3E27]' : 'bg-gray-200'].join(' ')}
               >
                 <span className={['absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform duration-200', isActive ? 'translate-x-5' : 'translate-x-0'].join(' ')} />
               </button>
@@ -1145,8 +1145,8 @@ export default function ProductEditPage() {
               type="button"
               onClick={addVariant}
               className="w-full flex items-center justify-center gap-2 py-3 border-2 border-dashed border-gray-200
-                         rounded-xl text-sm text-gray-500 hover:border-orange-400 hover:text-orange-600
-                         hover:bg-orange-50 transition-all font-medium"
+                         rounded-xl text-sm text-gray-500 hover:border-[#AE3E27] hover:text-[#AE3E27]
+                         hover:bg-[#fdf2f0] transition-all font-medium"
             >
               <Plus size={16} />Add Another Variant
             </button>
@@ -1166,7 +1166,7 @@ export default function ProductEditPage() {
             type="submit"
             disabled={submitting}
             className="flex items-center gap-2 px-6 py-2.5 text-sm font-semibold text-white
-                       bg-orange-600 rounded-xl hover:bg-orange-700 transition-colors
+                       bg-[#AE3E27] rounded-xl hover:bg-[#8f3320] transition-colors
                        disabled:opacity-60 disabled:cursor-not-allowed shadow-sm"
           >
             {submitting ? (

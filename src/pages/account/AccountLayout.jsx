@@ -83,7 +83,7 @@ export default function AccountLayout({ children }) {
               to={href}
               className={`flex-shrink-0 flex flex-col items-center gap-1 px-3 py-3 text-[11px] font-medium transition-colors border-b-2 ${
                 isActive(href)
-                  ? 'border-[#DA5605] text-[#DA5605]'
+                  ? 'border-[#AE3E27] text-[#AE3E27]'
                   : 'border-transparent text-gray-500'
               }`}
             >
@@ -113,7 +113,7 @@ export default function AccountLayout({ children }) {
             className="hidden lg:flex flex-col w-56 flex-shrink-0 bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 sticky top-28"
           >
             {/* Avatar + name */}
-            <div className="bg-[#DA5605] px-5 py-6 flex items-center gap-3">
+            <div className="bg-[#AE3E27] px-5 py-6 flex items-center gap-3">
               <div className="w-12 h-12 rounded-full bg-white/30 flex items-center justify-center overflow-hidden flex-shrink-0 border-2 border-white/50">
                 {user?.avatarUrl ? (
                   <img src={user.avatarUrl} alt="avatar" className="w-full h-full object-cover" />
@@ -123,7 +123,7 @@ export default function AccountLayout({ children }) {
               </div>
               <div className="min-w-0">
                 <p className="text-white font-semibold text-sm truncate">{user?.name ?? 'My Account'}</p>
-                <p className="text-orange-100 text-xs truncate">{user?.email ?? ''}</p>
+                <p className="text-[#fce5e0] text-xs truncate">{user?.email ?? ''}</p>
               </div>
             </div>
 
@@ -135,11 +135,11 @@ export default function AccountLayout({ children }) {
                   to={href}
                   className={`flex items-center gap-3 px-5 py-3 text-sm font-medium transition-all group ${
                     isActive(href)
-                      ? 'bg-[#DA5605] text-white'
-                      : 'text-gray-700 hover:bg-orange-50 hover:text-[#DA5605]'
+                      ? 'bg-[#AE3E27] text-white'
+                      : 'text-gray-700 hover:bg-[#fdf2f0] hover:text-[#AE3E27]'
                   }`}
                 >
-                  <Icon className={`w-4 h-4 flex-shrink-0 ${isActive(href) ? 'text-white' : 'text-gray-400 group-hover:text-[#DA5605]'}`} />
+                  <Icon className={`w-4 h-4 flex-shrink-0 ${isActive(href) ? 'text-white' : 'text-gray-400 group-hover:text-[#AE3E27]'}`} />
                   <span>{label}</span>
                   {isActive(href) && <ChevronRight className="w-3.5 h-3.5 ml-auto" />}
                 </Link>
@@ -188,8 +188,8 @@ export default function AccountLayout({ children }) {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
             {TRUST_BADGES.map(({ icon: Icon, label, sub }) => (
               <div key={label} className="flex flex-col items-center text-center gap-2">
-                <span className="w-9 h-9 rounded-full bg-orange-50 flex items-center justify-center">
-                  <Icon className="w-4 h-4 text-[#DA5605]" />
+                <span className="w-9 h-9 rounded-full bg-[#fdf2f0] flex items-center justify-center">
+                  <Icon className="w-4 h-4 text-[#AE3E27]" />
                 </span>
                 <p className="text-sm font-semibold text-gray-800">{label}</p>
                 <p className="text-xs text-gray-400">{sub}</p>
@@ -200,12 +200,12 @@ export default function AccountLayout({ children }) {
       </section>
 
       {/* ── Footer ── */}
-      <footer className="bg-[#DA5605] text-white">
+      <footer className="bg-[#AE3E27] text-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <div>
-              <span className="font-['Pacifico'] text-2xl font-bold">Fashly</span>
-              <p className="mt-3 text-sm text-orange-100 leading-relaxed">
+              <span className="font-['Pacifico'] text-2xl font-bold">Atelierselvedge</span>
+              <p className="mt-3 text-sm text-[#fce5e0] leading-relaxed">
                 Your one-stop destination for curated fashion and lifestyle products.
               </p>
               <div className="flex gap-3 mt-4">
@@ -215,28 +215,28 @@ export default function AccountLayout({ children }) {
               </div>
             </div>
             <div>
-              <h4 className="text-sm font-bold uppercase tracking-wider mb-4 text-orange-100">Quick Links</h4>
+              <h4 className="text-sm font-bold uppercase tracking-wider mb-4 text-[#fce5e0]">Quick Links</h4>
               <ul className="space-y-2">
-                {FOOTER_QUICK.map((l) => <li key={l}><a href="#" className="text-sm text-orange-100 hover:text-white transition-colors">{l}</a></li>)}
+                {FOOTER_QUICK.map((l) => <li key={l}><a href="#" className="text-sm text-[#fce5e0] hover:text-white transition-colors">{l}</a></li>)}
               </ul>
             </div>
             <div>
-              <h4 className="text-sm font-bold uppercase tracking-wider mb-4 text-orange-100">Help</h4>
+              <h4 className="text-sm font-bold uppercase tracking-wider mb-4 text-[#fce5e0]">Help</h4>
               <ul className="space-y-2">
-                {FOOTER_HELP.map((l) => <li key={l}><a href="#" className="text-sm text-orange-100 hover:text-white transition-colors">{l}</a></li>)}
+                {FOOTER_HELP.map((l) => <li key={l}><a href="#" className="text-sm text-[#fce5e0] hover:text-white transition-colors">{l}</a></li>)}
               </ul>
             </div>
             <div>
-              <h4 className="text-sm font-bold uppercase tracking-wider mb-4 text-orange-100">Contact Info</h4>
-              <ul className="space-y-2 text-sm text-orange-100">
+              <h4 className="text-sm font-bold uppercase tracking-wider mb-4 text-[#fce5e0]">Contact Info</h4>
+              <ul className="space-y-2 text-sm text-[#fce5e0]">
                 <li>123 Fashion Street, Lagos</li>
-                <li>+234 800 FASHLY</li>
-                <li>hello@fashly.com</li>
+                <li>+234 800 ATELIERSELVEDGE</li>
+                <li>hello@atelierselvedge.com</li>
               </ul>
             </div>
           </div>
-          <div className="mt-8 pt-5 border-t border-white/20 text-center text-xs text-orange-100">
-            © {new Date().getFullYear()} Fashly Website Design. All Rights Reserved.
+          <div className="mt-8 pt-5 border-t border-white/20 text-center text-xs text-[#fce5e0]">
+            © {new Date().getFullYear()} Atelierselvedge Website Design. All Rights Reserved.
           </div>
         </div>
       </footer>

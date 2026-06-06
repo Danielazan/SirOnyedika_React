@@ -21,10 +21,10 @@ import { containerVariants, itemVariants } from '../../../utils/animation';
 
 // ── Mini stat cards config ───────────────────────────────────────────────────
 const STAT_CARDS = [
-  { key: 'total',        label: 'Total Customers', icon: Users,       iconColor: 'text-orange-500' },
-  { key: 'vip',          label: 'VIP Members',     icon: Crown,       iconColor: 'text-orange-500' },
-  { key: 'active',       label: 'Active',          icon: UserCheck,   iconColor: 'text-orange-500' },
-  { key: 'newThisMonth', label: 'New this Month',  icon: UserPlus,    iconColor: 'text-orange-500', valueColor: 'text-orange-600' },
+  { key: 'total',        label: 'Total Customers', icon: Users,       iconColor: 'text-[#AE3E27]' },
+  { key: 'vip',          label: 'VIP Members',     icon: Crown,       iconColor: 'text-[#AE3E27]' },
+  { key: 'active',       label: 'Active',          icon: UserCheck,   iconColor: 'text-[#AE3E27]' },
+  { key: 'newThisMonth', label: 'New this Month',  icon: UserPlus,    iconColor: 'text-[#AE3E27]', valueColor: 'text-[#AE3E27]' },
 ];
 
 const STATUS_OPTIONS = ['All', 'Active', 'VIP', 'New', 'Inactive'];
@@ -110,7 +110,7 @@ export default function CustomersPage() {
             variants={itemVariants}
             className="bg-white rounded-xl border border-gray-100 shadow-sm p-4 flex items-center gap-3"
           >
-            <div className="w-10 h-10 rounded-lg bg-orange-50 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-lg bg-[#fdf2f0] flex items-center justify-center shrink-0">
               <Icon size={18} className={iconColor} />
             </div>
             <div>
@@ -150,7 +150,7 @@ export default function CustomersPage() {
                 <button
                   key={opt}
                   onClick={() => handleStatus(opt)}
-                  className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors"
+                  className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-[#fdf2f0] hover:text-[#AE3E27] transition-colors"
                 >
                   {opt}
                 </button>

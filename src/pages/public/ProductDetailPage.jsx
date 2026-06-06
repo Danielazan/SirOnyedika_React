@@ -75,7 +75,7 @@ function ImageGallery({ variant, productName }) {
               onClick={() => setActiveIndex(i)}
               className={`w-12 h-12 rounded-lg overflow-hidden border-2 flex-shrink-0 transition-all ${
                 i === activeIndex
-                  ? 'border-[#DA5605]'
+                  ? 'border-[#AE3E27]'
                   : 'border-gray-200 hover:border-gray-300'
               }`}
             >
@@ -109,7 +109,7 @@ function VariantThumbnails({ variants, selectedVariant, onSelect }) {
             onClick={() => onSelect(variant)}
             className={`w-12 h-12 rounded-lg overflow-hidden border-2 flex-shrink-0 transition-all ${
               isActive
-                ? 'border-[#DA5605] ring-1 ring-[#DA5605]'
+                ? 'border-[#AE3E27] ring-1 ring-[#AE3E27]'
                 : 'border-gray-200 hover:border-gray-300 opacity-70 hover:opacity-100'
             }`}
             title={variant.name}
@@ -132,7 +132,7 @@ function VariantSelector({ variants, selected, onSelect }) {
     <div className="space-y-2">
       <div className="flex items-center justify-between">
         <p className="text-[11px] font-semibold text-gray-900 uppercase tracking-wide">SIZE</p>
-        <button className="text-[11px] text-gray-500 hover:text-[#DA5605] transition-colors">Size Guide</button>
+        <button className="text-[11px] text-gray-500 hover:text-[#AE3E27] transition-colors">Size Guide</button>
       </div>
       <div className="flex flex-wrap gap-2">
         {variants.map((v) => {
@@ -143,7 +143,7 @@ function VariantSelector({ variants, selected, onSelect }) {
               onClick={() => onSelect(v)}
               className={`min-w-[32px] h-8 px-2 rounded-md text-[11px] font-medium border transition-all flex items-center justify-center whitespace-nowrap ${
                 isActive
-                  ? 'border-[#DA5605] text-[#DA5605]'
+                  ? 'border-[#AE3E27] text-[#AE3E27]'
                   : 'border-gray-300 text-gray-700 hover:border-gray-400'
               }`}
             >
@@ -191,7 +191,7 @@ function FeaturesRow() {
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-8">
       {items.map(({ icon: Icon, title, desc }) => (
         <div key={title} className="flex flex-col items-center text-center gap-1.5">
-          <Icon size={18} className="text-[#DA5605]" strokeWidth={1.5} />
+          <Icon size={18} className="text-[#AE3E27]" strokeWidth={1.5} />
           <div>
             <p className="text-[11px] font-semibold text-gray-900">{title}</p>
             <p className="text-[10px] text-gray-500 mt-0.5">{desc}</p>
@@ -237,7 +237,7 @@ export default function ProductDetailPage() {
         <Navbar />
         <div className="bg-[#FDF6EC] py-14">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="h-7 bg-orange-200/30 rounded w-48 mx-auto animate-pulse" />
+            <div className="h-7 bg-[#f8cec7]/30 rounded w-48 mx-auto animate-pulse" />
           </div>
         </div>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -266,7 +266,7 @@ export default function ProductDetailPage() {
           <p className="text-gray-500 text-sm">Product not found.</p>
           <button
             onClick={() => navigate('/shop')}
-            className="mt-3 px-4 py-2 bg-[#DA5605] text-white rounded-full text-xs font-semibold hover:bg-[#c04a04] transition-colors"
+            className="mt-3 px-4 py-2 bg-[#AE3E27] text-white rounded-full text-xs font-semibold hover:bg-[#8f3320] transition-colors"
           >
             Back to Shop
           </button>
@@ -328,7 +328,7 @@ export default function ProductDetailPage() {
               <h1 className="text-lg md:text-xl font-bold text-gray-900">{product.name}</h1>
 
               <div className="flex items-baseline gap-2">
-                <span className="text-xl md:text-2xl font-bold text-[#DA5605]">
+                <span className="text-xl md:text-2xl font-bold text-[#AE3E27]">
                   {formatCurrency(displayPrice)}
                 </span>
                 {isOnSale && price > 0 && (
@@ -366,7 +366,7 @@ export default function ProductDetailPage() {
 
                 <motion.button
                   whileTap={{ scale: 0.97 }}
-                  className="h-8 px-5 rounded-md text-xs font-semibold border border-gray-300 text-gray-700 hover:border-[#DA5605] hover:text-[#DA5605] transition-all"
+                  className="h-8 px-5 rounded-md text-xs font-semibold border border-gray-300 text-gray-700 hover:border-[#AE3E27] hover:text-[#AE3E27] transition-all"
                 >
                   BUY
                 </motion.button>
@@ -380,7 +380,7 @@ export default function ProductDetailPage() {
                       ? 'bg-green-500 text-white'
                       : stockQty === 0
                       ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                      : 'bg-[#DA5605] text-white hover:bg-[#c04a04]'
+                      : 'bg-[#AE3E27] text-white hover:bg-[#8f3320]'
                   }`}
                 >
                   {added ? (
@@ -398,15 +398,15 @@ export default function ProductDetailPage() {
                   onClick={() => setWishlisted((w) => !w)}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md border text-xs font-medium transition-all ${
                     wishlisted
-                      ? 'border-[#DA5605] bg-orange-50 text-[#DA5605]'
-                      : 'border-gray-300 text-gray-600 hover:border-[#DA5605] hover:text-[#DA5605]'
+                      ? 'border-[#AE3E27] bg-[#fdf2f0] text-[#AE3E27]'
+                      : 'border-gray-300 text-gray-600 hover:border-[#AE3E27] hover:text-[#AE3E27]'
                   }`}
                 >
-                  <Heart size={12} className={wishlisted ? 'fill-[#DA5605]' : ''} />
+                  <Heart size={12} className={wishlisted ? 'fill-[#AE3E27]' : ''} />
                   {wishlisted ? 'Wishlisted' : 'Add to Wishlist'}
                 </button>
 
-                <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-gray-300 text-xs font-medium text-gray-600 hover:border-[#DA5605] hover:text-[#DA5605] transition-all">
+                <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-gray-300 text-xs font-medium text-gray-600 hover:border-[#AE3E27] hover:text-[#AE3E27] transition-all">
                   <Share2 size={12} />
                   Share
                 </button>

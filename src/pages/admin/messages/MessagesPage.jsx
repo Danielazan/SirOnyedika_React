@@ -22,7 +22,7 @@ function ConversationItem({ conv, isSelected, onClick }) {
       onClick={() => onClick(conv)}
       className={[
         'w-full flex items-start gap-3 px-4 py-3.5 text-left transition-colors duration-150 border-b border-gray-50',
-        isSelected ? 'bg-orange-50' : 'hover:bg-gray-50 bg-white',
+        isSelected ? 'bg-[#fdf2f0]' : 'hover:bg-gray-50 bg-white',
       ].join(' ')}
     >
       {/* Avatar + online dot */}
@@ -48,7 +48,7 @@ function ConversationItem({ conv, isSelected, onClick }) {
 
       {/* Unread badge */}
       {conv.unread > 0 && (
-        <span className="shrink-0 min-w-[18px] h-[18px] bg-orange-600 text-white text-[10px] font-bold rounded-full flex items-center justify-center px-1">
+        <span className="shrink-0 min-w-[18px] h-[18px] bg-[#AE3E27] text-white text-[10px] font-bold rounded-full flex items-center justify-center px-1">
           {conv.unread}
         </span>
       )}
@@ -67,12 +67,12 @@ function MessageBubble({ msg, isAdmin }) {
         className={[
           'max-w-[70%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed',
           isAdmin
-            ? 'bg-orange-600 text-white rounded-tr-sm'
+            ? 'bg-[#AE3E27] text-white rounded-tr-sm'
             : 'bg-gray-100 text-gray-800 rounded-tl-sm',
         ].join(' ')}
       >
         <p>{msg.text}</p>
-        <p className={`text-[10px] mt-1 ${isAdmin ? 'text-orange-200' : 'text-gray-400'} text-right`}>
+        <p className={`text-[10px] mt-1 ${isAdmin ? 'text-[#f8cec7]' : 'text-gray-400'} text-right`}>
           {msg.time}
         </p>
       </div>
@@ -171,7 +171,7 @@ function ChatPanel({ conversation, onBack }) {
         <button
           onClick={handleSend}
           disabled={!input.trim()}
-          className="w-11 h-11 rounded-xl bg-orange-600 hover:bg-orange-700 disabled:opacity-40
+          className="w-11 h-11 rounded-xl bg-[#AE3E27] hover:bg-[#8f3320] disabled:opacity-40
                      disabled:cursor-not-allowed flex items-center justify-center text-white
                      shadow transition-colors shrink-0"
         >

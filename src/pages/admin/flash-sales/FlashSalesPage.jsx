@@ -43,7 +43,7 @@ function Countdown({ endDate }) {
   const pad = (n) => String(n).padStart(2, '0');
   return (
     <div className="flex items-center gap-1.5 text-sm font-mono font-semibold text-gray-700">
-      <Clock size={14} className="text-orange-500 shrink-0" />
+      <Clock size={14} className="text-[#AE3E27] shrink-0" />
       {d > 0 && <span>{d}d</span>}
       <span>{pad(h)}:{pad(m)}:{pad(s)}</span>
     </div>
@@ -70,7 +70,7 @@ function FlashProductCard({ product }) {
           className="w-full h-full object-cover"
         />
         {/* Discount badge */}
-        <span className="absolute top-2 left-2 bg-orange-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+        <span className="absolute top-2 left-2 bg-[#AE3E27] text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
           -{product.discount}%
         </span>
       </div>
@@ -83,7 +83,7 @@ function FlashProductCard({ product }) {
 
         {/* Prices */}
         <div className="flex items-baseline gap-2">
-          <span className="text-base font-bold text-orange-600">
+          <span className="text-base font-bold text-[#AE3E27]">
             {formatCurrency(product.salePrice)}
           </span>
           <span className="text-xs text-gray-400 line-through">
@@ -99,7 +99,7 @@ function FlashProductCard({ product }) {
           </div>
           <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
             <div
-              className="h-full bg-orange-500 rounded-full transition-all"
+              className="h-full bg-[#AE3E27] rounded-full transition-all"
               style={{ width: `${soldPercent}%` }}
             />
           </div>
@@ -119,8 +119,8 @@ function FlashSaleSection({ sale }) {
       {/* Section header */}
       <div className="flex flex-wrap items-center justify-between gap-3 mb-5">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-orange-100 flex items-center justify-center">
-            <Zap size={18} className="text-orange-600" />
+          <div className="w-9 h-9 rounded-lg bg-[#fce5e0] flex items-center justify-center">
+            <Zap size={18} className="text-[#AE3E27]" />
           </div>
           <div>
             <div className="flex items-center gap-2">

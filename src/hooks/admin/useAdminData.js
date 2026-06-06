@@ -117,18 +117,26 @@
 //   const [loading, setLoading]       = useState(true);
 //   const [pagination, setPagination] = useState({ total: 0, page: 1, pages: 1 });
 
-//   useEffect(() => {
+//   // useCallback so refetch() can be called imperatively from the page
+//   const load = useCallback(() => {
 //     let cancelled = false;
 //     setLoading(true);
 //     const params = { page };
-//     if (search) params.search = search;
+//     if (search)   params.search   = search;
 //     if (category) params.category = category;
 
 //     client.get('/admin/products', { params })
 //       .then((res) => {
 //         if (!cancelled) {
-//           setProducts(res.data?.data?.products ?? res.data?.products ?? []);
-//           setPagination(res.data?.data?.pagination ?? { total: 0, page: 1, pages: 1 });
+//           const raw = res.data?.data;
+//           setProducts(raw?.products ?? res.data?.products ?? []);
+//           // Backend returns totalPages; normalise to pages for Pagination component
+//           const pg = raw?.pagination ?? res.data?.pagination ?? {};
+//           setPagination({
+//             total: pg.total ?? 0,
+//             page:  pg.page  ?? 1,
+//             pages: pg.pages ?? pg.totalPages ?? 1,
+//           });
 //         }
 //       })
 //       .catch(() => {
@@ -143,9 +151,15 @@
 //       .finally(() => { if (!cancelled) setLoading(false); });
 
 //     return () => { cancelled = true; };
+//   // eslint-disable-next-line react-hooks/exhaustive-deps
 //   }, [page, search, category]);
 
-//   return { products, loading, pagination };
+//   useEffect(() => {
+//     const cancel = load();
+//     return cancel;
+//   }, [load]);
+
+//   return { products, loading, pagination, refetch: load };
 // }
 
 // // ═══════════════════════════════════════════════════════════════════════════════
@@ -195,10 +209,49 @@
 // // ═══════════════════════════════════════════════════════════════════════════════
 // //  CATEGORIES
 // // ═══════════════════════════════════════════════════════════════════════════════
+// // export function useAdminCategories() {
+// //   return useFetch('/admin/categories', MOCK_CATEGORIES);
+// // }
 // export function useAdminCategories() {
-//   return useFetch('/admin/categories', MOCK_CATEGORIES);
-// }
+//   const [data, setData] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState(null);
 
+//   const load = useCallback(() => {
+//     let cancelled = false;
+//     setLoading(true);
+//     setError(null);
+
+//     client.get('/admin/categories')
+//       .then((res) => {
+//         if (cancelled) return;
+//         const payload = res.data?.data ?? res.data;
+//         // Defensive: backend may return array directly or wrapped in { data: [...] }
+//         const normalized = Array.isArray(payload) ? payload : [];
+//         setData(normalized);
+//       })
+//       .catch((err) => {
+//         if (cancelled) return;
+//         // Log so you can see auth/network issues in DevTools
+//         console.error('[useAdminCategories] API error:', err.message);
+//         const fallback = Array.isArray(MOCK_CATEGORIES) ? MOCK_CATEGORIES : [];
+//         setData(fallback);
+//         setError(err);
+//       })
+//       .finally(() => {
+//         if (!cancelled) setLoading(false);
+//       });
+
+//     return () => { cancelled = true; };
+//   }, []);
+
+//   useEffect(() => {
+//     const cleanup = load();
+//     return cleanup;
+//   }, [load]);
+
+//   return { data, loading, error, refetch: load };
+// }
 // // ═══════════════════════════════════════════════════════════════════════════════
 // //  FLASH SALES
 // // ═══════════════════════════════════════════════════════════════════════════════
@@ -237,7 +290,6 @@
 
 //   return { conversations, loading };
 // }
-
 
 // src/hooks/admin/useAdminData.js
 // Custom hooks for every admin domain.
@@ -450,9 +502,6 @@ export function useAdminCustomers(page = 1, search = '', status = '') {
 // ═══════════════════════════════════════════════════════════════════════════════
 //  CATEGORIES
 // ═══════════════════════════════════════════════════════════════════════════════
-// export function useAdminCategories() {
-//   return useFetch('/admin/categories', MOCK_CATEGORIES);
-// }
 export function useAdminCategories() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -493,6 +542,31 @@ export function useAdminCategories() {
 
   return { data, loading, error, refetch: load };
 }
+
+// ═══════════════════════════════════════════════════════════════════════════════
+//  REORDER CATEGORIES  (NEW — drag-and-drop mutation)
+// ═══════════════════════════════════════════════════════════════════════════════
+export function useReorderCategories() {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const reorder = useCallback(async (orderedIds) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await client.patch('/categories/reorder', { orderedIds });
+      return res.data;
+    } catch (err) {
+      setError(err);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  return { reorder, loading, error };
+}
+
 // ═══════════════════════════════════════════════════════════════════════════════
 //  FLASH SALES
 // ═══════════════════════════════════════════════════════════════════════════════

@@ -92,19 +92,19 @@
 
 /* Orange bullet markers for top-level unordered lists */
 .policy-content ul > li::marker {
-  color: #f97316;               /* orange-500 */
+  color: #AE3E27;               /* orange-500 */
 }
 
 /* ── Links ─────────────────────────────────────────────────────────────────── */
 .policy-content a {
-  color: #ea580c;               /* orange-600 */
+  color: #AE3E27;               /* orange-600 */
   text-decoration: underline;
   text-underline-offset: 2px;
   transition: color 0.15s ease;
 }
 
 .policy-content a:hover {
-  color: #c2410c;               /* orange-700 */
+  color: #8f3320;               /* orange-700 */
 }
 
 /* Invalid / stripped links */
@@ -129,7 +129,7 @@
 
 /* ── Blockquotes ───────────────────────────────────────────────────────────── */
 .policy-content blockquote {
-  border-left: 4px solid #fed7aa;   /* orange-200 */
+  border-left: 4px solid #f8cec7;   /* orange-200 */
   padding-left: 1.25rem;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;

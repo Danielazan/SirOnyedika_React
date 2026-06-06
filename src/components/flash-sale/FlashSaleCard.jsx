@@ -29,7 +29,7 @@ const FlashSaleCard = ({ product, index }) => {
       </div>
       
       {/* Orange Divider Line */}
-      <div className="h-0.5 bg-orange-500 w-full" />
+      <div className="h-0.5 bg-[#AE3E27] w-full" />
       
       {/* Content */}
       <div className="p-4 space-y-2">

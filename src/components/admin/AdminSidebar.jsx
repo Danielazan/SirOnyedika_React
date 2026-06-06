@@ -53,10 +53,10 @@
 //           className="flex items-center gap-2 hover:opacity-80 transition-opacity"
 //           title="Back to store"
 //         >
-//           <div className="w-9 h-9 rounded-full bg-orange-600 flex items-center justify-center">
+//           <div className="w-9 h-9 rounded-full bg-[#AE3E27] flex items-center justify-center">
 //             <span className="text-white font-bold text-base">F</span>
 //           </div>
-//           <span className="text-xl font-bold text-gray-900 tracking-tight">Fashly</span>
+//           <span className="text-xl font-bold text-gray-900 tracking-tight">Atelierselvedge</span>
 //         </Link>
 //         {/* Close button — mobile only */}
 //         {onClose && (
@@ -84,18 +84,18 @@
 //                 'flex items-center gap-3.5 px-3 py-3 rounded-lg text-[15px] font-medium transition-all duration-150',
 //                 'group relative',
 //                 isActive
-//                   ? 'bg-orange-50 text-orange-600'
+//                   ? 'bg-[#fdf2f0] text-[#AE3E27]'
 //                   : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900',
 //               ].join(' ')}
 //             >
 //               {/* Active left border */}
 //               {isActive && (
-//                 <span className="absolute right-0 top-1/2 -translate-y-1/2 w-[3px] h-8 bg-orange-600 rounded-l-full" />
+//                 <span className="absolute right-0 top-1/2 -translate-y-1/2 w-[3px] h-8 bg-[#AE3E27] rounded-l-full" />
 //               )}
 
 //               <Icon
 //                 size={20}
-//                 className={isActive ? 'text-orange-600' : 'text-gray-400 group-hover:text-gray-600'}
+//                 className={isActive ? 'text-[#AE3E27]' : 'text-gray-400 group-hover:text-gray-600'}
 //               />
 //               <span>{label}</span>
 //             </NavLink>
@@ -203,7 +203,7 @@ function SidebarContent({ onClose }) {
           className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           title="Back to store"
         >
-          <div className="w-9 h-9 rounded-full bg-orange-600 flex items-center justify-center">
+          <div className="w-9 h-9 rounded-full bg-[#AE3E27] flex items-center justify-center">
             <span className="text-white font-bold text-base">S</span>
           </div>
           <span className="text-xl font-bold text-gray-900 tracking-tight">Selvedge</span>
@@ -232,16 +232,16 @@ function SidebarContent({ onClose }) {
                 'flex items-center gap-3.5 px-3 py-3 rounded-lg text-[15px] font-medium transition-all duration-150',
                 'group relative',
                 isActive
-                  ? 'bg-orange-50 text-orange-600'
+                  ? 'bg-[#fdf2f0] text-[#AE3E27]'
                   : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900',
               ].join(' ')}
             >
               {isActive && (
-                <span className="absolute right-0 top-1/2 -translate-y-1/2 w-[3px] h-8 bg-orange-600 rounded-l-full" />
+                <span className="absolute right-0 top-1/2 -translate-y-1/2 w-[3px] h-8 bg-[#AE3E27] rounded-l-full" />
               )}
               <Icon
                 size={20}
-                className={isActive ? 'text-orange-600' : 'text-gray-400 group-hover:text-gray-600'}
+                className={isActive ? 'text-[#AE3E27]' : 'text-gray-400 group-hover:text-gray-600'}
               />
               <span>{label}</span>
             </NavLink>
