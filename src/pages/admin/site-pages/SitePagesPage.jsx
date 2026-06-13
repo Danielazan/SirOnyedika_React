@@ -1,23 +1,9 @@
-// // src/pages/admin/site-pages/SitePagesPage.jsx
-// // ─────────────────────────────────────────────────────────────────────────────
-// // Admin — Site Pages / Policy Editor
-// //
-// // Allows super_admin, ecommerce_manager, and marketing_admin to view and
-// // update the HTML content of all five public-facing policy pages.
-// //
-// // Left panel: policy selector tabs
-// // Right panel: page title input + rich text editor + save controls
-// //
-// // The editor uses a contentEditable div with an execCommand toolbar.
-// // Content is saved as raw HTML to the backend via PUT /pages/:key.
-// // ─────────────────────────────────────────────────────────────────────────────
-
 // import React, { useState, useEffect, useRef, useCallback } from 'react';
 // import { motion, AnimatePresence } from 'framer-motion';
 // import {
 //   FileText, Bold, Italic, Underline, List, ListOrdered,
 //   Heading2, Heading3, Eye, Edit3, Save, RefreshCw, CheckCircle,
-//   AlertCircle, ChevronRight,
+//   AlertCircle, ChevronRight, Info,
 // } from 'lucide-react';
 
 // import { getSitePage, updateSitePage } from '../../../api/sitepages.api';
@@ -52,6 +38,128 @@
 //   },
 // ];
 
+// // ── CSS styles for editor and preview content ────────────────────────────────
+// const editorStyles = `
+//   .editor-content h2 {
+//     font-size: 1.25rem;
+//     font-weight: 700;
+//     color: #111827;
+//     margin-top: 1.5rem;
+//     margin-bottom: 0.75rem;
+//     line-height: 1.3;
+//     display: block;
+//   }
+//   .editor-content h3 {
+//     font-size: 1.125rem;
+//     font-weight: 600;
+//     color: #1f2937;
+//     margin-top: 1.25rem;
+//     margin-bottom: 0.5rem;
+//     line-height: 1.3;
+//     display: block;
+//   }
+//   .editor-content p {
+//     margin-bottom: 1rem;
+//     display: block;
+//   }
+//   .editor-content p:empty {
+//     display: none;
+//   }
+//   .editor-content ul {
+//     list-style-type: disc;
+//     padding-left: 1.5rem;
+//     margin-bottom: 1rem;
+//     display: block;
+//   }
+//   .editor-content ol {
+//     list-style-type: decimal;
+//     padding-left: 1.5rem;
+//     margin-bottom: 1rem;
+//     display: block;
+//   }
+//   .editor-content li {
+//     margin-bottom: 0.375rem;
+//     display: list-item;
+//   }
+//   .editor-content strong,
+//   .editor-content b {
+//     font-weight: 600;
+//     color: #111827;
+//   }
+//   .editor-content em,
+//   .editor-content i {
+//     font-style: italic;
+//   }
+//   .editor-content u {
+//     text-decoration: underline;
+//     text-decoration-color: #AE3E27;
+//     text-underline-offset: 2px;
+//   }
+//   .editor-content a {
+//     color: #AE3E27;
+//     text-decoration: underline;
+//   }
+//   .editor-content hr {
+//     border: none;
+//     border-top: 1px solid #e5e7eb;
+//     margin: 1.5rem 0;
+//   }
+//   .editor-content blockquote {
+//     border-left: 3px solid #AE3E27;
+//     padding-left: 1rem;
+//     margin: 1rem 0;
+//     color: #6b7280;
+//     font-style: italic;
+//   }
+// `;
+
+// // ── Normalize Word paste HTML into clean semantic HTML ────────────────────
+// function normalizeWordHtml(html) {
+//   if (!html) return '';
+
+//   const temp = document.createElement('div');
+//   temp.innerHTML = html;
+
+//   // Remove all style attributes and classes
+//   temp.querySelectorAll('*').forEach((el) => {
+//     el.removeAttribute('style');
+//     el.removeAttribute('class');
+//   });
+
+//   // Convert Word's <b>/<strong> that look like headings to <h2>/<h3>
+//   temp.querySelectorAll('b, strong').forEach((el) => {
+//     const text = el.textContent.trim();
+//     const parentTag = el.parentElement?.tagName;
+//     if (text.length < 80 && parentTag !== 'H2' && parentTag !== 'H3' && parentTag !== 'H1') {
+//       const parent = el.parentElement;
+//       if (parent && (parent.tagName === 'P' || parent.tagName === 'DIV') && 
+//           parent.textContent.trim() === text) {
+//         const heading = document.createElement('h3');
+//         heading.textContent = text;
+//         parent.parentElement.replaceChild(heading, parent);
+//       }
+//     }
+//   });
+
+//   // Unwrap unnecessary spans
+//   temp.querySelectorAll('span').forEach((span) => {
+//     const parent = span.parentNode;
+//     while (span.firstChild) {
+//       parent.insertBefore(span.firstChild, span);
+//     }
+//     parent.removeChild(span);
+//   });
+
+//   // Clean up empty elements
+//   temp.querySelectorAll('p, div').forEach((el) => {
+//     if (!el.textContent.trim() && !el.querySelector('img, br, hr')) {
+//       el.remove();
+//     }
+//   });
+
+//   return temp.innerHTML;
+// }
+
 // // ── Toolbar button ───────────────────────────────────────────────────────────
 // function ToolbarBtn({ onClick, title, children, active = false }) {
 //   return (
@@ -71,23 +179,24 @@
 //   );
 // }
 
-// // ── Rich text editor ─────────────────────────────────────────────────────────
+// // ── Rich text editor (uncontrolled contentEditable) ────────────────────────
 // function RichEditor({ value, onChange }) {
 //   const editorRef = useRef(null);
 
-//   // Sync external value → DOM only on page switch (not on every keystroke)
-//   const lastKeyRef = useRef(null);
+//   // Set initial content when editor mounts
 //   useEffect(() => {
-//     if (editorRef.current && lastKeyRef.current !== value) {
-//       editorRef.current.innerHTML = value || '';
-//       lastKeyRef.current = value;
+//     if (editorRef.current) {
+//       editorRef.current.innerHTML = value || '<p><br></p>';
 //     }
-//   }, [value]);
+//   }, []); // Empty deps — only run once on mount
 
 //   const exec = useCallback((command, val = null) => {
 //     document.execCommand(command, false, val);
 //     editorRef.current?.focus();
-//   }, []);
+//     // Sync state after execCommand
+//     const html = editorRef.current?.innerHTML || '';
+//     onChange(html);
+//   }, [onChange]);
 
 //   const handleInput = () => {
 //     if (editorRef.current) {
@@ -95,8 +204,45 @@
 //     }
 //   };
 
+//   const handlePaste = (e) => {
+//     e.preventDefault();
+//     const clipboardData = e.clipboardData || window.clipboardData;
+//     const html = clipboardData.getData('text/html');
+//     const text = clipboardData.getData('text/plain');
+
+//     let contentToInsert;
+//     if (html) {
+//       contentToInsert = normalizeWordHtml(html);
+//     } else {
+//       const paragraphs = text.split(/\n{2,}/);
+//       contentToInsert = paragraphs
+//         .map((para) => {
+//           const trimmed = para.trim();
+//           if (!trimmed) return '';
+//           const withBreaks = trimmed.replace(/\n/g, '<br>');
+//           return `<p>${withBreaks}</p>`;
+//         })
+//         .filter(Boolean)
+//         .join('');
+//     }
+
+//     document.execCommand('insertHTML', false, contentToInsert);
+//     handleInput();
+//   };
+
+//   const handleKeyDown = (e) => {
+//     if (e.key === 'Tab') {
+//       e.preventDefault();
+//       document.execCommand('insertHTML', false, '&nbsp;&nbsp;&nbsp;&nbsp;');
+//       handleInput();
+//     }
+//   };
+
 //   return (
 //     <div className="border border-gray-200 rounded-lg overflow-hidden">
+//       {/* Inject editor styles */}
+//       <style>{editorStyles}</style>
+
 //       {/* Toolbar */}
 //       <div className="flex flex-wrap items-center gap-0.5 px-2 py-1.5 border-b border-gray-200 bg-gray-50">
 //         <ToolbarBtn onClick={() => exec('bold')}      title="Bold (Ctrl+B)">
@@ -143,19 +289,9 @@
 //         contentEditable
 //         suppressContentEditableWarning
 //         onInput={handleInput}
-//         className="
-//           min-h-[420px] max-h-[600px] overflow-y-auto
-//           px-5 py-4 text-sm text-gray-800 leading-relaxed
-//           focus:outline-none
-
-//           [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-gray-900 [&_h2]:mt-6 [&_h2]:mb-2
-//           [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:text-gray-800 [&_h3]:mt-4 [&_h3]:mb-1
-//           [&_p]:mb-3
-//           [&_ul]:list-disc  [&_ul]:pl-6 [&_ul]:mb-3
-//           [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-3
-//           [&_strong]:font-semibold
-//           [&_a]:text-[#AE3E27] [&_a]:underline
-//         "
+//         onPaste={handlePaste}
+//         onKeyDown={handleKeyDown}
+//         className="editor-content min-h-[420px] max-h-[600px] overflow-y-auto px-5 py-4 text-sm text-gray-800 leading-relaxed focus:outline-none"
 //       />
 //     </div>
 //   );
@@ -165,6 +301,7 @@
 // function PreviewPane({ content, title }) {
 //   return (
 //     <div className="border border-gray-200 rounded-lg overflow-hidden">
+//       <style>{editorStyles}</style>
 //       <div className="px-4 py-2.5 bg-gray-50 border-b border-gray-200">
 //         <span className="text-xs text-gray-500 font-medium">Preview — public view</span>
 //       </div>
@@ -175,19 +312,7 @@
 //           </h1>
 //         )}
 //         {content ? (
-//           <div
-//             className="
-//               text-sm text-gray-700 leading-relaxed
-//               [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-gray-900 [&_h2]:mt-6 [&_h2]:mb-2
-//               [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:text-gray-800 [&_h3]:mt-4 [&_h3]:mb-1
-//               [&_p]:mb-3
-//               [&_ul]:list-disc  [&_ul]:pl-6 [&_ul]:mb-3
-//               [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-3
-//               [&_strong]:font-semibold
-//               [&_a]:text-[#AE3E27] [&_a]:underline
-//             "
-//             dangerouslySetInnerHTML={{ __html: content }}
-//           />
+//           <div className="editor-content" dangerouslySetInnerHTML={{ __html: content }} />
 //         ) : (
 //           <p className="text-gray-300 text-sm italic">Nothing to preview yet.</p>
 //         )}
@@ -201,7 +326,7 @@
 //   if (status === 'idle') return null;
 
 //   const map = {
-//     saving:  { icon: RefreshCw,    text: 'Saving…',        cls: 'text-[#AE3E27] animate-spin' },
+//     saving:  { icon: RefreshCw,    text: 'Saving…',        cls: 'text-[#AE3E27]' },
 //     success: { icon: CheckCircle,  text: 'Saved!',         cls: 'text-green-600' },
 //     error:   { icon: AlertCircle,  text: 'Save failed',    cls: 'text-red-600' },
 //   };
@@ -229,11 +354,11 @@
 //   const [pageTitle,  setPageTitle]  = useState('');
 //   const [content,    setContent]    = useState('');
 //   const [loading,    setLoading]    = useState(false);
-//   const [saveStatus, setSaveStatus] = useState('idle'); // 'idle' | 'saving' | 'success' | 'error'
-//   const [viewMode,   setViewMode]   = useState('edit'); // 'edit' | 'preview'
+//   const [saveStatus, setSaveStatus] = useState('idle');
+//   const [viewMode,   setViewMode]   = useState('edit');
 //   const [lastSaved,  setLastSaved]  = useState(null);
+//   const [editorKey,  setEditorKey]  = useState(0);
 
-//   // Reset status after 3 seconds
 //   useEffect(() => {
 //     if (saveStatus === 'success' || saveStatus === 'error') {
 //       const t = setTimeout(() => setSaveStatus('idle'), 3000);
@@ -241,11 +366,11 @@
 //     }
 //   }, [saveStatus]);
 
-//   // Fetch page whenever the active tab changes
 //   useEffect(() => {
 //     let cancelled = false;
 //     setLoading(true);
 //     setViewMode('edit');
+//     setEditorKey((k) => k + 1);
 
 //     getSitePage(activeKey)
 //       .then(({ data }) => {
@@ -359,7 +484,6 @@
 //             <div className="flex items-center gap-3">
 //               <SaveStatus status={saveStatus} />
 
-//               {/* Edit / Preview toggle */}
 //               <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden text-sm">
 //                 <button
 //                   onClick={() => setViewMode('edit')}
@@ -385,7 +509,6 @@
 //                 </button>
 //               </div>
 
-//               {/* Save button */}
 //               <button
 //                 onClick={handleSave}
 //                 disabled={saveStatus === 'saving' || loading}
@@ -419,7 +542,7 @@
 //         {/* Editor / Preview */}
 //         <div className="bg-white rounded-xl border border-gray-100 shadow-sm px-6 py-5">
 //           <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
-//             {viewMode === 'edit' ? 'Page Content (HTML)' : 'Preview'}
+//             {viewMode === 'edit' ? 'Page Content' : 'Preview'}
 //           </label>
 
 //           {loading ? (
@@ -430,41 +553,28 @@
 //               </div>
 //             </div>
 //           ) : viewMode === 'edit' ? (
-//             <RichEditor value={content} onChange={setContent} />
+//             <RichEditor key={editorKey} value={content} onChange={setContent} />
 //           ) : (
 //             <PreviewPane content={content} title={pageTitle} />
 //           )}
 //         </div>
 
-//         {/* HTML hint */}
 //         {viewMode === 'edit' && !loading && (
-//           <p className="text-xs text-gray-400 px-1">
-//             Content is stored as HTML. Use the toolbar for formatting, or paste directly
-//             from Word/Google Docs and the browser will convert it automatically.
-//           </p>
+//           <div className="flex items-start gap-2 px-1">
+//             <Info size={14} className="text-[#AE3E27] shrink-0 mt-0.5" />
+//             <p className="text-xs text-gray-400 leading-relaxed">
+//               <strong className="text-gray-600">Paste from Word:</strong> Content pasted from Microsoft Word
+//               will be automatically cleaned and converted to semantic HTML (headings, lists, paragraphs).
+//               Use the toolbar above for manual formatting.
+//             </p>
+//           </div>
 //         )}
 //       </motion.div>
 //     </motion.div>
 //   );
 // }
 
-// src/pages/admin/site-pages/SitePagesPage.jsx
-// ─────────────────────────────────────────────────────────────────────────────
-// Admin — Site Pages / Policy Editor
-//
-// Allows super_admin, ecommerce_manager, and marketing_admin to view and
-// update the HTML content of all five public-facing policy pages.
-//
-// Left panel: policy selector tabs
-// Right panel: page title input + rich text editor + save controls
-//
-// The editor uses a contentEditable div with an execCommand toolbar.
-// Content is saved as raw HTML to the backend via PUT /pages/:key.
-//
-// NOTE: The backend now auto-formats plain text into semantic HTML
-// (headings, lists, paragraphs) if no HTML tags are detected.
-// ─────────────────────────────────────────────────────────────────────────────
-
+SitePagesPage.jsx
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -505,6 +615,143 @@ const POLICIES = [
   },
 ];
 
+// ── CSS styles for editor and preview content ────────────────────────────────
+const editorStyles = `
+  /* FIX: Reset inherited letter-spacing and word-spacing */
+  .editor-content {
+    letter-spacing: normal !important;
+    word-spacing: normal !important;
+  }
+
+  .editor-content h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+    display: block;
+  }
+  .editor-content h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+    display: block;
+  }
+  .editor-content p {
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .editor-content p:empty {
+    display: none;
+  }
+  .editor-content ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .editor-content ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .editor-content li {
+    margin-bottom: 0.375rem;
+    display: list-item;
+  }
+  .editor-content strong,
+  .editor-content b {
+    font-weight: 600;
+    color: #111827;
+  }
+  .editor-content em,
+  .editor-content i {
+    font-style: italic;
+  }
+  .editor-content u {
+    text-decoration: underline;
+    text-decoration-color: #AE3E27;
+    text-underline-offset: 2px;
+  }
+  .editor-content a {
+    color: #AE3E27;
+    text-decoration: underline;
+  }
+  .editor-content hr {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 1.5rem 0;
+  }
+  .editor-content blockquote {
+    border-left: 3px solid #AE3E27;
+    padding-left: 1rem;
+    margin: 1rem 0;
+    color: #6b7280;
+    font-style: italic;
+  }
+`;
+
+// ── Normalize Word paste HTML into clean semantic HTML ────────────────────
+function normalizeWordHtml(html) {
+  if (!html) return '';
+
+  const temp = document.createElement('div');
+  temp.innerHTML = html;
+
+  // ── Strip Word-specific style properties and class names only ──────────
+  // We do NOT remove all styles/classes — that strips legitimate formatting
+  // (bold, italic, etc.) that Word encodes inline.
+  // Only remove mso-* CSS properties and Word class names (MsoNormal, etc).
+  temp.querySelectorAll('*').forEach((el) => {
+    const cls = el.getAttribute('class') || '';
+    if (/\bMso/i.test(cls)) el.removeAttribute('class');
+
+    const style = el.getAttribute('style') || '';
+    if (style) {
+      const cleaned = style
+        .split(';')
+        .map((s) => s.trim())
+        .filter((s) => s && !/^mso-/i.test(s))
+        .join('; ');
+      if (cleaned) el.setAttribute('style', cleaned);
+      else el.removeAttribute('style');
+    }
+  });
+
+  // ── Do NOT auto-promote bold text to headings ──────────────────────────
+  // Word uses bold paragraphs for sub-headings like "Before Fulfilment",
+  // "Return Shipping", etc. These are intentionally bold text, not semantic
+  // headings. Auto-promoting them to <h3> produces wrong output.
+  // Admins can use the H2/H3 toolbar buttons if a real heading is needed.
+
+  // ── Unwrap spans that carry no meaningful style after mso cleanup ──────
+  temp.querySelectorAll('span').forEach((span) => {
+    const style = span.getAttribute('style') || '';
+    const hasClass = span.hasAttribute('class');
+    if (!style && !hasClass) {
+      const parent = span.parentNode;
+      while (span.firstChild) {
+        parent.insertBefore(span.firstChild, span);
+      }
+      parent.removeChild(span);
+    }
+  });
+
+  // ── Remove truly empty block elements ─────────────────────────────────
+  temp.querySelectorAll('p, div').forEach((el) => {
+    if (!el.textContent.trim() && !el.querySelector('img, br, hr')) {
+      el.remove();
+    }
+  });
+
+  return temp.innerHTML;
+}
+
 // ── Toolbar button ───────────────────────────────────────────────────────────
 function ToolbarBtn({ onClick, title, children, active = false }) {
   return (
@@ -524,23 +771,64 @@ function ToolbarBtn({ onClick, title, children, active = false }) {
   );
 }
 
-// ── Rich text editor ─────────────────────────────────────────────────────────
+// ── Rich text editor (uncontrolled contentEditable) ────────────────────────
 function RichEditor({ value, onChange }) {
   const editorRef = useRef(null);
 
-  // Sync external value → DOM only on page switch (not on every keystroke)
-  const lastKeyRef = useRef(null);
+  // FIX: Hydrate editor when value arrives from API (not just on mount)
+  const hasHydrated = useRef(false);
   useEffect(() => {
-    if (editorRef.current && lastKeyRef.current !== value) {
-      editorRef.current.innerHTML = value || '';
-      lastKeyRef.current = value;
+    if (editorRef.current && value && !hasHydrated.current) {
+      editorRef.current.innerHTML = value;
+      hasHydrated.current = true;
     }
-  }, [value]);
+  }, [value]); // ← responds to API data arriving after mount
 
   const exec = useCallback((command, val = null) => {
     document.execCommand(command, false, val);
     editorRef.current?.focus();
-  }, []);
+    // Sync state after execCommand
+    const html = editorRef.current?.innerHTML || '';
+    onChange(html);
+  }, [onChange]);
+
+  // clearFormat: removes BOTH inline formatting (bold, italic, underline)
+  // AND block-level formatting (h2, h3 → p).
+  // execCommand('removeFormat') only handles inline — it cannot change block tags.
+  const clearFormat = useCallback(() => {
+    // Step 1: strip inline formatting via execCommand
+    document.execCommand('removeFormat', false, null);
+
+    // Step 2: convert any heading block that intersects the selection to <p>
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0) {
+      editorRef.current?.focus();
+      onChange(editorRef.current?.innerHTML || '');
+      return;
+    }
+
+    const range = selection.getRangeAt(0);
+    const editor = editorRef.current;
+    if (!editor) return;
+
+    // Collect all heading nodes inside the editor that overlap the selection
+    const headings = Array.from(editor.querySelectorAll('h1, h2, h3, h4, h5, h6'));
+    headings.forEach((heading) => {
+      const headingRange = document.createRange();
+      headingRange.selectNode(heading);
+      if (
+        range.compareBoundaryPoints(Range.END_TO_START, headingRange) <= 0 &&
+        range.compareBoundaryPoints(Range.START_TO_END, headingRange) >= 0
+      ) {
+        const p = document.createElement('p');
+        p.innerHTML = heading.innerHTML;
+        heading.parentNode.replaceChild(p, heading);
+      }
+    });
+
+    editorRef.current?.focus();
+    onChange(editorRef.current?.innerHTML || '');
+  }, [onChange]);
 
   const handleInput = () => {
     if (editorRef.current) {
@@ -548,8 +836,45 @@ function RichEditor({ value, onChange }) {
     }
   };
 
+  const handlePaste = (e) => {
+    e.preventDefault();
+    const clipboardData = e.clipboardData || window.clipboardData;
+    const html = clipboardData.getData('text/html');
+    const text = clipboardData.getData('text/plain');
+
+    let contentToInsert;
+    if (html) {
+      contentToInsert = normalizeWordHtml(html);
+    } else {
+      const paragraphs = text.split(/\n{2,}/);
+      contentToInsert = paragraphs
+        .map((para) => {
+          const trimmed = para.trim();
+          if (!trimmed) return '';
+          const withBreaks = trimmed.replace(/\n/g, '<br>');
+          return `<p>${withBreaks}</p>`;
+        })
+        .filter(Boolean)
+        .join('');
+    }
+
+    document.execCommand('insertHTML', false, contentToInsert);
+    handleInput();
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      document.execCommand('insertHTML', false, '&nbsp;&nbsp;&nbsp;&nbsp;');
+      handleInput();
+    }
+  };
+
   return (
     <div className="border border-gray-200 rounded-lg overflow-hidden">
+      {/* Inject editor styles */}
+      <style>{editorStyles}</style>
+
       {/* Toolbar */}
       <div className="flex flex-wrap items-center gap-0.5 px-2 py-1.5 border-b border-gray-200 bg-gray-50">
         <ToolbarBtn onClick={() => exec('bold')}      title="Bold (Ctrl+B)">
@@ -585,7 +910,7 @@ function RichEditor({ value, onChange }) {
 
         <span className="w-px h-4 bg-gray-200 mx-1" />
 
-        <ToolbarBtn onClick={() => exec('removeFormat')} title="Clear formatting">
+        <ToolbarBtn onClick={clearFormat} title="Clear formatting (inline + headings)">
           <span className="text-xs font-medium px-0.5">Tx</span>
         </ToolbarBtn>
       </div>
@@ -596,28 +921,19 @@ function RichEditor({ value, onChange }) {
         contentEditable
         suppressContentEditableWarning
         onInput={handleInput}
-        className="
-          min-h-[420px] max-h-[600px] overflow-y-auto
-          px-5 py-4 text-sm text-gray-800 leading-relaxed
-          focus:outline-none
-
-          [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-gray-900 [&_h2]:mt-6 [&_h2]:mb-2
-          [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:text-gray-800 [&_h3]:mt-4 [&_h3]:mb-1
-          [&_p]:mb-3
-          [&_ul]:list-disc  [&_ul]:pl-6 [&_ul]:mb-3
-          [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-3
-          [&_strong]:font-semibold
-          [&_a]:text-[#AE3E27] [&_a]:underline
-        "
+        onPaste={handlePaste}
+        onKeyDown={handleKeyDown}
+        className="editor-content min-h-[420px] max-h-[600px] overflow-y-auto px-5 py-4 text-sm text-gray-800 leading-relaxed focus:outline-none"
       />
     </div>
   );
 }
 
-// ── Preview pane (now matches public page styling) ──────────────────────────
+// ── Preview pane ─────────────────────────────────────────────────────────────
 function PreviewPane({ content, title }) {
   return (
     <div className="border border-gray-200 rounded-lg overflow-hidden">
+      <style>{editorStyles}</style>
       <div className="px-4 py-2.5 bg-gray-50 border-b border-gray-200">
         <span className="text-xs text-gray-500 font-medium">Preview — public view</span>
       </div>
@@ -628,10 +944,7 @@ function PreviewPane({ content, title }) {
           </h1>
         )}
         {content ? (
-          <div
-            className="policy-content"
-            dangerouslySetInnerHTML={{ __html: content }}
-          />
+          <div className="editor-content" dangerouslySetInnerHTML={{ __html: content }} />
         ) : (
           <p className="text-gray-300 text-sm italic">Nothing to preview yet.</p>
         )}
@@ -645,7 +958,7 @@ function SaveStatus({ status }) {
   if (status === 'idle') return null;
 
   const map = {
-    saving:  { icon: RefreshCw,    text: 'Saving…',        cls: 'text-[#AE3E27] animate-spin' },
+    saving:  { icon: RefreshCw,    text: 'Saving\u2026',        cls: 'text-[#AE3E27]' },
     success: { icon: CheckCircle,  text: 'Saved!',         cls: 'text-green-600' },
     error:   { icon: AlertCircle,  text: 'Save failed',    cls: 'text-red-600' },
   };
@@ -673,11 +986,11 @@ export default function SitePagesPage() {
   const [pageTitle,  setPageTitle]  = useState('');
   const [content,    setContent]    = useState('');
   const [loading,    setLoading]    = useState(false);
-  const [saveStatus, setSaveStatus] = useState('idle'); // 'idle' | 'saving' | 'success' | 'error'
-  const [viewMode,   setViewMode]   = useState('edit'); // 'edit' | 'preview'
+  const [saveStatus, setSaveStatus] = useState('idle');
+  const [viewMode,   setViewMode]   = useState('edit');
   const [lastSaved,  setLastSaved]  = useState(null);
+  const [editorKey,  setEditorKey]  = useState(0);
 
-  // Reset status after 3 seconds
   useEffect(() => {
     if (saveStatus === 'success' || saveStatus === 'error') {
       const t = setTimeout(() => setSaveStatus('idle'), 3000);
@@ -685,11 +998,11 @@ export default function SitePagesPage() {
     }
   }, [saveStatus]);
 
-  // Fetch page whenever the active tab changes
   useEffect(() => {
     let cancelled = false;
     setLoading(true);
     setViewMode('edit');
+    setEditorKey((k) => k + 1);
 
     getSitePage(activeKey)
       .then(({ data }) => {
@@ -791,7 +1104,7 @@ export default function SitePagesPage() {
               </h1>
               {lastSaved && (
                 <p className="text-xs text-gray-400 mt-0.5">
-                  Last saved:{' '}
+                  Last saved:{" "}
                   {lastSaved.toLocaleDateString('en-US', {
                     year: 'numeric', month: 'short', day: 'numeric',
                     hour: '2-digit', minute: '2-digit',
@@ -803,7 +1116,6 @@ export default function SitePagesPage() {
             <div className="flex items-center gap-3">
               <SaveStatus status={saveStatus} />
 
-              {/* Edit / Preview toggle */}
               <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden text-sm">
                 <button
                   onClick={() => setViewMode('edit')}
@@ -829,7 +1141,6 @@ export default function SitePagesPage() {
                 </button>
               </div>
 
-              {/* Save button */}
               <button
                 onClick={handleSave}
                 disabled={saveStatus === 'saving' || loading}
@@ -870,25 +1181,23 @@ export default function SitePagesPage() {
             <div className="border border-gray-200 rounded-lg min-h-[420px] flex items-center justify-center">
               <div className="flex flex-col items-center gap-3 text-gray-400">
                 <RefreshCw size={22} className="animate-spin text-[#AE3E27]" />
-                <span className="text-sm">Loading content…</span>
+                <span className="text-sm">Loading content\u2026</span>
               </div>
             </div>
           ) : viewMode === 'edit' ? (
-            <RichEditor value={content} onChange={setContent} />
+            <RichEditor key={editorKey} value={content} onChange={setContent} />
           ) : (
             <PreviewPane content={content} title={pageTitle} />
           )}
         </div>
 
-        {/* Auto-format info note */}
         {viewMode === 'edit' && !loading && (
           <div className="flex items-start gap-2 px-1">
             <Info size={14} className="text-[#AE3E27] shrink-0 mt-0.5" />
             <p className="text-xs text-gray-400 leading-relaxed">
-              <strong className="text-gray-600">Auto-format enabled:</strong> If you type or paste plain text
-              (no HTML tags), the backend will automatically detect headings, lists, paragraphs, emails,
-              and URLs and convert them into properly formatted HTML. Use the toolbar above if you want
-              to write raw HTML manually.
+              <strong className="text-gray-600">Paste from Word:</strong> Content pasted from Microsoft Word
+              will be automatically cleaned and converted to semantic HTML (headings, lists,
+              paragraphs). Use the toolbar above for manual formatting.
             </p>
           </div>
         )}
